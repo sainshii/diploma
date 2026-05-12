@@ -7,6 +7,7 @@ export default {
         'sf': ['SanFrancisco', 'sans-serif'],
         'gv': ['"Great Vibes"', 'cursive'],
         'kreadon': ['Kreadon', 'sans-serif'],
+        'playfair': ['PlayFair'],
       },
     },
   },

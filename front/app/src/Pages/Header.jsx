@@ -28,11 +28,16 @@ const Header = () => {
 
     return (
         <div>
-            <header className='flex gap-[30px]'>
-                <img src={logo} alt='logo' className='w-[5rem] h-[5rem] rounded-full border-2 border-[#8B1E1E]' />
+            {/* ДОБАВИЛИ: relative overflow-hidden rounded-full и слой размытия */}
+            <header className='fixed z-50 flex gap-[30px] items-center px-12 py-1 overflow-hidden rounded-full border-[1px] border-[#C5A059]'>
+                
+                {/* Слой с размытием (прозрачный, без бордеров) */}
+                <div className='absolute inset-0 backdrop-blur-sm bg-transparent border-none z-[-1]'></div>
+
+                <img src={logo} alt='logo' className='w-[6rem] h-[6rem] rounded-full border-2 border-[#8B1E1E]' />
 
                 {/* страницы */}
-                <div className='bg-[#0A0A0A] w-[35rem] h-[2.5rem] mt-[1.2rem] rounded-full border-2 border-[#8B1E1E]'>
+                <div className='bg-[#0A0A0A] w-[43rem] h-[3.5rem] rounded-full border-2 border-[#8B1E1E]'>
                     <div className='flex justify-center gap-[10px] font-sf font-thin items-center h-full'>
                         {menuItems.map((item) => {
                             const isActive = location.pathname === item.path;
@@ -57,10 +62,10 @@ const Header = () => {
                                     )}
                                     
                                     {/* текст */}
-                                    <span className='relative z-10 font-gv text-[18px]'>
+                                    <span className='relative z-10 font-gv text-[25px]'>
                                         {item.firstLetter}
                                     </span>
-                                    <span className='relative z-10 font-sf text-[15px]'>
+                                    <span className='relative z-10 font-sf text-[20px]'>
                                         {item.text}
                                     </span>
                                 </button>
@@ -70,8 +75,8 @@ const Header = () => {
                 </div>
 
                 {/* корзина, профиль, выход */}
-                <div className="ml-[24rem]">
-                    <div className="bg-[#8B1E1E] w-[12rem] h-[2.5rem] mt-[1.1rem] rounded-full border-2 border-[#0A0A0A] flex items-center justify-center gap-4">
+                <div className="ml-[35rem]">
+                    <div className="bg-[#8B1E1E] w-[12rem] h-[4rem] rounded-full border-2 border-[#0A0A0A] flex items-center justify-center gap-4">
 
                         {/* корзина */}
                         <button
@@ -83,7 +88,7 @@ const Header = () => {
                             }`}
                         >
                             <span className="relative z-10 flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <circle cx="9" cy="21" r="1" />
                                     <circle cx="20" cy="21" r="1" />
                                     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
@@ -101,7 +106,7 @@ const Header = () => {
                             }`}
                         >
                             <span className="relative z-10 flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                                     <circle cx="12" cy="7" r="4" />
                                 </svg>
@@ -117,7 +122,7 @@ const Header = () => {
                                 }}
                                 className="text-[#C5A059] hover:text-[#0A0A0A] transition duration-300 p-1 flex items-center"
                             >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                     <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
                                     <polyline points="16 17 21 12 16 7" />
                                     <line x1="21" y1="12" x2="9" y2="12" />
