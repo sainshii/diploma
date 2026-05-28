@@ -1,0 +1,5071 @@
+[
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "app",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "authtoken",
+    "model": "token"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "authtoken",
+    "model": "tokenproxy"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "app",
+    "model": "category"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "app",
+    "model": "comment"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "app",
+    "model": "product"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "app",
+    "model": "size"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "app",
+    "model": "cart"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "app",
+    "model": "cartitem"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "app",
+    "model": "order"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "app",
+    "model": "orderitem"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "app",
+    "model": "contactmessage"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "app",
+    "model": "promotion"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ntyvir27ho8uojdxxgosohvvm1w5utpc",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSHDKxSX7v0GAjODVA0kpV0Z_12bdKHbe865LxHTtta4DV7iTOIsnDj9bjnhg9sO6J7arUvsbV3mLHdFHnTIayd-Xg7376CmUb91YF8IwxQQTdbFGACluIBJHjw6r7BQscqTRnRgwVgFmrSeNBrOkMT7A-rtN7M:1wSZ3M:ULn2rJS3oG-HJyGwCLGtWO-jLPaE17Db9PZSxSRJDO4",
+    "expire_date": "2026-06-11T11:37:32.369Z"
+  }
+},
+{
+  "model": "app.category",
+  "pk": 1,
+  "fields": {
+    "name": "Маски",
+    "slug": "masks",
+    "parent": null,
+    "order": 1
+  }
+},
+{
+  "model": "app.category",
+  "pk": 2,
+  "fields": {
+    "name": "Костюмы",
+    "slug": "costumes",
+    "parent": null,
+    "order": 2
+  }
+},
+{
+  "model": "app.category",
+  "pk": 3,
+  "fields": {
+    "name": "Полный комплект",
+    "slug": "full",
+    "parent": 2,
+    "order": 3
+  }
+},
+{
+  "model": "app.category",
+  "pk": 4,
+  "fields": {
+    "name": "Верх",
+    "slug": "top",
+    "parent": 2,
+    "order": 4
+  }
+},
+{
+  "model": "app.category",
+  "pk": 5,
+  "fields": {
+    "name": "Низ",
+    "slug": "bottom",
+    "parent": 2,
+    "order": 5
+  }
+},
+{
+  "model": "app.category",
+  "pk": 6,
+  "fields": {
+    "name": "Обувь",
+    "slug": "shoes",
+    "parent": 2,
+    "order": 6
+  }
+},
+{
+  "model": "app.category",
+  "pk": 7,
+  "fields": {
+    "name": "Аксессуары",
+    "slug": "accessories",
+    "parent": null,
+    "order": 7
+  }
+},
+{
+  "model": "app.category",
+  "pk": 8,
+  "fields": {
+    "name": "Головные уборы",
+    "slug": "hats",
+    "parent": 7,
+    "order": 8
+  }
+},
+{
+  "model": "app.category",
+  "pk": 9,
+  "fields": {
+    "name": "Веера и перчатки",
+    "slug": "fans",
+    "parent": 7,
+    "order": 10
+  }
+},
+{
+  "model": "app.category",
+  "pk": 11,
+  "fields": {
+    "name": "Реквизит",
+    "slug": "props",
+    "parent": 7,
+    "order": 11
+  }
+},
+{
+  "model": "app.category",
+  "pk": 12,
+  "fields": {
+    "name": "Украшения",
+    "slug": "jewelry",
+    "parent": 7,
+    "order": 12
+  }
+},
+{
+  "model": "app.category",
+  "pk": 13,
+  "fields": {
+    "name": "Плащи и накидки",
+    "slug": "cloaks",
+    "parent": 7,
+    "order": 9
+  }
+},
+{
+  "model": "app.size",
+  "pk": 1,
+  "fields": {
+    "name": "S"
+  }
+},
+{
+  "model": "app.size",
+  "pk": 2,
+  "fields": {
+    "name": "M"
+  }
+},
+{
+  "model": "app.size",
+  "pk": 3,
+  "fields": {
+    "name": "L"
+  }
+},
+{
+  "model": "app.size",
+  "pk": 4,
+  "fields": {
+    "name": "XL"
+  }
+},
+{
+  "model": "app.size",
+  "pk": 5,
+  "fields": {
+    "name": "Универсальный"
+  }
+},
+{
+  "model": "app.product",
+  "pk": 1,
+  "fields": {
+    "name": "Карнавальная маска \"Баута\"",
+    "description": "Баута – легендарная маска, которую в эпоху расцвета Венецианской республики носили и дожи, и простые горожане. Её строгий белый силуэт с характерным «утиным» клювом и квадратным подбородком не просто скрывает лицо – он создаёт абсолютную анонимность, позволяя вам стать кем угодно: знатным интриганом, свободным художником или таинственным незнакомцем.",
+    "price": "4490.00",
+    "image": "products/productbauta.webp",
+    "category": 1,
+    "stock": 50,
+    "is_popular": true,
+    "rating": 4.8,
+    "sizes": [
+      5
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 2,
+  "fields": {
+    "name": "Карнавальная маска \"Коломбина\"",
+    "description": "Нежная, воздушная и невероятно женственная. Эта маска в каноническом стиле «Коломбина» –олицетворение утонченности. Мягкий перламутр, изысканное кружево, жемчужный декор и пушистые страусиные перья создают образ настоящей аристократки бала. Маска поставляется с элегантной палочкой для эффектного позирования.",
+    "price": "6990.00",
+    "image": "products/productcolumbina.webp",
+    "category": 1,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.9,
+    "sizes": [
+      5
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 3,
+  "fields": {
+    "name": "Карнавальная маска \"Арлекин\"",
+    "description": "Самая экстравагантная и загадочная маска в коллекции. Выполненная в канонах знаменитого Арлекина, эта работа поражает контрастом глянцевой чёрной основы, изумрудной зелени и благородного золота. Настоящие павлиньи перья и асимметричный дизайн глаз превращают владельца в главную загадку бала. Это не просто аксессуар, а скульптурное произведение искусства.",
+    "price": "10490.00",
+    "image": "products/productharlequin.webp",
+    "category": 1,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.7,
+    "sizes": [
+      5
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 4,
+  "fields": {
+    "name": "Карнавальная маска \"Гатто\"",
+    "description": "Встречайте уникальный гибрид венецианской классики и эстетики научной фантастики. Эта маска «Гатто» (Кот) выполнена в стиле стимпанк с медными и латунными фактурами, винтажными шестерёнками и встроенными светодиодами. Она идеально подойдёт для тех, кто хочет добавить загадочности и технологичности своему образу на карнавале, Хэллоуине или косплей-вечеринке.",
+    "price": "7390.00",
+    "image": "products/productcat.webp",
+    "category": 1,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.5,
+    "sizes": [
+      5
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 5,
+  "fields": {
+    "name": "Карнавальная маска \"Моретта\"",
+    "description": "Тьма, роскошь и тайна в одном лице. Маска «Маретто» – это идеальный выбор для тех, кто хочет не просто скрыть лицо, а заявить о своей загадочности. Мягкий чёрный бархат, контрастное серебро, засушенные алые розы и образ паутины создают атмосферу благородного декаданса. В комплекте – уникальная палочка в виде черепа для создания королевского образа.",
+    "price": "8790.00",
+    "image": "products/productmoretta.webp",
+    "category": 1,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.6,
+    "sizes": [
+      5
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 6,
+  "fields": {
+    "name": "Карнавальная маска \"Джокер\"",
+    "description": "Встречайте главного трикстера бала! Эта маска – синтез безумной улыбки Джокера, аристократичной венецианской эстетики и брутальной стимпанк-инженерии. Лицо из состаренной меди и латуни, оскаленная улыбка, вращающиеся шестерёнки на щеке и шикарный веер из павлиньих перьев с колокольчиками создают образ гениального, но опасного шута.",
+    "price": "12840.00",
+    "image": "products/productjoker.webp",
+    "category": 1,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.6,
+    "sizes": [
+      5
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 7,
+  "fields": {
+    "name": "Костюм «Кавалер ди Верде»",
+    "description": "Станьте воплощением венецианской аристократии! Этот роскошный мужской костюм в стиле XVIII века выполнен в благородных изумрудных тонах с обильной золотой вышивкой. Пышный бархатный плащ, изящное кружевное жабо, бриджи с бантами и шляпа с перьями — этот образ перенесет вас в эпоху балов, интриг и истинной элегантности Венецианского карнавала.",
+    "price": "27990.00",
+    "image": "products/productcavaler.webp",
+    "category": 3,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.5,
+    "sizes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 8,
+  "fields": {
+    "name": "Платье «Роза Венециана»",
+    "description": "Воплощение нежности и аристократической грации. Это платье в стиле венецианского рококо словно сошло с полотен Франческо Гварди. Нежный пудрово-розовый атлас, серебряная вышивка, изысканные кружевные рукава и пышная юбка создают образ идеальной дамы для грандиозного бала. Вы будете не просто гостьей карнавала, а его королевой.",
+    "price": "34990.00",
+    "image": "products/productrose.webp",
+    "category": 3,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.8,
+    "sizes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 9,
+  "fields": {
+    "name": "Костюм «Лунный Лорд»",
+    "description": "Погрузитесь в атмосферу древних алхимических знаний и мистики. Этот костюм, выполненный в черных, фиолетовых и серебряных тонах, украшен символами лунных фаз. Шикарный кружевной воротник-руффа, плащ с вышивкой полумесяцев и благородная осанка — идеальный выбор для человека, который предпочитает загадочность яркой экстравагантности. Образ королевского астронома или алхимика на венецианском балу.",
+    "price": "29990.00",
+    "image": "products/productmoon.webp",
+    "category": 3,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.7,
+    "sizes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 10,
+  "fields": {
+    "name": "Костюм «Королева Лунного Серпа»",
+    "description": "Окунитесь в магию ночи с этим потрясающим костюмом. Сочетание благородного темно-синего бархата, серебряных звездных вышивок и изящного кружева создает образ могущественной волшебницы или самой Королевы Ночи. Этот наряд идеально подойдет для грандиозного бала-маскарада, тематической фотосессии или любого мероприятия, где требуется по-настоящему королевский выход.",
+    "price": "38990.00",
+    "image": "products/productqueen.webp",
+    "category": 3,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.7,
+    "sizes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 13,
+  "fields": {
+    "name": "Дублет «Бархатный Дож»",
+    "description": "Воплощение власти и венецианской аристократии. Этот дублет (жилет) из роскошного малинового бархата с массивной золотой вышивкой, кружевным воротником-рафом и белоснежными рукавами мгновенно превращает вас в знатного патриция XVI века. Идеальный выбор для костюмированного бала, исторической реконструкции или театральной постановки.",
+    "price": "17990.00",
+    "image": "products/producttopbauta.webp",
+    "category": 4,
+    "stock": 50,
+    "is_popular": true,
+    "rating": 4.8,
+    "sizes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 14,
+  "fields": {
+    "name": "Корсет «Золотая Венера»",
+    "description": "Изысканный корсет, воплощающий роскошь и утонченность венецианского барокко. Молочный атлас с объемной золотой вышивкой, изящные рукава-фонарики и нежнейшее кружево с жемчугом создают образ, достойный королевы бала. Это идеальный выбор для создания незабываемого маскарадного образа или для элегантной фотосессии.",
+    "price": "19990.00",
+    "image": "products/productvenere.webp",
+    "category": 4,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.9,
+    "sizes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 15,
+  "fields": {
+    "name": "Дублет «Серебряный Нобиль»",
+    "description": "Воплощение испанского величия и венецианской элегантности. Этот дублет (жилет) из черного бархата с роскошной серебряной вышивкой и знаменитым воротником-рафом мгновенно переносит вас в эпоху Возрождения. Идеальный выбор для исторического бала или театральной постановки.",
+    "price": "28990.00",
+    "image": "products/productdobletto.webp",
+    "category": 4,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.5,
+    "sizes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 16,
+  "fields": {
+    "name": "Корсет «Кровавая Графиня»",
+    "description": "Воплощение мрачной элегантности и королевской власти. Этот корсет в благородном рубиново-красном цвете с черным кружевом, роскошной меховой накидкой и драгоценным чокером создает образ аристократки, привыкшей к роскоши. Идеальный выбор для бала-маскарада в готическом стиле, тематической вечеринки в честь Хэллоуина или для создания образа загадочной вампирши.",
+    "price": "21990.00",
+    "image": "products/productcontessa.webp",
+    "category": 4,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.7,
+    "sizes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 17,
+  "fields": {
+    "name": "Бриджи «Тайна Бауты»",
+    "description": "Эти бархатные бриджи – идеальное завершение образа знатного венецианца, скрывающего свое лицо под маской Бауты. Глубокий рубиновый цвет, роскошная золотая вышивка по бокам и элегантный бант на поясе создают костюм, который одинаково хорош и для тайных интриг, и для грандиозного бала. Именно такие штаны носили патриции, готовые смешаться с толпой, но не желающие расставаться с признаками богатства.",
+    "price": "15990.00",
+    "image": "products/productbottombauta.webp",
+    "category": 5,
+    "stock": 50,
+    "is_popular": true,
+    "rating": 4.7,
+    "sizes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 20,
+  "fields": {
+    "name": "Юбка «Жемчужный Рассвет»",
+    "description": "Эта юбка – воплощение утренней нежности и аристократической элегантности. Выполненная из сияющего пудрово-розового атласа с серебряной вышивкой и кружевными вставками, она переносит вас прямо в Венецию XVIII века. Идеальный выбор для создания ансамбля с корсетом «Золотая Венера» или как часть костюма «Роза Венециана».",
+    "price": "12390.00",
+    "image": "products/productbottomrose.webp",
+    "category": 5,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.3,
+    "sizes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 21,
+  "fields": {
+    "name": "Бриджи «Изумрудный Арлекин»",
+    "description": "Яркие, экстравагантные и невероятно театральные. Эти бриджи, выполненные в классическом для Арлекина ромбовидном узоре, с первого взгляда заявляют о вашей принадлежности к миру итальянской комедии дель арте. Контраст изумрудного и черного, щедро разбавленный золотыми линиями и мерцающими стразами, создает образ, который сложно не заметить даже в самой пестрой толпе карнавала.",
+    "price": "17990.00",
+    "image": "products/productbottomharlequin.webp",
+    "category": 5,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.7,
+    "sizes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 22,
+  "fields": {
+    "name": "Юбка «Полночная Астрономия»",
+    "description": "Загадочная и величественная, как сама ночь. Эта юбка из глубокого черного бархата, усыпанная серебряными звездами и украшенная изысканным кружевом, создает образ таинственной Королевы Ночи или Венецианской астрономки. Ее асимметричный крой, ниспадающий шлейф и мелкие жемчужные подвески заставляют каждое движение выглядеть как магический ритуал. Идеальный выбор для готического бала или образа в стиле «Тёмная академия».",
+    "price": "22990.00",
+    "image": "products/productbottomastronomica.webp",
+    "category": 5,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.9,
+    "sizes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 23,
+  "fields": {
+    "name": "Сапоги «Инкогнито Патриция»",
+    "description": "Эти сапоги – свидетельство скрытой роскоши. Представьте себе знатного венецианца, который, скрыв лицо под строгой маской «Бауты», позволяет себе выйти в свет в обуви, достойной короля. Изысканный бархат рубинового цвета, крупная золотая вышивка и массивные пряжки с драгоценными камнями идеально завершают образ аристократа, даже если его лицо скрыто.",
+    "price": "8990.00",
+    "image": "products/producthoesbauta.webp",
+    "category": 6,
+    "stock": 50,
+    "is_popular": true,
+    "rating": 4.6,
+    "sizes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 24,
+  "fields": {
+    "name": "Туфли «Жемчужная Серенада»",
+    "description": "Изящные и воздушные, как утренний туман над лагуной. Эти туфли, выполненные из нежного пудрово-розового атласа, украшены изысканной серебряной вышивкой и жемчужной брошью на носке. Они словно сошли с портрета венецианской дамы XVIII века. Идеальный выбор для завершения образа «Роза Венециана» или «Золотая Венера».",
+    "price": "14990.00",
+    "image": "products/productshoesperl.webp",
+    "category": 6,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.7,
+    "sizes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 25,
+  "fields": {
+    "name": "Сапоги «Изумрудный Арлекин»",
+    "description": "Заявите о себе с первого шага. Эти сапоги в классическом ромбовидном узоре Арлекина – это вызов и театр в каждом движении. Глубокий фиолетовый, сияющий изумрудный и благородное золото создают образ, который не останется незамеченным даже в самой шумной толпе карнавала. Идеальный выбор для завершения образа «Изумрудный Арлекин», «Джокер» или для создания собственного яркого персонажа на балу.",
+    "price": "17990.00",
+    "image": "products/productsshoesharlequin.webp",
+    "category": 6,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.5,
+    "sizes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 26,
+  "fields": {
+    "name": "Ботильоны «Черный Бархат Моретты»",
+    "description": "Тьма, тайна и безупречный вкус. Эти ботильоны из черного матового бархата, расшитые серебром и украшенные кружевом, – идеальный выбор для образа, в котором ваш голос говорит за себя. Они скрывают ногу, словно вторая кожа, оставляя лишь намек на изящество. Идеально подходят для образа с маской «Моретта», готического наряда или для таинственного бала в стиле «Темная академия».",
+    "price": "18990.00",
+    "image": "products/productshoesmoretta.webp",
+    "category": 6,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.9,
+    "sizes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 27,
+  "fields": {
+    "name": "Плащ «Табарро Венецианского Дожа»",
+    "description": "Величественный и таинственный, как сама Венеция. Этот плащ – идеальное дополнение к маске «Баута», создающее непроницаемый и роскошный силуэт. Выполненный из тяжелого малинового бархата, расшитый золотом и подбитый сияющим атласом, он превращает своего обладателя в фигуру, исполненную власти и интриги. Это плащ, который говорит громче любой маски.",
+    "price": "25990.00",
+    "image": "products/productcloakbauta.webp",
+    "category": 13,
+    "stock": 50,
+    "is_popular": true,
+    "rating": 4.8,
+    "sizes": [
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 28,
+  "fields": {
+    "name": "Веер «Жемчужный Шёпот»",
+    "description": "Изысканный и таинственный, как сама Венеция. Этот веер – не просто аксессуар, а настоящее произведение искусства. Белый атлас, щедро расшитый серебряными цветами, тончайшее кружево и каскад жемчужных подвесок создают образ, достойный супруги самого Дожа. Идеальное дополнение к образу «Роза Венециана» или «Золотая Венера»",
+    "price": "12990.00",
+    "image": "products/productfanperle.webp",
+    "category": 9,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.9,
+    "sizes": [
+      5
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 29,
+  "fields": {
+    "name": "Трость «Изумрудный Алхимик»",
+    "description": "Элегантная и загадочная трость, которая говорит о статусе, тайных знаниях и безупречном вкусе. Геометрический наконечник из изумрудных вставок в золотой оправе, изящная черная лакированная рукоять и золотые акценты создают образ, достойный венецианского аристократа, мага или философа эпохи Возрождения. Идеальное дополнение к костюму «Джокер: Механический Шут», «Изумрудный Арлекин» или «Королева Лунного Серпа».",
+    "price": "13990.00",
+    "image": "products/productbastone.webp",
+    "category": 11,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.8,
+    "sizes": [
+      5
+    ]
+  }
+},
+{
+  "model": "app.product",
+  "pk": 30,
+  "fields": {
+    "name": "Перчатки «Лавандовая Симфония»",
+    "description": "Элегантность, пронизанная тайной. Эти длинные перчатки, выполненные из нежнейшего матового лавандового материала, украшены тончайшим белым кружевом, серебряной вышивкой и сапфировыми камнями. Они словно созданы для того, чтобы скрыть руки дамы, добавив её образу ещё больше загадочности и аристократического шарма. Идеальное завершение образа «Роза Венециана», «Королева Лунного Серпа» или «Золотая Венера».",
+    "price": "10790.00",
+    "image": "products/productlavanda.webp",
+    "category": 9,
+    "stock": 50,
+    "is_popular": false,
+    "rating": 4.5,
+    "sizes": [
+      5
+    ]
+  }
+},
+{
+  "model": "app.cartitem",
+  "pk": 51,
+  "fields": {
+    "cart": 1,
+    "product": 2,
+    "size": "Универсальный",
+    "quantity": 1
+  }
+},
+{
+  "model": "app.orderitem",
+  "pk": 1,
+  "fields": {
+    "order": 1,
+    "product": 13,
+    "size": "S",
+    "quantity": 1,
+    "price": "17990.00"
+  }
+},
+{
+  "model": "app.contactmessage",
+  "pk": 1,
+  "fields": {
+    "name": "Шериарти",
+    "email": "sheriarty@gmail.com",
+    "message": "я устала",
+    "created_at": "2026-05-26T05:23:54.294Z"
+  }
+},
+{
+  "model": "app.promotion",
+  "pk": 1,
+  "fields": {
+    "name": "Весенняя акция!",
+    "discount_type": "percent",
+    "discount_value": "20.00",
+    "apply_to": "products",
+    "start_date": "2026-05-24T09:56:55Z",
+    "end_date": "2026-09-16T09:57:06Z",
+    "is_active": true,
+    "created_at": "2026-05-26T09:57:07.303Z",
+    "categories": [],
+    "products": [
+      2,
+      8,
+      28
+    ]
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add user",
+    "content_type": [
+      "app",
+      "user"
+    ],
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change user",
+    "content_type": [
+      "app",
+      "user"
+    ],
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete user",
+    "content_type": [
+      "app",
+      "user"
+    ],
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view user",
+    "content_type": [
+      "app",
+      "user"
+    ],
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add Token",
+    "content_type": [
+      "authtoken",
+      "token"
+    ],
+    "codename": "add_token"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change Token",
+    "content_type": [
+      "authtoken",
+      "token"
+    ],
+    "codename": "change_token"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete Token",
+    "content_type": [
+      "authtoken",
+      "token"
+    ],
+    "codename": "delete_token"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view Token",
+    "content_type": [
+      "authtoken",
+      "token"
+    ],
+    "codename": "view_token"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add Token",
+    "content_type": [
+      "authtoken",
+      "tokenproxy"
+    ],
+    "codename": "add_tokenproxy"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change Token",
+    "content_type": [
+      "authtoken",
+      "tokenproxy"
+    ],
+    "codename": "change_tokenproxy"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete Token",
+    "content_type": [
+      "authtoken",
+      "tokenproxy"
+    ],
+    "codename": "delete_tokenproxy"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view Token",
+    "content_type": [
+      "authtoken",
+      "tokenproxy"
+    ],
+    "codename": "view_tokenproxy"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add size",
+    "content_type": [
+      "app",
+      "size"
+    ],
+    "codename": "add_size"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change size",
+    "content_type": [
+      "app",
+      "size"
+    ],
+    "codename": "change_size"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete size",
+    "content_type": [
+      "app",
+      "size"
+    ],
+    "codename": "delete_size"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view size",
+    "content_type": [
+      "app",
+      "size"
+    ],
+    "codename": "view_size"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add category",
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "codename": "add_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change category",
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "codename": "change_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete category",
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "codename": "delete_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view category",
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "codename": "view_category"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add product",
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "codename": "add_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change product",
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "codename": "change_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete product",
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "codename": "delete_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view product",
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "codename": "view_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add comment",
+    "content_type": [
+      "app",
+      "comment"
+    ],
+    "codename": "add_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change comment",
+    "content_type": [
+      "app",
+      "comment"
+    ],
+    "codename": "change_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete comment",
+    "content_type": [
+      "app",
+      "comment"
+    ],
+    "codename": "delete_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view comment",
+    "content_type": [
+      "app",
+      "comment"
+    ],
+    "codename": "view_comment"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add cart item",
+    "content_type": [
+      "app",
+      "cartitem"
+    ],
+    "codename": "add_cartitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change cart item",
+    "content_type": [
+      "app",
+      "cartitem"
+    ],
+    "codename": "change_cartitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete cart item",
+    "content_type": [
+      "app",
+      "cartitem"
+    ],
+    "codename": "delete_cartitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view cart item",
+    "content_type": [
+      "app",
+      "cartitem"
+    ],
+    "codename": "view_cartitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add cart",
+    "content_type": [
+      "app",
+      "cart"
+    ],
+    "codename": "add_cart"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change cart",
+    "content_type": [
+      "app",
+      "cart"
+    ],
+    "codename": "change_cart"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete cart",
+    "content_type": [
+      "app",
+      "cart"
+    ],
+    "codename": "delete_cart"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view cart",
+    "content_type": [
+      "app",
+      "cart"
+    ],
+    "codename": "view_cart"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add order item",
+    "content_type": [
+      "app",
+      "orderitem"
+    ],
+    "codename": "add_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change order item",
+    "content_type": [
+      "app",
+      "orderitem"
+    ],
+    "codename": "change_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete order item",
+    "content_type": [
+      "app",
+      "orderitem"
+    ],
+    "codename": "delete_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view order item",
+    "content_type": [
+      "app",
+      "orderitem"
+    ],
+    "codename": "view_orderitem"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add order",
+    "content_type": [
+      "app",
+      "order"
+    ],
+    "codename": "add_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change order",
+    "content_type": [
+      "app",
+      "order"
+    ],
+    "codename": "change_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete order",
+    "content_type": [
+      "app",
+      "order"
+    ],
+    "codename": "delete_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view order",
+    "content_type": [
+      "app",
+      "order"
+    ],
+    "codename": "view_order"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add contact message",
+    "content_type": [
+      "app",
+      "contactmessage"
+    ],
+    "codename": "add_contactmessage"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change contact message",
+    "content_type": [
+      "app",
+      "contactmessage"
+    ],
+    "codename": "change_contactmessage"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete contact message",
+    "content_type": [
+      "app",
+      "contactmessage"
+    ],
+    "codename": "delete_contactmessage"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view contact message",
+    "content_type": [
+      "app",
+      "contactmessage"
+    ],
+    "codename": "view_contactmessage"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add Акция/скидка",
+    "content_type": [
+      "app",
+      "promotion"
+    ],
+    "codename": "add_promotion"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change Акция/скидка",
+    "content_type": [
+      "app",
+      "promotion"
+    ],
+    "codename": "change_promotion"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete Акция/скидка",
+    "content_type": [
+      "app",
+      "promotion"
+    ],
+    "codename": "delete_promotion"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view Акция/скидка",
+    "content_type": [
+      "app",
+      "promotion"
+    ],
+    "codename": "view_promotion"
+  }
+},
+{
+  "model": "app.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$TKZbfdAg8iyPuTVAi0Rbw5$tYg9CXSSAeYmsyHiItTzf9IxXxYpPC1YzT7lK5+ateI=",
+    "last_login": "2026-05-28T11:37:32.363Z",
+    "is_superuser": true,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-05-14T11:50:16.042Z",
+    "username": "henrybaskerville",
+    "email": "baskerville@gmail.com",
+    "avatar": "",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "app.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$Qk4bg4YvOByjkcGYa4XVc6$cxFTKRnZaP+RMX6oNs6+U556KndoH3Vf9MycG1VVo8E=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "Антрим",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-14T13:42:15.686Z",
+    "username": "sheriarty",
+    "email": "sheriarty@gmail.com",
+    "avatar": "avatars/logo.png",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "app.comment",
+  "pk": 1,
+  "fields": {
+    "product": 13,
+    "user": [
+      "sheriarty@gmail.com"
+    ],
+    "text": "аква сын ХУЙНИ ЗАРАБОТАЙ УЖЕ",
+    "rating": 5,
+    "created_at": "2026-05-15T15:01:49.105Z"
+  }
+},
+{
+  "model": "app.comment",
+  "pk": 2,
+  "fields": {
+    "product": 1,
+    "user": [
+      "sheriarty@gmail.com"
+    ],
+    "text": "сосать",
+    "rating": 5,
+    "created_at": "2026-05-20T14:33:23.706Z"
+  }
+},
+{
+  "model": "app.cart",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "sheriarty@gmail.com"
+    ],
+    "created_at": "2026-05-15T09:11:47.408Z"
+  }
+},
+{
+  "model": "app.order",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "sheriarty@gmail.com"
+    ],
+    "address": "Владивосток",
+    "payment_method": "card",
+    "status": "pending",
+    "total_price": "17990.00",
+    "created_at": "2026-05-22T10:12:26.892Z"
+  }
+},
+{
+  "model": "authtoken.token",
+  "pk": "986a282a3b1bef591c145821b55c9d2dd275e9ca",
+  "fields": {
+    "user": [
+      "sheriarty@gmail.com"
+    ],
+    "created": "2026-05-28T11:51:23.623Z"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-05-14T11:52:43.677Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "1",
+    "object_repr": "Маски",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-05-14T11:53:03.816Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "2",
+    "object_repr": "Костюмы",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-05-14T11:53:23.570Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "3",
+    "object_repr": "Головные уборы",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-05-14T11:54:47.763Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "4",
+    "object_repr": "Верх",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-05-14T11:55:05.681Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "5",
+    "object_repr": "Низ",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-05-14T11:55:17.088Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "6",
+    "object_repr": "Обувь",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-05-14T11:55:41.286Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "7",
+    "object_repr": "Аксессуары",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-05-14T11:56:18.913Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "size"
+    ],
+    "object_id": "1",
+    "object_repr": "S",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-05-14T11:56:24.507Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "size"
+    ],
+    "object_id": "2",
+    "object_repr": "M",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-05-14T11:56:26.025Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "size"
+    ],
+    "object_id": "3",
+    "object_repr": "L",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-05-14T11:56:31.522Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "size"
+    ],
+    "object_id": "4",
+    "object_repr": "XL",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-05-14T12:03:53.742Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "size"
+    ],
+    "object_id": "5",
+    "object_repr": "One Size",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-05-14T12:04:13.843Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "1",
+    "object_repr": "Маска \"Баута\"",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-05-14T12:58:57.512Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "1",
+    "object_repr": "Маски",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-05-14T12:59:05.458Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "2",
+    "object_repr": "Костюмы",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2026-05-14T12:59:14.296Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "4",
+    "object_repr": "Верх",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2026-05-14T12:59:31.010Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "1",
+    "object_repr": "Маски",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2026-05-14T12:59:37.285Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "2",
+    "object_repr": "Костюмы",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2026-05-14T12:59:42.212Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "3",
+    "object_repr": "Головные уборы",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2026-05-14T12:59:43.924Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "7",
+    "object_repr": "Аксессуары",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2026-05-14T12:59:45.553Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "2",
+    "object_repr": "Костюмы",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2026-05-14T12:59:47.025Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "1",
+    "object_repr": "Маски",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2026-05-14T12:59:48.596Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "4",
+    "object_repr": "Верх",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2026-05-14T12:59:50.191Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "4",
+    "object_repr": "Верх",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2026-05-14T12:59:57.011Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "3",
+    "object_repr": "Головные уборы",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2026-05-14T13:00:10.303Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "3",
+    "object_repr": "Головные уборы",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2026-05-14T13:01:02.145Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "4",
+    "object_repr": "Верх",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2026-05-14T13:01:06.565Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "4",
+    "object_repr": "Верх",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2026-05-14T13:01:22.120Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "4",
+    "object_repr": "Верх",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2026-05-14T13:01:25.225Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "3",
+    "object_repr": "Головные уборы",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2026-05-14T13:01:29.796Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "5",
+    "object_repr": "Низ",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2026-05-14T13:01:34.172Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "6",
+    "object_repr": "Обувь",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2026-05-14T13:01:37.479Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "7",
+    "object_repr": "Аксессуары",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2026-05-15T10:26:00.357Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "1",
+    "object_repr": "Маска \"Баута\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 39,
+  "fields": {
+    "action_time": "2026-05-15T10:32:54.701Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "2",
+    "object_repr": "Маска \"Коломбина\"",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 40,
+  "fields": {
+    "action_time": "2026-05-15T10:33:56.808Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "1",
+    "object_repr": "Маска \"Баута\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Price\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 41,
+  "fields": {
+    "action_time": "2026-05-15T10:35:38.900Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "3",
+    "object_repr": "Маска \"Арлекин\"",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 42,
+  "fields": {
+    "action_time": "2026-05-15T10:42:23.388Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "4",
+    "object_repr": "Маска \"Гатто\"",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 43,
+  "fields": {
+    "action_time": "2026-05-15T10:42:32.571Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "3",
+    "object_repr": "Маска \"Арлекин\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Price\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 44,
+  "fields": {
+    "action_time": "2026-05-15T10:46:09.762Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "5",
+    "object_repr": "Маска \"Моретта\"",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 45,
+  "fields": {
+    "action_time": "2026-05-15T10:46:51.797Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "2",
+    "object_repr": "Маска \"Коломбина\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Rating\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 46,
+  "fields": {
+    "action_time": "2026-05-15T10:48:14.629Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "1",
+    "object_repr": "Маска \"Баута\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Rating\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 47,
+  "fields": {
+    "action_time": "2026-05-15T10:48:26.420Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "4",
+    "object_repr": "Маска \"Гатто\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Rating\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 48,
+  "fields": {
+    "action_time": "2026-05-15T10:59:16.184Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "6",
+    "object_repr": "Маска \"Джокер\"",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 49,
+  "fields": {
+    "action_time": "2026-05-15T11:04:50.935Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "6",
+    "object_repr": "Маска \"Джокер\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Price\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 50,
+  "fields": {
+    "action_time": "2026-05-15T11:05:12.301Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "6",
+    "object_repr": "Маска \"Джокер\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Price\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 51,
+  "fields": {
+    "action_time": "2026-05-15T11:20:55.234Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "3",
+    "object_repr": "Полный комплект",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Slug\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 52,
+  "fields": {
+    "action_time": "2026-05-15T11:22:21.794Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "size"
+    ],
+    "object_id": "5",
+    "object_repr": "Универсальный",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 53,
+  "fields": {
+    "action_time": "2026-05-15T11:52:03.710Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "7",
+    "object_repr": "Костюм «Кавалер ди Верде»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 54,
+  "fields": {
+    "action_time": "2026-05-15T12:57:15.929Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "8",
+    "object_repr": "Платье «Роза Венециана»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 55,
+  "fields": {
+    "action_time": "2026-05-15T13:05:56.837Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "9",
+    "object_repr": "Костюм «Лунный Лорд»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 56,
+  "fields": {
+    "action_time": "2026-05-15T13:06:22.644Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "8",
+    "object_repr": "Платье «Роза Венециана»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Category\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 57,
+  "fields": {
+    "action_time": "2026-05-15T13:06:29.383Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "9",
+    "object_repr": "Костюм «Лунный Лорд»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Category\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 58,
+  "fields": {
+    "action_time": "2026-05-15T13:12:09.204Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "10",
+    "object_repr": "Костюм «Королева Лунного Серпа»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 59,
+  "fields": {
+    "action_time": "2026-05-15T13:14:38.364Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "11",
+    "object_repr": "Корсет «Золотая Венера»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 60,
+  "fields": {
+    "action_time": "2026-05-15T13:17:37.027Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "12",
+    "object_repr": "Дублет «Серебряный Нобиль»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 61,
+  "fields": {
+    "action_time": "2026-05-15T13:20:50.894Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "12",
+    "object_repr": "Дублет «Серебряный Нобиль»",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 62,
+  "fields": {
+    "action_time": "2026-05-15T13:20:55.153Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "11",
+    "object_repr": "Корсет «Золотая Венера»",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 63,
+  "fields": {
+    "action_time": "2026-05-15T13:32:21.056Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "13",
+    "object_repr": "Дублет «Бархатный Дож»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 64,
+  "fields": {
+    "action_time": "2026-05-15T13:32:26.791Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "13",
+    "object_repr": "Дублет «Бархатный Дож»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Is popular\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 65,
+  "fields": {
+    "action_time": "2026-05-15T13:33:08.139Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "14",
+    "object_repr": "Корсет «Золотая Венера»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 66,
+  "fields": {
+    "action_time": "2026-05-15T13:33:56.709Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "15",
+    "object_repr": "Дублет «Серебряный Нобиль»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 67,
+  "fields": {
+    "action_time": "2026-05-15T13:34:41.661Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "16",
+    "object_repr": "Корсет «Кровавая Графиня»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 68,
+  "fields": {
+    "action_time": "2026-05-17T10:30:26.247Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "16",
+    "object_repr": "Корсет «Кровавая Графиня»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 69,
+  "fields": {
+    "action_time": "2026-05-17T10:30:39.341Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "15",
+    "object_repr": "Дублет «Серебряный Нобиль»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 70,
+  "fields": {
+    "action_time": "2026-05-17T10:30:51.882Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "14",
+    "object_repr": "Корсет «Золотая Венера»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 71,
+  "fields": {
+    "action_time": "2026-05-17T10:31:04.047Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "13",
+    "object_repr": "Дублет «Бархатный Дож»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 72,
+  "fields": {
+    "action_time": "2026-05-17T10:31:17.816Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "10",
+    "object_repr": "Костюм «Королева Лунного Серпа»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 73,
+  "fields": {
+    "action_time": "2026-05-17T10:31:27.817Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "9",
+    "object_repr": "Костюм «Лунный Лорд»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 74,
+  "fields": {
+    "action_time": "2026-05-17T10:31:42.031Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "8",
+    "object_repr": "Платье «Роза Венециана»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 75,
+  "fields": {
+    "action_time": "2026-05-17T10:31:49.475Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "7",
+    "object_repr": "Костюм «Кавалер ди Верде»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 76,
+  "fields": {
+    "action_time": "2026-05-17T10:32:02.132Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "6",
+    "object_repr": "Маска \"Джокер\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 77,
+  "fields": {
+    "action_time": "2026-05-17T10:32:38.783Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "5",
+    "object_repr": "Маска \"Моретта\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 78,
+  "fields": {
+    "action_time": "2026-05-17T10:32:57.818Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "4",
+    "object_repr": "Маска \"Гатто\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 79,
+  "fields": {
+    "action_time": "2026-05-17T10:33:04.078Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "3",
+    "object_repr": "Маска \"Арлекин\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 80,
+  "fields": {
+    "action_time": "2026-05-17T10:33:11.398Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "2",
+    "object_repr": "Маска \"Коломбина\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 81,
+  "fields": {
+    "action_time": "2026-05-17T10:33:18.593Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "1",
+    "object_repr": "Маска \"Баута\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 82,
+  "fields": {
+    "action_time": "2026-05-17T10:33:48.744Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "13",
+    "object_repr": "Дублет «Бархатный Дож»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 83,
+  "fields": {
+    "action_time": "2026-05-22T10:35:29.758Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "orderitem"
+    ],
+    "object_id": "3",
+    "object_repr": "Дублет «Бархатный Дож» (x4)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 84,
+  "fields": {
+    "action_time": "2026-05-22T10:35:33.583Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "orderitem"
+    ],
+    "object_id": "2",
+    "object_repr": "Маска \"Баута\" (x1)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 85,
+  "fields": {
+    "action_time": "2026-05-22T10:41:10.619Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "order"
+    ],
+    "object_id": "3",
+    "object_repr": "Order #3 - sheriarty",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 86,
+  "fields": {
+    "action_time": "2026-05-22T10:41:10.619Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "order"
+    ],
+    "object_id": "2",
+    "object_repr": "Order #2 - sheriarty",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 87,
+  "fields": {
+    "action_time": "2026-05-22T10:44:39.570Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "order"
+    ],
+    "object_id": "4",
+    "object_repr": "Order #4 - sheriarty",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 88,
+  "fields": {
+    "action_time": "2026-05-22T10:59:29.437Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "17",
+    "object_repr": "Бриджи «Тайна Бауты»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 89,
+  "fields": {
+    "action_time": "2026-05-22T11:03:14.787Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "18",
+    "object_repr": "ауы",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 90,
+  "fields": {
+    "action_time": "2026-05-22T11:05:38.668Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "18",
+    "object_repr": "ауы",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 91,
+  "fields": {
+    "action_time": "2026-05-22T11:08:09.648Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "18",
+    "object_repr": "Сапоги «Инкогнито Патриция»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Description\", \"Price\", \"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 92,
+  "fields": {
+    "action_time": "2026-05-22T11:19:20.583Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "17",
+    "object_repr": "Бриджи «Тайна Бауты»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 93,
+  "fields": {
+    "action_time": "2026-05-22T11:25:50.304Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "17",
+    "object_repr": "Бриджи «Тайна Бауты»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 94,
+  "fields": {
+    "action_time": "2026-05-22T11:31:21.324Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "19",
+    "object_repr": "Плащ «Табарро Венецианского Дожа»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 95,
+  "fields": {
+    "action_time": "2026-05-22T11:35:01.736Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "1",
+    "object_repr": "Карнавальная маска \"Венецианский Император\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 96,
+  "fields": {
+    "action_time": "2026-05-22T11:35:26.916Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "1",
+    "object_repr": "Карнавальная маска \"Баута\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 97,
+  "fields": {
+    "action_time": "2026-05-22T11:35:55.716Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "2",
+    "object_repr": "Карнавальная маска \"Коломбина\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 98,
+  "fields": {
+    "action_time": "2026-05-22T11:36:01.953Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "3",
+    "object_repr": "Карнавальная маска \"Арлекин\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 99,
+  "fields": {
+    "action_time": "2026-05-22T11:36:07.373Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "4",
+    "object_repr": "Карнавальная маска \"Гатто\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 100,
+  "fields": {
+    "action_time": "2026-05-22T11:36:12.183Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "5",
+    "object_repr": "Карнавальная маска \"Моретта\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 101,
+  "fields": {
+    "action_time": "2026-05-22T11:36:18.959Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "6",
+    "object_repr": "Карнавальная маска \"Джокер\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 102,
+  "fields": {
+    "action_time": "2026-05-22T11:55:12.247Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "20",
+    "object_repr": "Юбка «Жемчужный Рассвет»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 103,
+  "fields": {
+    "action_time": "2026-05-22T11:56:40.548Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "21",
+    "object_repr": "Бриджи «Изумрудный Арлекин»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 104,
+  "fields": {
+    "action_time": "2026-05-22T11:57:51.517Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "22",
+    "object_repr": "Юбка «Полночная Астрономия»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 105,
+  "fields": {
+    "action_time": "2026-05-22T11:58:51.214Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "23",
+    "object_repr": "Сапоги «Инкогнито Патриция»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 106,
+  "fields": {
+    "action_time": "2026-05-22T11:58:55.283Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "18",
+    "object_repr": "Сапоги «Инкогнито Патриция»",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 107,
+  "fields": {
+    "action_time": "2026-05-22T11:59:14.481Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "23",
+    "object_repr": "Сапоги «Инкогнито Патриция»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Is popular\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 108,
+  "fields": {
+    "action_time": "2026-05-22T12:09:27.043Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "24",
+    "object_repr": "Туфли «Жемчужная Серенада»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 109,
+  "fields": {
+    "action_time": "2026-05-22T12:18:28.096Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "25",
+    "object_repr": "Туфли «Венецианский Рубин»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 110,
+  "fields": {
+    "action_time": "2026-05-22T12:20:18.774Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "26",
+    "object_repr": "Сапоги «Тайна Коломбины»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 111,
+  "fields": {
+    "action_time": "2026-05-22T12:20:51.234Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "25",
+    "object_repr": "Туфли «Венецианский Рубин»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 112,
+  "fields": {
+    "action_time": "2026-05-22T12:22:12.280Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "27",
+    "object_repr": "Плащ «Табарро Венецианского Дожа»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 113,
+  "fields": {
+    "action_time": "2026-05-22T12:22:15.693Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "19",
+    "object_repr": "Плащ «Табарро Венецианского Дожа»",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 114,
+  "fields": {
+    "action_time": "2026-05-22T12:29:50.088Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "28",
+    "object_repr": "Веер «Жемчужный Шёпот»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 115,
+  "fields": {
+    "action_time": "2026-05-22T12:32:09.903Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "29",
+    "object_repr": "Трость «Изумрудный Алхимик»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 116,
+  "fields": {
+    "action_time": "2026-05-22T12:32:17.485Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "29",
+    "object_repr": "Трость «Изумрудный Алхимик»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Sizes\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 117,
+  "fields": {
+    "action_time": "2026-05-22T12:32:22.169Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "28",
+    "object_repr": "Веер «Жемчужный Шёпот»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Sizes\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 118,
+  "fields": {
+    "action_time": "2026-05-22T12:40:22.739Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "30",
+    "object_repr": "Перчатки «Лавандовая Симфония»",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 119,
+  "fields": {
+    "action_time": "2026-05-22T12:47:14.489Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "26",
+    "object_repr": "Сапоги «Тайна Коломбины»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\", \"Price\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 120,
+  "fields": {
+    "action_time": "2026-05-22T12:48:06.432Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "26",
+    "object_repr": "Сапоги «Тайна Коломбины»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 121,
+  "fields": {
+    "action_time": "2026-05-22T12:48:27.881Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "26",
+    "object_repr": "Сапоги «Тайна Коломбины»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 122,
+  "fields": {
+    "action_time": "2026-05-22T12:48:40.814Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "26",
+    "object_repr": "Ботильоны «Черный Бархат Моретты»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 123,
+  "fields": {
+    "action_time": "2026-05-22T12:57:50.655Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "25",
+    "object_repr": "Туфли «Венецианский Рубин»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 124,
+  "fields": {
+    "action_time": "2026-05-22T12:58:56.490Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "25",
+    "object_repr": "Сапоги «Изумрудный Арлекин»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 125,
+  "fields": {
+    "action_time": "2026-05-26T06:32:33.531Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "8",
+    "object_repr": "Головные уборы",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 126,
+  "fields": {
+    "action_time": "2026-05-26T06:32:52.948Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "9",
+    "object_repr": "Веера",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 127,
+  "fields": {
+    "action_time": "2026-05-26T06:33:19.677Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "10",
+    "object_repr": "Перчатки",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 128,
+  "fields": {
+    "action_time": "2026-05-26T06:34:13.967Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "11",
+    "object_repr": "Реквизит",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 129,
+  "fields": {
+    "action_time": "2026-05-26T06:34:41.880Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "12",
+    "object_repr": "Украшения",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 130,
+  "fields": {
+    "action_time": "2026-05-26T06:34:45.718Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "11",
+    "object_repr": "Реквизит",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 131,
+  "fields": {
+    "action_time": "2026-05-26T06:42:05.757Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "13",
+    "object_repr": "Плащи и накидки",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 132,
+  "fields": {
+    "action_time": "2026-05-26T06:42:13.227Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "9",
+    "object_repr": "Веера",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 133,
+  "fields": {
+    "action_time": "2026-05-26T06:42:17.379Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "10",
+    "object_repr": "Перчатки",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 134,
+  "fields": {
+    "action_time": "2026-05-26T06:42:20.277Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "12",
+    "object_repr": "Украшения",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 135,
+  "fields": {
+    "action_time": "2026-05-26T06:42:22.985Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "12",
+    "object_repr": "Украшения",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 136,
+  "fields": {
+    "action_time": "2026-05-26T06:54:11.402Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "27",
+    "object_repr": "Плащ «Табарро Венецианского Дожа»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Category\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 137,
+  "fields": {
+    "action_time": "2026-05-26T06:54:19.924Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "28",
+    "object_repr": "Веер «Жемчужный Шёпот»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Category\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 138,
+  "fields": {
+    "action_time": "2026-05-26T06:54:34.546Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "9",
+    "object_repr": "Веера и перчатки",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 139,
+  "fields": {
+    "action_time": "2026-05-26T06:54:41.361Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "10",
+    "object_repr": "Перчатки",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 140,
+  "fields": {
+    "action_time": "2026-05-26T06:54:44.294Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "11",
+    "object_repr": "Реквизит",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 141,
+  "fields": {
+    "action_time": "2026-05-26T06:54:46.543Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "category"
+    ],
+    "object_id": "12",
+    "object_repr": "Украшения",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 142,
+  "fields": {
+    "action_time": "2026-05-26T06:55:05.050Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "29",
+    "object_repr": "Трость «Изумрудный Алхимик»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Category\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 143,
+  "fields": {
+    "action_time": "2026-05-26T06:55:17.404Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "30",
+    "object_repr": "Перчатки «Лавандовая Симфония»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Price\", \"Category\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 144,
+  "fields": {
+    "action_time": "2026-05-26T09:57:07.305Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "promotion"
+    ],
+    "object_id": "1",
+    "object_repr": "Скидка (Процентная скидка)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 145,
+  "fields": {
+    "action_time": "2026-05-26T10:00:58.313Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "promotion"
+    ],
+    "object_id": "1",
+    "object_repr": "Весенняя акция (Процентная скидка)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435 \\u0430\\u043a\\u0446\\u0438\\u0438\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 146,
+  "fields": {
+    "action_time": "2026-05-26T10:45:50.111Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "promotion"
+    ],
+    "object_id": "1",
+    "object_repr": "Весенняя акция (Процентная скидка)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Apply to\", \"\\u0422\\u043e\\u0432\\u0430\\u0440\\u044b (\\u0435\\u0441\\u043b\\u0438 \\u0432\\u044b\\u0431\\u0440\\u0430\\u043d \\u0442\\u0438\\u043f \\\"\\u041d\\u0430 \\u0442\\u043e\\u0432\\u0430\\u0440\\u044b\\\")\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 147,
+  "fields": {
+    "action_time": "2026-05-26T10:46:48.233Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "promotion"
+    ],
+    "object_id": "1",
+    "object_repr": "Весенняя акция (Процентная скидка)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Apply to\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 148,
+  "fields": {
+    "action_time": "2026-05-26T10:56:38.848Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "promotion"
+    ],
+    "object_id": "1",
+    "object_repr": "Весенняя акция! (Процентная скидка)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041d\\u0430\\u0437\\u0432\\u0430\\u043d\\u0438\\u0435 \\u0430\\u043a\\u0446\\u0438\\u0438\", \"\\u0422\\u043e\\u0432\\u0430\\u0440\\u044b (\\u0435\\u0441\\u043b\\u0438 \\u0432\\u044b\\u0431\\u0440\\u0430\\u043d \\u0442\\u0438\\u043f \\\"\\u041d\\u0430 \\u0442\\u043e\\u0432\\u0430\\u0440\\u044b\\\")\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 149,
+  "fields": {
+    "action_time": "2026-05-26T12:42:25.705Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "orderitem"
+    ],
+    "object_id": "6",
+    "object_repr": "Карнавальная маска \"Гатто\" (x3)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 150,
+  "fields": {
+    "action_time": "2026-05-26T12:42:29.069Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "orderitem"
+    ],
+    "object_id": "5",
+    "object_repr": "Карнавальная маска \"Гатто\" (x1)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 151,
+  "fields": {
+    "action_time": "2026-05-26T12:42:51.987Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "order"
+    ],
+    "object_id": "6",
+    "object_repr": "Order #6 - sheriarty",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 152,
+  "fields": {
+    "action_time": "2026-05-26T12:42:51.987Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "order"
+    ],
+    "object_id": "5",
+    "object_repr": "Order #5 - sheriarty",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 153,
+  "fields": {
+    "action_time": "2026-05-26T12:52:15.777Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "order"
+    ],
+    "object_id": "7",
+    "object_repr": "Order #7 - sheriarty",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 154,
+  "fields": {
+    "action_time": "2026-05-26T13:17:39.921Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "order"
+    ],
+    "object_id": "1",
+    "object_repr": "Order #1 - sheriarty",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 155,
+  "fields": {
+    "action_time": "2026-05-26T13:17:53.436Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "order"
+    ],
+    "object_id": "1",
+    "object_repr": "Order #1 - sheriarty",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 156,
+  "fields": {
+    "action_time": "2026-05-26T13:18:04.055Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "order"
+    ],
+    "object_id": "1",
+    "object_repr": "Order #1 - sheriarty",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 157,
+  "fields": {
+    "action_time": "2026-05-26T13:19:08.631Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "order"
+    ],
+    "object_id": "1",
+    "object_repr": "Order #1 - sheriarty",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 158,
+  "fields": {
+    "action_time": "2026-05-26T13:23:09.385Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "order"
+    ],
+    "object_id": "1",
+    "object_repr": "Order #1 - sheriarty",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 159,
+  "fields": {
+    "action_time": "2026-05-26T13:23:41.235Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "order"
+    ],
+    "object_id": "2",
+    "object_repr": "Order #2 - sheriarty",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 160,
+  "fields": {
+    "action_time": "2026-05-26T13:23:53.117Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "order"
+    ],
+    "object_id": "1",
+    "object_repr": "Order #1 - sheriarty",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 161,
+  "fields": {
+    "action_time": "2026-05-28T05:29:59.482Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "1",
+    "object_repr": "Карнавальная маска \"Баута\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 162,
+  "fields": {
+    "action_time": "2026-05-28T05:30:13.625Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "2",
+    "object_repr": "Карнавальная маска \"Коломбина\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 163,
+  "fields": {
+    "action_time": "2026-05-28T05:30:24.530Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "3",
+    "object_repr": "Карнавальная маска \"Арлекин\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 164,
+  "fields": {
+    "action_time": "2026-05-28T05:30:33.873Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "4",
+    "object_repr": "Карнавальная маска \"Гатто\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 165,
+  "fields": {
+    "action_time": "2026-05-28T05:31:09.005Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "5",
+    "object_repr": "Карнавальная маска \"Моретта\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 166,
+  "fields": {
+    "action_time": "2026-05-28T05:31:45.859Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "6",
+    "object_repr": "Карнавальная маска \"Джокер\"",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 167,
+  "fields": {
+    "action_time": "2026-05-28T05:31:54.923Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "7",
+    "object_repr": "Костюм «Кавалер ди Верде»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 168,
+  "fields": {
+    "action_time": "2026-05-28T05:32:11.344Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "8",
+    "object_repr": "Платье «Роза Венециана»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 169,
+  "fields": {
+    "action_time": "2026-05-28T05:32:21.628Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "9",
+    "object_repr": "Костюм «Лунный Лорд»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 170,
+  "fields": {
+    "action_time": "2026-05-28T05:32:36.348Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "10",
+    "object_repr": "Костюм «Королева Лунного Серпа»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 171,
+  "fields": {
+    "action_time": "2026-05-28T05:33:05.893Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "13",
+    "object_repr": "Дублет «Бархатный Дож»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 172,
+  "fields": {
+    "action_time": "2026-05-28T05:33:17.521Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "14",
+    "object_repr": "Корсет «Золотая Венера»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 173,
+  "fields": {
+    "action_time": "2026-05-28T05:33:28.914Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "15",
+    "object_repr": "Дублет «Серебряный Нобиль»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 174,
+  "fields": {
+    "action_time": "2026-05-28T05:33:42.092Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "16",
+    "object_repr": "Корсет «Кровавая Графиня»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 175,
+  "fields": {
+    "action_time": "2026-05-28T05:34:05.976Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "17",
+    "object_repr": "Бриджи «Тайна Бауты»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 176,
+  "fields": {
+    "action_time": "2026-05-28T05:34:12.362Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "20",
+    "object_repr": "Юбка «Жемчужный Рассвет»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 177,
+  "fields": {
+    "action_time": "2026-05-28T05:34:22.430Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "21",
+    "object_repr": "Бриджи «Изумрудный Арлекин»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 178,
+  "fields": {
+    "action_time": "2026-05-28T05:34:42.446Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "22",
+    "object_repr": "Юбка «Полночная Астрономия»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 179,
+  "fields": {
+    "action_time": "2026-05-28T05:34:57.211Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "23",
+    "object_repr": "Сапоги «Инкогнито Патриция»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 180,
+  "fields": {
+    "action_time": "2026-05-28T05:35:07.802Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "24",
+    "object_repr": "Туфли «Жемчужная Серенада»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 181,
+  "fields": {
+    "action_time": "2026-05-28T05:35:22.845Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "25",
+    "object_repr": "Сапоги «Изумрудный Арлекин»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 182,
+  "fields": {
+    "action_time": "2026-05-28T05:35:31.180Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "26",
+    "object_repr": "Ботильоны «Черный Бархат Моретты»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 183,
+  "fields": {
+    "action_time": "2026-05-28T05:35:42.470Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "27",
+    "object_repr": "Плащ «Табарро Венецианского Дожа»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 184,
+  "fields": {
+    "action_time": "2026-05-28T05:35:50.567Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "28",
+    "object_repr": "Веер «Жемчужный Шёпот»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 185,
+  "fields": {
+    "action_time": "2026-05-28T05:35:58.447Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "29",
+    "object_repr": "Трость «Изумрудный Алхимик»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 186,
+  "fields": {
+    "action_time": "2026-05-28T05:36:05.514Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "product"
+    ],
+    "object_id": "30",
+    "object_repr": "Перчатки «Лавандовая Симфония»",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 187,
+  "fields": {
+    "action_time": "2026-05-28T10:12:51.419Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "promotion"
+    ],
+    "object_id": "1",
+    "object_repr": "Весенняя акция! (Процентная скидка)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"End date\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 188,
+  "fields": {
+    "action_time": "2026-05-28T10:18:55.190Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "promotion"
+    ],
+    "object_id": "1",
+    "object_repr": "Весенняя акция! (Процентная скидка)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"End date\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 189,
+  "fields": {
+    "action_time": "2026-05-28T10:19:08.465Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "promotion"
+    ],
+    "object_id": "1",
+    "object_repr": "Весенняя акция! (Процентная скидка)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"End date\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 190,
+  "fields": {
+    "action_time": "2026-05-28T10:21:07.547Z",
+    "user": [
+      "baskerville@gmail.com"
+    ],
+    "content_type": [
+      "app",
+      "user"
+    ],
+    "object_id": "7",
+    "object_repr": "wffwfesw@gmail.com",
+    "action_flag": 3,
+    "change_message": ""
+  }
+}
+]
