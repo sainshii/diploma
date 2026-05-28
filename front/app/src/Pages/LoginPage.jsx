@@ -6,8 +6,9 @@ import { Helmet } from 'react-helmet-async';
 import { lazy, Suspense } from 'react';
 
 const Header = lazy(() => import('./Header'));
-
 const Footer = lazy(() => import('./Footer'));
+
+const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
 
 const LoginPage = () => {
   useScrollOnMount();
@@ -39,7 +40,7 @@ const LoginPage = () => {
     e.preventDefault()
     setErrors('')
     try {
-      const response = await fetch('http://127.0.0.1:8000/login/', {
+      const response = await fetch(`${API_URL}/login/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -79,7 +80,7 @@ const LoginPage = () => {
       return
     }
     try {
-      const response = await fetch('http://127.0.0.1:8000/reset-password/', {
+      const response = await fetch(`${API_URL}/reset-password/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

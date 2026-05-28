@@ -8,8 +8,9 @@ import { Helmet } from 'react-helmet-async';
 import { lazy, Suspense } from 'react';
 
 const Header = lazy(() => import('./Header'));
-
 const Footer = lazy(() => import('./Footer'));
+
+const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
 
 const paymentLabels = {
   card: 'Банковская карта',
@@ -48,7 +49,7 @@ const CartPage = () => {
   const loadOrders = useCallback(async () => {
     if (token) {
       try {
-        const res = await fetch('http://127.0.0.1:8000/api/orders/', {
+        const res = await fetch(`${API_URL}/api/orders/`, {
           headers: { Authorization: `Token ${token}` },
         });
         const data = await res.json();
@@ -95,7 +96,7 @@ const CartPage = () => {
     setSubmitting(true)
     setError('')
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/orders/', {
+      const response = await fetch(`${API_URL}/api/orders/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

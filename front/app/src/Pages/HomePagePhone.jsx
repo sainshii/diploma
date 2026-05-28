@@ -10,16 +10,15 @@ import paper from '../img/bgpaperphone.webp';
 import mask from '../img/mask.svg';
 
 const Header = lazy(() => import('./Header'));
-
 const ImageSlider = lazy(() => import('./ImageSlider'));
-
 const Footer = lazy(() => import('./Footer'));
+
+const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
 
 const HomePagePhone = () => {
   useScrollOnMount();
   const navigate = useNavigate();
 
-  // состояние формы обратной связи (как в PC)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -36,7 +35,7 @@ const HomePagePhone = () => {
     e.preventDefault();
     setFormLoading(true);
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/contact/', {
+      const res = await fetch(`${API_URL}/api/contact/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -54,7 +53,6 @@ const HomePagePhone = () => {
     }
   };
 
-  // Классы для полей (мобильная адаптация)
   const inputClasses = "w-full bg-[#1b1b1b] rounded-2xl pl-3 border-b-2 border-[#C5A059]/40 text-white text-sm py-2 px-2 outline-none focus:border-[#C5A059] transition-colors duration-300 placeholder-gray-500";
   const labelClasses = "block text-[#C5A059] font-sf text-sm mb-1";
 
@@ -66,7 +64,7 @@ const HomePagePhone = () => {
       </Helmet>
 
       <Suspense fallback={null}>
-      	<Header />
+        <Header />
       </Suspense>
 
       {/* Главный блок */}

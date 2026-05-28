@@ -10,10 +10,10 @@ import paper from '../img/bgpaper.webp';
 import mask from '../img/mask.svg';
 
 const Header = lazy(() => import('./Header'));
-
 const ImageSlider = lazy(() => import('./ImageSlider'));
-
 const Footer = lazy(() => import('./Footer'));
+
+const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
 
 const HomePagePC = () => {
   useScrollOnMount();
@@ -36,7 +36,7 @@ const HomePagePC = () => {
     e.preventDefault();
     setFormLoading(true);
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/contact/', {
+      const res = await fetch(`${API_URL}/api/contact/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
@@ -361,7 +361,7 @@ const HomePagePC = () => {
         </div>
       </section>
 
-      {/* ===== ФОРМА ОБРАТНОЙ СВЯЗИ (без темы, с бордером вокруг блока) ===== */}
+      {/* ===== ФОРМА ОБРАТНОЙ СВЯЗИ ===== */}
       <section className="w-full bg-[#0A0A0A] pt-16 
       lg:pt-[6rem] 
       2xl:pt-[8rem]">

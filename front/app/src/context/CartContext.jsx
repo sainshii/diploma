@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
+
 const CartContext = createContext();
 export const useCart = () => useContext(CartContext);
 
@@ -18,13 +20,11 @@ export const CartProvider = ({ children }) => {
       return;
     }
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/cart/', {
+      const res = await fetch(`${API_URL}/api/cart/`, {
         headers: { 'Authorization': `Token ${token}` }
       });
       if (res.ok) {
         const data = await res.json();
-        // Убедимся, что каждый item имеет discounted_price (сервер должен его отдавать)
-        // Если нет — рассчитываем как product.price * quantity (без скидки)
         const itemsWithDiscount = (data.items || []).map(item => ({
           ...item,
           discounted_price: item.discounted_price ?? (item.product.price * item.quantity)
@@ -67,7 +67,7 @@ export const CartProvider = ({ children }) => {
       return;
     }
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/cart/add/', {
+      const res = await fetch(`${API_URL}/api/cart/add/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +77,6 @@ export const CartProvider = ({ children }) => {
       });
       if (res.ok) {
         const updatedItem = await res.json();
-        // Сервер должен вернуть объект с полем discounted_price
         const itemWithDiscount = {
           ...updatedItem,
           discounted_price: updatedItem.discounted_price ?? (updatedItem.product.price * updatedItem.quantity)
@@ -104,7 +103,7 @@ export const CartProvider = ({ children }) => {
   const updateQuantity = async (itemId, quantity) => {
     const currentToken = localStorage.getItem('token');
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/cart/update/${itemId}/`, {
+      const res = await fetch(`${API_URL}/api/cart/update/${itemId}/`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -130,7 +129,7 @@ export const CartProvider = ({ children }) => {
   const removeFromCart = async (itemId) => {
     const currentToken = localStorage.getItem('token');
     try {
-      const res = await fetch(`http://127.0.0.1:8000/api/cart/remove/${itemId}/`, {
+      const res = await fetch(`${API_URL}/api/cart/remove/${itemId}/`, {
         method: 'DELETE',
         headers: { 'Authorization': `Token ${currentToken}` }
       });
@@ -147,7 +146,7 @@ export const CartProvider = ({ children }) => {
     setItems([]);
     if (currentToken) {
       try {
-        await fetch('http://127.0.0.1:8000/api/cart/clear/', {
+        await fetch(`${API_URL}/api/cart/clear/`, {
           method: 'DELETE',
           headers: { 'Authorization': `Token ${currentToken}` }
         });
@@ -158,11 +157,8 @@ export const CartProvider = ({ children }) => {
   };
 
   const getTotalItems = () => items.reduce((sum, item) => sum + item.quantity, 0);
-
-  // ✅ Итоговая сумма с учётом скидок
   const getTotalPrice = () => {
     return items.reduce((total, item) => {
-      // Используем discounted_price, если есть; иначе рассчитываем по обычной цене
       const itemTotal = item.discounted_price ?? (item.product.price * item.quantity);
       return total + itemTotal;
     }, 0);

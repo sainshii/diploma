@@ -8,8 +8,9 @@ import { Helmet } from 'react-helmet-async';
 import { lazy, Suspense } from 'react';
 
 const Header = lazy(() => import('./Header'));
-
 const Footer = lazy(() => import('./Footer'));
+
+const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
 
 const ShopPage = () => {
 
@@ -24,12 +25,11 @@ const ShopPage = () => {
   const [expandedCategory, setExpandedCategory] = useState(null)
   const { notification, addToCart, getCartItem, updateQuantity } = useCart()
 
-  // Новые состояния для сортировки и фильтрации
-  const [sortOrder, setSortOrder] = useState('default'); // 'default', 'price-asc', 'price-desc'
-  const [selectedSizes, setSelectedSizes] = useState([]); // пустой массив = все размеры
+  const [sortOrder, setSortOrder] = useState('default');
+  const [selectedSizes, setSelectedSizes] = useState([]);
 
   const fetchProducts = (cat) => {
-    let url = 'http://127.0.0.1:8000/api/products/'
+    let url = `${API_URL}/api/products/`
     if (cat !== 'all') url += `?category=${cat}`
     fetch(url)
       .then(res => res.json())
@@ -41,7 +41,7 @@ const ShopPage = () => {
   }
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/categories/')
+    fetch(`${API_URL}/api/categories/`)
       .then(res => res.json())
       .then(data => setCategories(Array.isArray(data) ? data : []))
       .catch(err => {
@@ -49,7 +49,7 @@ const ShopPage = () => {
         setCategories([])
       })
 
-    fetch('http://127.0.0.1:8000/api/products/?popular=true')
+    fetch(`${API_URL}/api/products/?popular=true`)
       .then(res => res.json())
       .then(data => setPopular(Array.isArray(data) ? data : []))
       .catch(err => {
@@ -57,7 +57,7 @@ const ShopPage = () => {
         setPopular([])
       })
 
-    fetch('http://127.0.0.1:8000/api/products/?discounted=true')
+    fetch(`${API_URL}/api/products/?discounted=true`)
       .then(res => res.json())
       .then(data => setDiscountedProducts(Array.isArray(data) ? data : []))
       .catch(err => {
@@ -65,8 +65,7 @@ const ShopPage = () => {
         setDiscountedProducts([])
       })
 
-    // Запрос на получение названия активной акции
-    fetch('http://127.0.0.1:8000/api/active-promotion/')
+    fetch(`${API_URL}/api/active-promotion/`)
       .then(res => {
         if (res.ok) return res.json()
         throw new Error('Нет активной акции')
@@ -77,7 +76,6 @@ const ShopPage = () => {
     fetchProducts('all')
   }, [])
 
-  // Компонент карточки товара
   const ProductCard = ({ product }) => {
     const defaultSize = product.sizes?.[0]?.name || 'универсальный'
     const cartItem = getCartItem(product.id, defaultSize)
@@ -196,7 +194,6 @@ const ShopPage = () => {
     fetchProducts(slug)
   }
 
-  // Сбор уникальных размеров из загруженных продуктов
   const availableSizes = useMemo(() => {
     const sizes = new Set();
     products.forEach(p => {
@@ -205,18 +202,15 @@ const ShopPage = () => {
     return Array.from(sizes).sort();
   }, [products]);
 
-  // Применяем фильтрацию по размерам и сортировку по цене
   const filteredProducts = useMemo(() => {
     let filtered = products;
 
-    // Фильтр по размерам
     if (selectedSizes.length > 0) {
       filtered = filtered.filter(product =>
         product.sizes?.some(size => selectedSizes.includes(size.name))
       );
     }
 
-    // Сортировка по цене (используем discounted_price при наличии)
     if (sortOrder === 'price-asc') {
       filtered = [...filtered].sort((a, b) => {
         const priceA = a.discounted_price && a.discounted_price < a.price ? a.discounted_price : a.price;
@@ -251,26 +245,24 @@ const ShopPage = () => {
         </div>
 
         <div className="pt-[12rem] max-md:pt-[5rem] px-4 lg:pt-[10rem] 2xl:pt-[12rem]">
-          {/* Раздел "Скидки" с динамическим названием */}
-          <section className="mb-16 max-md:mb-10 lg:mb-12 2xl:mb-16">
-            <h1 className="text-[#C5A059] font-gv mb-8 max-md:mb-2 text-center drop-shadow-lg text-5xl md:text-7xl max-md:text-4xl lg:text-6xl lg:mb-6 2xl:text-7xl 2xl:mb-8">
-              {activePromotionName || 'Скидки'}
-            </h1>
-            <div className="flex overflow-x-auto justify-start lg:justify-center gap-6 max-md:gap-4 pb-4 py-4">
-              {discountedProducts.length > 0 ? (
-                discountedProducts.map(product => (
+          {/* Раздел "Скидки" – показывается только при наличии товаров */}
+          {discountedProducts.length > 0 && (
+            <section className="mb-16 max-md:mb-10 lg:mb-12 2xl:mb-16">
+              <h1 className="text-[#C5A059] font-gv mb-8 max-md:mb-2 text-center drop-shadow-lg text-5xl md:text-7xl max-md:text-4xl lg:text-6xl lg:mb-6 2xl:text-7xl 2xl:mb-8">
+                {activePromotionName || 'Скидки'}
+              </h1>
+              <div className="flex overflow-x-auto justify-start lg:justify-center gap-6 max-md:gap-4 pb-4 py-4">
+                {discountedProducts.map(product => (
                   <div
                     key={product.id}
                     className="h-full p-3 max-md:p-2 w-[350px] max-md:min-w-[180px] lg:min-w-[200px] lg:p-2 2xl:min-w-[250px] 2xl:p-3"
                   >
                     <ProductCard product={product} />
                   </div>
-                ))
-              ) : (
-                <p className="text-gray-500 text-center w-full">Нет товаров со скидкой</p>
-              )}
-            </div>
-          </section>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Популярные товары с центрированием */}
           <section className="mb-16 max-md:mb-10 lg:mb-12 2xl:mb-16">
@@ -364,9 +356,8 @@ const ShopPage = () => {
             ))}
           </div>
 
-          {/* ========== СОРТИРОВКА И ФИЛЬТР ПО РАЗМЕРАМ ========== */}
+          {/* СОРТИРОВКА И ФИЛЬТР ПО РАЗМЕРАМ */}
           <div className="flex flex-wrap items-center gap-4 mb-6">
-            {/* Сортировка по цене */}
             <div className="flex items-center gap-2">
               <span className="text-[#C5A059] font-sf text-sm">Сортировка:</span>
               <select
@@ -380,7 +371,6 @@ const ShopPage = () => {
               </select>
             </div>
 
-            {/* Фильтр по размерам */}
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-[#C5A059] font-sf text-sm">Размер:</span>
               {availableSizes.map(size => (

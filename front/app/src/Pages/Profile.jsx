@@ -6,8 +6,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { lazy, Suspense } from 'react';
 
 const Header = lazy(() => import('./Header'));
-
 const Footer = lazy(() => import('./Footer'));
+
+const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
 
 const statusLabels = {
   pending: 'Принят',
@@ -58,12 +59,11 @@ const Profile = () => {
   const loadOrders = useCallback(async () => {
     if (token) {
       try {
-        const res = await fetch('http://127.0.0.1:8000/api/orders/', {
+        const res = await fetch(`${API_URL}/api/orders/`, {
           headers: { Authorization: `Token ${token}` },
         });
         const data = await res.json();
         setOrders(Array.isArray(data) ? data : []);
-        // Ищем последний заказ, который НЕ является "Забран"
         const activeOrder = data.find(order => order.status !== 'picked_up');
         setLastOrder(activeOrder || null);
       } catch {
@@ -81,7 +81,7 @@ const Profile = () => {
           navigate(`/login?redirect=${encodeURIComponent('/profile')}`)
           return
         }
-        const response = await fetch('http://127.0.0.1:8000/profile/', {
+        const response = await fetch(`${API_URL}/profile/`, {
           headers: {
             'Authorization': `Token ${token}`,
             'Content-Type': 'application/json',
@@ -142,7 +142,7 @@ const Profile = () => {
         return
       }
 
-      const response = await fetch('http://127.0.0.1:8000/profile/', {
+      const response = await fetch(`${API_URL}/profile/`, {
         method: 'PATCH',
         headers: {
           'Authorization': `Token ${token}`,
@@ -200,7 +200,7 @@ const Profile = () => {
         max-md:top-2 max-md:p-2">
           <div className="ml-[1.5rem] max-md:ml-0">
             <Suspense fallback={null}>
-            	<Header />
+              <Header />
             </Suspense>
           </div>
         </div>
@@ -239,9 +239,9 @@ const Profile = () => {
             </div>
           )}
 
-          <h1 className="text-[#C5A059] font-gv md:text-8xl max-md:text-5xl drop-shadow-lg mb-10 max-md:mb-6 text-center mt-[3rem]
-          lg:text-6xl
-          2xl:text-7xl">
+          <h1 className="text-[#C5A059] font-gv md:text-4xl max-md:text-4xl drop-shadow-lg mb-10 max-md:mb-6 text-center mt-[1rem]
+          lg:text-6xl lg:mt-[3rem]
+          2xl:text-7xl 2xl:mt-[3rem]">
             Личный кабинет
           </h1>
 
@@ -258,7 +258,7 @@ const Profile = () => {
                     onChange={handleFileChange}
                     className="hidden"
                   />
-                  <div className="relative 2xl:w-[12rem] 2xl:h-[12rem] lg:w-[10rem] lg:h-[10rem] md:w-48 md:h-48 max-md:w-32 max-md:h-32 rounded-full border-2 border-[#C5A059] overflow-hidden bg-[#1A1A1A]">
+                  <div className="relative 2xl:w-[12rem] 2xl:h-[12rem] lg:w-[10rem] lg:h-[10rem] max-md:w-[7rem] max-md:h-[7rem] rounded-full border-2 border-[#C5A059] overflow-hidden bg-[#1A1A1A]">
                     {avatarSrc ? (
                       <img src={avatarSrc} alt="avatar" className="w-full h-full object-cover" />
                     ) : (
@@ -278,37 +278,43 @@ const Profile = () => {
               {/* Правая часть: имя, юзернейм, кнопка сохранить */}
               <div className="flex flex-col items-center md:items-start flex-grow mt-3 max-md:-mt-6">
                 {/* Имя */}
-                <div className="flex items-center gap-2 mb-2">
+                <div className="flex items-center gap-1 min-h-[2rem] ml-[1rem] 2xl:gap-2">
                   {editingFirstName ? (
                     <>
                       <input
                         type="text"
                         value={editFirstName}
                         onChange={(e) => setEditFirstName(e.target.value)}
-                        className="w-full max-w-xs px-3 py-2 bg-[#1A1A1A] border border-[#C5A059]/30 rounded-xl text-gray-300 2xl:text-2xl lg:text-lg lg:py-0 md:text-3xl max-md:text-xl font-sf text-center"
+                        className="w-full max-w-xs px-3 bg-[#1A1A1A] border border-[#C5A059]/30 rounded-xl text-gray-300 
+                        2xl:text-3xl 2xl:py-0
+                        lg:text-2xl lg:py-0 
+                        max-md:text-xl font-sf text-center py-0"
                         autoFocus
                       />
                       <button
                         onClick={() => setEditingFirstName(false)}
-                        className="text-[#C5A059] hover:text-[#f0d29a] transition"
+                        className="text-[#C5A059] hover:text-[#f0d29a] transition p-1 max-md:p-2 max-md:w-8 max-md:h-8 z-10"
                         title="Завершить редактирование"
                       >
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="max-md:w-6 max-md:h-6">
                           <polyline points="20 6 9 17 4 12" />
                         </svg>
                       </button>
                     </>
                   ) : (
                     <>
-                      <h2 className="text-[#C5A059] font-sf 2xl:text-4xl lg:text-3xl md:text-4xl max-md:text-3xl drop-shadow-xl shadow-[#C5A059]/100">
+                      <h2 className="text-[#C5A059] font-sf 
+                      2xl:text-5xl 
+                      lg:text-4xl 
+                      max-md:text-2xl drop-shadow-xl shadow-[#C5A059]/100">
                         {editFirstName || 'Имя не указано'}
                       </h2>
                       <button
                         onClick={() => setEditingFirstName(true)}
-                        className="text-[#C5A059]/70 hover:text-[#C5A059] transition"
+                        className="text-[#C5A059]/70 hover:text-[#C5A059] transition p-1 max-md:p-2 max-md:w-8 max-md:h-8 z-10"
                         title="Редактировать имя"
                       >
-                        <svg className='2xl:w-22 2xl:h-22 lg:w-[1.3rem] lg:h-[1.3rem]' viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <svg className='2xl:w-[1.7rem] 2xl:h-[1.7rem] lg:w-[1.5rem] lg:h-[1.5rem] max-md:w-4 max-md:h-4' viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
                         </svg>
                       </button>
@@ -317,22 +323,25 @@ const Profile = () => {
                 </div>
 
                 {/* Юзернейм */}
-                <div className="flex items-center gap-2 mb-6 max-md:mb-3">
+                <div className="flex items-center gap-1 max-md:mb-3 min-h-[2rem] ml-[1rem] lg:gap-2 lg:mt-1 lg:mb-5 2xl:mt-3 2xl:mb-5">
                   {editingUsername ? (
                     <>
                       <input
                         type="text"
                         value={editUsername}
                         onChange={(e) => setEditUsername(e.target.value.replace(/[^a-zA-Z0-9]/g, ''))}
-                        className="w-full max-w-xs px-3 py-2 bg-[#1A1A1A] border border-[#C5A059]/30 rounded-xl text-gray-400 2xl:text-2xl lg:text-lg lg:py-0 md:text-xl max-md:text-base font-sf text-center"
+                        className="w-full max-w-xs px-3 bg-[#1A1A1A] border border-[#C5A059]/30 rounded-xl text-gray-400 
+                        2xl:text-2xl 2xl:py-0
+                        lg:text-lg lg:py-0 
+                        max-md:text-xl font-sf text-center py-0"
                         autoFocus
                       />
                       <button
                         onClick={() => setEditingUsername(false)}
-                        className="text-[#C5A059] hover:text-[#f0d29a] transition"
+                        className="text-[#C5A059] hover:text-[#f0d29a] transition p-1 max-md:p-2 max-md:w-8 max-md:h-8 z-10"
                         title="Завершить редактирование"
                       >
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="max-md:w-6 max-md:h-6">
                           <polyline points="20 6 9 17 4 12" />
                         </svg>
                       </button>
@@ -342,10 +351,10 @@ const Profile = () => {
                       <p className="text-gray-400 font-sf 2xl:text-2xl lg:text-lg md:text-xl max-md:text-base">@{editUsername}</p>
                       <button
                         onClick={() => setEditingUsername(true)}
-                        className="text-[#C5A059]/70 hover:text-[#C5A059] transition"
+                        className="text-[#C5A059]/70 hover:text-[#C5A059] transition p-1 max-md:p-2 max-md:w-8 max-md:h-8 z-10"
                         title="Редактировать юзернейм"
                       >
-                        <svg className='2xl:w-22 2xl:h-22 lg:w-[1.3rem] lg:h-[1.3rem]' viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <svg className='2xl:w-[1.5rem] 2xl:h-[1.5rem] lg:w-[1.3rem] lg:h-[1.3rem] max-md:w-4 max-md:h-4' viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
                         </svg>
                       </button>

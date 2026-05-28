@@ -7,8 +7,9 @@ import { Helmet } from 'react-helmet-async';
 import { lazy, Suspense } from 'react';
 
 const Header = lazy(() => import('./Header'));
-
 const Footer = lazy(() => import('./Footer'));
+
+const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
 
 const ProductPage = () => {
   
@@ -27,7 +28,7 @@ const ProductPage = () => {
 
   // Загрузка товара
   useEffect(() => {
-    fetch(`http://127.0.0.1:8000/api/products/${id}/`)
+    fetch(`${API_URL}/api/products/${id}/`)
       .then(res => res.json())
       .then(data => {
         console.log("ПОЛНЫЙ ОТВЕТ СЕРВЕРА:", data);
@@ -67,7 +68,7 @@ const ProductPage = () => {
     }
     setCommentError('')
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/products/${id}/comments/`, {
+      const response = await fetch(`${API_URL}/api/products/${id}/comments/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
