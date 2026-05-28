@@ -73,7 +73,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     '.onrender.com',
-    'https://bauta-backend.onrender.com',
+    'bauta-backend.onrender.com',
 ]
 
 CORS_ALLOWED_ORIGINS = [
