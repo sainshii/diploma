@@ -13,7 +13,7 @@ const Header = lazy(() => import('./Header'));
 const ImageSlider = lazy(() => import('./ImageSlider'));
 const Footer = lazy(() => import('./Footer'));
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
+const API_URL = 'https://bauta-backend.onrender.com';
 
 const HomePagePC = () => {
   useScrollOnMount();

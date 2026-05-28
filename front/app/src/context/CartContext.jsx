@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
+const API_URL = 'https://bauta-backend.onrender.com';
 
 const CartContext = createContext();
 export const useCart = () => useContext(CartContext);

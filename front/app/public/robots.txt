@@ -1,4 +1,3 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow: /cart
 Disallow: /register
@@ -9,5 +8,5 @@ Disallow: /api
 Disallow: /admin
 Disallow: /reset-password
 
-Host: http://localhost:3000
-Sitemap: http://localhost:8000/sitemap.xml
+Host: https://bauta.vercel.app
+Sitemap: https://bauta-backend.onrender.com/sitemap.xml

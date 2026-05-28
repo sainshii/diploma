@@ -251,7 +251,7 @@ class ResetPasswordView(APIView):
 
 def sitemap_view(request):
     # Базовый URL сайта – замени на свой домен или бери из request
-    base_url = 'http://localhost:3000'  # или request.build_absolute_uri('/')[:-1]
+    base_url = 'https://bauta.vercel.app'  # или request.build_absolute_uri('/')[:-1]
 
     # Собираем статические страницы
     static_urls = [
