@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 import dj_database_url
 import cloudinary
+from dotenv import load_dotenv
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,34 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-tzf!x4b&c&wc_7^@xi#bg@m!hj*!0cmx0i(nxeuhi2inp5j8t1')
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-tzf!x4b&c&wc_7^@xi#bg@m!hj*!0cmx0i(nxeuhi2inp5j8t1')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-if DEBUG:
-    # Локально: Django сам раздаёт статику и медиа из папок
-    STATIC_URL = '/static/'
-    STATICFILES_DIRS = [BASE_DIR / 'static']
-    STATIC_ROOT = BASE_DIR / 'staticfiles'
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = BASE_DIR / 'media'
-    # ... другие настройки для разработки
-else:
-    # На сервере: всё уходит в облако Cloudinary
-    STATIC_URL = '/static/'
-    MEDIA_URL = '/media/'
-    # Cloudinary будет хранить и статику, и медиа
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-    STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
-    '.onrender.com',
-    'project.onrender.com',
-]
-
+DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
 
 # Application definition
 
@@ -70,7 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -91,7 +69,13 @@ REST_FRAMEWORK = {
     ]
 }
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    '.onrender.com',
+    'project.onrender.com',
+]
+
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:8000',
@@ -164,15 +148,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '..', 'front', 'build', 'static'),
+    BASE_DIR / 'static',
 ]
 
 CLOUDINARY_STORAGE = {
