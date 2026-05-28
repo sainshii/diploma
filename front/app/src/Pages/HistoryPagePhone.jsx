@@ -5,7 +5,6 @@ import { Helmet } from 'react-helmet-async';
 import { lazy, Suspense } from 'react';
 import bghistory from '../img/bghistoryphone.webp';
 import historysec3 from '../img/history3phone.webp';
-import historysec4 from '../img/history4.webp';
 import redmask from '../img/redmask.webp';
 import mask1 from '../img/mask1.svg';
 import mask2 from '../img/mask2.svg';

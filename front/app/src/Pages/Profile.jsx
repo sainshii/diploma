@@ -33,7 +33,6 @@ const Profile = () => {
 
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState(null)
-  const [error, setError] = useState('')
   const navigate = useNavigate()
 
   // Поля для редактирования
@@ -49,8 +48,7 @@ const Profile = () => {
   const [saveMessage, setSaveMessage] = useState('')
   const fileInputRef = useRef(null)
 
-  // Заказы
-  const [orders, setOrders] = useState([])
+  // Заказы (только последний активный)
   const [lastOrder, setLastOrder] = useState(null)
   const [showOrderModal, setShowOrderModal] = useState(false)
 
@@ -63,11 +61,9 @@ const Profile = () => {
           headers: { Authorization: `Token ${token}` },
         });
         const data = await res.json();
-        setOrders(Array.isArray(data) ? data : []);
         const activeOrder = data.find(order => order.status !== 'picked_up');
         setLastOrder(activeOrder || null);
       } catch {
-        setOrders([]);
         setLastOrder(null);
       }
     }
@@ -93,7 +89,7 @@ const Profile = () => {
         setEditFirstName(data.first_name || '')
         setEditUsername(data.username || '')
       } catch (error) {
-        setError(error.message)
+        console.error('Ошибка загрузки профиля:', error)
         localStorage.removeItem('token')
         navigate(`/login?redirect=${encodeURIComponent('/profile')}`)
       } finally {
@@ -103,12 +99,6 @@ const Profile = () => {
     fetchData()
     loadOrders()
   }, [navigate, loadOrders])
-
-  const Logout = () => {
-    localStorage.removeItem('token')
-    window.dispatchEvent(new Event('token-changed'))
-    navigate('/', { replace: true })
-  }
 
   const handleFileChange = (e) => {
     const file = e.target.files[0]
