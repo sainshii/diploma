@@ -1,8 +1,17 @@
 import React, { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
-import Header from './Header'
+import { useNavigate, Link, useSearchParams } from 'react-router-dom'
+import { useScrollOnMount } from '../hooks/useScrollOnMount';
+import { Helmet } from 'react-helmet-async';
+import { lazy, Suspense } from 'react';
+
+const Header = lazy(() => import('./Header'));
+
+const Footer = lazy(() => import('./Footer'));
 
 const RegPage = () => {
+
+  useScrollOnMount();
+
   const [errors, setErrors] = useState('')
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
@@ -11,6 +20,8 @@ const RegPage = () => {
     email: '',
     password: '',
   })
+  const [searchParams] = useSearchParams();
+  const redirectTo = searchParams.get('redirect') || '/login';
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -34,11 +45,12 @@ const RegPage = () => {
       })
       if (!response.ok) {
         const data = await response.json()
-        throw new Error(data.error || data.username?.[0] || 'Ошибка регистрации')
+        throw new Error(data.error || data.username?.[0] || 'Такой пользователь уже существует')
       } else {
         const data = await response.json()
         localStorage.setItem('token', data.token)
-        navigate('/login')
+        window.dispatchEvent(new Event('token-changed'))
+        navigate(redirectTo)
       }
     } catch (error) {
       setErrors(error.message)
@@ -46,25 +58,44 @@ const RegPage = () => {
   }
 
   return (
-    <div className="w-full min-h-screen bg-[#0A0A0A] flex flex-col items-center pt-[2rem] max-md:pt-0">
-      <section className="relative w-full max-w-[1770px]">
-        <div className="absolute top-5 left-0 w-full z-30 p-4 max-md:top-2 max-md:p-2">
+    <div className="w-full min-h-screen bg-[#0A0A0A] flex flex-col items-center 
+    lg:pt-[1.3rem]
+    2xl:pt-[2rem]">
+      <Helmet>
+        <title>Регистрация – Баута</title>
+        <meta name="description" content="Регистрация в интернет-магазине Баута." />
+      </Helmet>
+
+      <section className="relative w-full mx-auto
+        lg:max-w-[1400px] 
+        2xl:max-w-[1770px]">
+        <div className="absolute left-0 w-full z-30 p-4
+        lg:top-2
+        2xl:top-3
+        max-md:top-2 max-md:p-2">
           <div className="ml-[1.5rem] max-md:ml-0">
-            <Header />
+            <Suspense fallback={null}>
+            	<Header />
+            </Suspense>
           </div>
         </div>
 
-        <div className="flex flex-col items-center pt-[11.6rem] max-md:pt-24 px-4">
-          <h2 className="text-[#C5A059] font-gv text-7xl md:text-8xl max-md:text-5xl drop-shadow-lg mb-8 max-md:mb-6 text-center">
+        <div className="flex flex-col items-center max-md:pt-24 px-4
+        lg:pt-[10rem]
+        2xl:pt-[11.6rem]">
+          <h1 className="text-[#C5A059] font-gv md:text-8xl max-md:text-5xl drop-shadow-lg mb-8 max-md:mb-6 text-center
+          lg:text-[4.5rem]
+          2xl:text-7xl">
             Регистрация
-          </h2>
+          </h1>
 
           <div className="w-full max-w-md bg-[#0A0A0A]/80 backdrop-blur-md border border-[#C5A059]/70 rounded-3xl shadow-2xl shadow-black/50 p-8 md:p-10 max-md:px-6 max-md:py-8">
+
             {errors && (
-              <div className="mb-6 px-4 py-2 bg-[#8B1E1E]/20 border border-[#8B1E1E]/60 rounded-xl text-[#C5A059] text-sm text-center font-sf">
-                {errors}
-              </div>
-            )}
+                <div className="mb-6 px-4 text-red-400 text-lg text-center font-sf">
+                  {errors}
+                </div>
+              )}
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-6 max-md:gap-4">
               {/* Имя */}
@@ -116,7 +147,7 @@ const RegPage = () => {
                   id="email"
                   type="email"
                   name="email"
-                  placeholder="Введите почту"
+                  placeholder="example@mail.ru"
                   onChange={handleChange}
                   value={formData.email}
                   required
@@ -174,6 +205,10 @@ const RegPage = () => {
           </div>
         </div>
       </section>
+
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   )
 }

@@ -1,31 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from './Header';
-import ImageSlider from './ImageSlider';
-import Footer from './Footer';
-import bg from '../img/bghomephone.png';
-import rombs from '../img/rombsphone.png';
-import carnival from '../img/carnival.png';
-import paper from '../img/bgpaperphone.png';
-import mask from '../img/mask.png';
+import { useScrollOnMount } from '../hooks/useScrollOnMount';
+import { Helmet } from 'react-helmet-async';
+import { lazy, Suspense } from 'react';
+import bg from '../img/bghomephone.webp';
+import rombs from '../img/rombsphone.webp';
+import carnival from '../img/carnival.webp';
+import paper from '../img/bgpaperphone.webp';
+import mask from '../img/mask.svg';
+
+const Header = lazy(() => import('./Header'));
+
+const ImageSlider = lazy(() => import('./ImageSlider'));
+
+const Footer = lazy(() => import('./Footer'));
 
 const HomePagePhone = () => {
+  useScrollOnMount();
   const navigate = useNavigate();
-  const CustomNavigation = (path) => {
-    const token = localStorage.getItem('token')
-    const protectedRoutes = ['/shop']
-    if (protectedRoutes.includes(path) && !token){
-        if(window.confirm('Войдите')){
-            navigate('/login')
-        }
-    }else{
-        navigate(path)
+
+  // состояние формы обратной связи (как в PC)
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [formStatus, setFormStatus] = useState(null);
+  const [formLoading, setFormLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormLoading(true);
+    try {
+      const res = await fetch('http://127.0.0.1:8000/api/contact/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) {
+        setFormStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setFormStatus('error');
+      }
+    } catch (err) {
+      setFormStatus('error');
+    } finally {
+      setFormLoading(false);
     }
   };
 
+  // Классы для полей (мобильная адаптация)
+  const inputClasses = "w-full bg-[#1b1b1b] rounded-2xl pl-3 border-b-2 border-[#C5A059]/40 text-white text-sm py-2 px-2 outline-none focus:border-[#C5A059] transition-colors duration-300 placeholder-gray-500";
+  const labelClasses = "block text-[#C5A059] font-sf text-sm mb-1";
+
   return (
     <div className="w-full min-h-screen bg-[#0A0A0A] text-white pt-16">
-      <Header />
+      <Helmet>
+        <title>Баута – магазин венецианских масок и карнавальных костюмов</title>
+        <meta name="description" content="Карнавальные маски ручной работы, плащи, шляпы и аксессуары. Создайте неповторимый венецианский образ. Доставка по всей России." />
+      </Helmet>
+
+      <Suspense fallback={null}>
+      	<Header />
+      </Suspense>
 
       {/* Главный блок */}
       <section className="px-4 pt-4">
@@ -38,11 +80,10 @@ const HomePagePhone = () => {
             </div>
           </div>
         </div>
-        </section>
+      </section>
 
       {/* Второй блок */}
       <section className="px-6 mt-2">
-
         <div className="flex flex-col items-center mt-4 text-[0.8rem] text-justify">
             <img src={rombs} alt="rombs" className="w-full h-auto object-cover"/>
             <p className='mt-4'>
@@ -58,14 +99,13 @@ const HomePagePhone = () => {
             <p className='text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-50 to-gray-300'>
               Карнавал заканчивается в Жирный вторник (Martedì Grasso или Mardi Gras), за день до начала Великого поста в Пепельную среду.
             </p>
-              
             <p className='text-transparent bg-clip-text bg-gradient-to-r from-gray-300 via-gray-50 to-gray-300 pt-[0.5rem]'>
               Истоки карнавала восходят к Средневековью. Он просуществовал несколько веков, пока его не упразднили в 1797 году.
               Традиция была возрождена в 1979 году, и сейчас это мероприятие ежегодно привлекает около 3 миллионов посетителей. 
             </p>
 
             <button className="mt-4 bg-[#8B1E1E] text-gray-200 rounded-full px-16 text-[0.7rem]"
-            onClick={() => CustomNavigation('/history')}>Узнать больше</button>
+            onClick={() => navigate('/history')}>Узнать больше</button>
 
             <img src={carnival} alt="carnival" className="w-3/4 rounded-xl mt-[1.5rem]" />
         </div>
@@ -86,23 +126,100 @@ const HomePagePhone = () => {
               </p>
             </div>
 
-            <ImageSlider />
+            <Suspense fallback={null}>
+              <ImageSlider />
+            </Suspense>
 
             <div className='pt-[2rem] px-[0.8rem]'>
               <p className="text-[0.6rem] text-[#0A0A0A] text-justify leading-relaxed font-playfair [-webkit-text-stroke:0.1px_#0A0A0A]">
-                <span className="float-left mr-2 mt-1 text-[1.5rem] leading-[0.8] font-gv text-[#0A0A0A]">М</span>
+                <span className="float-left mr-1 mt-1 text-[1.5rem] leading-[0.8] font-gv text-[#0A0A0A]">М</span>
                 ы знаем: настоящий карнавал начинается с деталей. Поэтому в «Бауте» вы найдёте не только костюмы, но и маски ручной работы, страусовые перья, маскарадные шляпы и даже грим, чтобы завершить образ.
               </p>
             </div>
 
             <button
               className="mt-4 bg-[#8B1E1E] text-[#f0d29a] text-[0.7rem] rounded-full px-16"
-              onClick={() => CustomNavigation('/shop')}>Перейти в магазин</button>
+              onClick={() => navigate('/shop')}>Перейти в каталог</button>
           </div>
         </div>
       </section>
 
-      <Footer />
+      {/* ===== ФОРМА ОБРАТНОЙ СВЯЗИ (мобильная версия) ===== */}
+      <section className="w-full bg-[#0A0A0A] pt-5 pb-8 px-4">
+        <div className="max-w-md mx-auto">
+          <h2 className="text-[#C5A059] font-gv text-3xl text-center mb-2">
+            Свяжитесь с нами
+          </h2>
+          <p className="text-gray-400 font-sf text-sm text-center mb-6">
+            Есть вопросы или пожелания? Заполните форму, и мы ответим в ближайшее время.
+          </p>
+
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-5 border border-[#C5A059]/40 rounded-2xl p-5"
+          >
+            <div>
+              <label className={labelClasses}>Имя</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className={inputClasses}
+                placeholder="Введите имя"
+              />
+            </div>
+            <div>
+              <label className={labelClasses}>Email</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className={inputClasses}
+                placeholder="example@mail.ru"
+              />
+            </div>
+            <div>
+              <label className={labelClasses}>Сообщение</label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows="4"
+                className={`${inputClasses} resize-none`}
+                placeholder="Введите сообщение..."
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={formLoading}
+              className="w-full bg-[#8B1E1E] text-[#f0d29a] rounded-full font-sf text-base py-2 hover:bg-[#C5A059] hover:text-[#8B1E1E] transition disabled:opacity-50"
+            >
+              {formLoading ? 'Отправка...' : 'Отправить'}
+            </button>
+
+            {formStatus === 'success' && (
+              <p className="text-green-400 text-center text-sm mt-3">
+                Сообщение успешно отправлено!
+              </p>
+            )}
+            {formStatus === 'error' && (
+              <p className="text-red-400 text-center text-sm mt-3">
+                Произошла ошибка. Попробуйте ещё раз.
+              </p>
+            )}
+          </form>
+        </div>
+      </section>
+
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   );
 };

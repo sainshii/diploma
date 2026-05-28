@@ -1,12 +1,18 @@
-import React from 'react'
-import Header from './Header'
+// MasksPage.jsx
+import React, { Suspense, lazy } from 'react';
+import { useIsMobile } from '../hooks/useIsMobile';
+
+const MasksPagePC = lazy(() => import('./MasksPagePC'));
+const MasksPagePhone = lazy(() => import('./MasksPagePhone'));
 
 const MasksPage = () => {
-  return (
-    <div>
-      {<Header></Header>}
-    </div>
-  )
-}
+  const isMobile = useIsMobile();
 
-export default MasksPage
+  return (
+    <Suspense fallback={<div className="text-white text-center mt-20">Загрузка...</div>}>
+      {isMobile ? <MasksPagePhone /> : <MasksPagePC />}
+    </Suspense>
+  );
+};
+
+export default MasksPage;

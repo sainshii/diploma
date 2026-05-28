@@ -1,12 +1,18 @@
-import React from 'react'
-import Header from './Header'
+// HistoryPage.jsx
+import React, { Suspense, lazy } from 'react';
+import { useIsMobile } from '../hooks/useIsMobile';
+
+const HistoryPagePC = lazy(() => import('./HistoryPagePC'));
+const HistoryPagePhone = lazy(() => import('./HistoryPagePhone'));
 
 const HistoryPage = () => {
-  return (
-    <div>
-      {<Header></Header>}
-    </div>
-  )
-}
+  const isMobile = useIsMobile();
 
-export default HistoryPage
+  return (
+    <Suspense fallback={<div className="text-white text-center mt-20">Загрузка...</div>}>
+      {isMobile ? <HistoryPagePhone /> : <HistoryPagePC />}
+    </Suspense>
+  );
+};
+
+export default HistoryPage;

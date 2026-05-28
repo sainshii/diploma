@@ -1,8 +1,35 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import Header from './Header'
+import { useScrollOnMount } from '../hooks/useScrollOnMount';
+import { Helmet } from 'react-helmet-async';
+import { motion, AnimatePresence } from 'framer-motion';
+import { lazy, Suspense } from 'react';
+
+const Header = lazy(() => import('./Header'));
+
+const Footer = lazy(() => import('./Footer'));
+
+const statusLabels = {
+  pending: 'Принят',
+  processing: 'В обработке',
+  shipped: 'Отправлен',
+  delivered: 'Доставлен',
+  picked_up: 'Забран',
+  cancelled: 'Отменён',
+};
+
+const statusColors = {
+  pending: 'bg-[#C5A059]/30 border-[#C5A059]',
+  processing: 'bg-[#C5A059]/30 border-[#C5A059]',
+  shipped: 'bg-[#C5A059]/30 border-[#C5A059]',
+  delivered: 'bg-[#C5A059]/30 border-[#C5A059]',
+  picked_up: 'bg-[#C5A059]/30 border-[#C5A059]',
+  cancelled: 'bg-[#C5A059]/30 border-[#C5A059]',
+};
 
 const Profile = () => {
+  useScrollOnMount();
+
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState(null)
   const [error, setError] = useState('')
@@ -21,12 +48,37 @@ const Profile = () => {
   const [saveMessage, setSaveMessage] = useState('')
   const fileInputRef = useRef(null)
 
+  // Заказы
+  const [orders, setOrders] = useState([])
+  const [lastOrder, setLastOrder] = useState(null)
+  const [showOrderModal, setShowOrderModal] = useState(false)
+
+  const token = localStorage.getItem('token')
+
+  const loadOrders = useCallback(async () => {
+    if (token) {
+      try {
+        const res = await fetch('http://127.0.0.1:8000/api/orders/', {
+          headers: { Authorization: `Token ${token}` },
+        });
+        const data = await res.json();
+        setOrders(Array.isArray(data) ? data : []);
+        // Ищем последний заказ, который НЕ является "Забран"
+        const activeOrder = data.find(order => order.status !== 'picked_up');
+        setLastOrder(activeOrder || null);
+      } catch {
+        setOrders([]);
+        setLastOrder(null);
+      }
+    }
+  }, [token]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem('token')
         if (!token) {
-          navigate('/login')
+          navigate(`/login?redirect=${encodeURIComponent('/profile')}`)
           return
         }
         const response = await fetch('http://127.0.0.1:8000/profile/', {
@@ -43,16 +95,18 @@ const Profile = () => {
       } catch (error) {
         setError(error.message)
         localStorage.removeItem('token')
-        navigate('/login')
+        navigate(`/login?redirect=${encodeURIComponent('/profile')}`)
       } finally {
         setLoading(false)
       }
     }
     fetchData()
-  }, [navigate])
+    loadOrders()
+  }, [navigate, loadOrders])
 
   const Logout = () => {
     localStorage.removeItem('token')
+    window.dispatchEvent(new Event('token-changed'))
     navigate('/', { replace: true })
   }
 
@@ -64,7 +118,6 @@ const Profile = () => {
     setSaveMessage('')
   }
 
-  // Сохранить всё
   const handleSave = async () => {
     setSaving(true)
     setSaveMessage('')
@@ -72,7 +125,6 @@ const Profile = () => {
       const token = localStorage.getItem('token')
       const formData = new FormData()
 
-      // Добавляем поля, если они изменились
       if (editFirstName !== (user?.first_name || '')) {
         formData.append('first_name', editFirstName)
       }
@@ -80,12 +132,10 @@ const Profile = () => {
         formData.append('username', editUsername)
       }
 
-      // Если есть новый файл аватарки, добавляем
       if (selectedFile) {
         formData.append('avatar', selectedFile)
       }
 
-      // Если ничего не изменилось, не шлём запрос
       if (!formData.has('first_name') && !formData.has('username') && !selectedFile) {
         setSaveMessage('Нет изменений для сохранения')
         setSaving(false)
@@ -107,7 +157,6 @@ const Profile = () => {
 
       const updatedUser = await response.json()
       setUser(updatedUser)
-      // Синхронизируем локальные поля с данными с сервера
       setEditFirstName(updatedUser.first_name || '')
       setEditUsername(updatedUser.username || '')
       setSelectedFile(null)
@@ -131,23 +180,72 @@ const Profile = () => {
     )
   }
 
-  const avatarSrc = previewUrl || user?.avatar
+  const avatarSrc = previewUrl || user?.avatar_url
 
   return (
-    <div className="w-full min-h-screen bg-[#0A0A0A] flex flex-col items-center pt-[2rem] max-md:pt-0">
-      <section className="relative w-full max-w-[1770px]">
-        <div className="absolute top-5 left-0 w-full z-30 p-4 max-md:top-2 max-md:p-2">
+    <div className="w-full min-h-screen bg-[#0A0A0A] flex flex-col items-center 
+    lg:pt-[1.3rem]
+    2xl:pt-[2rem]">
+      <Helmet>
+        <title>Профиль – Баута</title>
+        <meta name="description" content="Личный кабинет в интернет-магазине Баута." />
+      </Helmet>
+
+      <section className="relative w-full mx-auto
+        lg:max-w-[1400px] 
+        2xl:max-w-[1770px]">
+        <div className="absolute left-0 w-full z-30 p-4
+        lg:top-2
+        2xl:top-3
+        max-md:top-2 max-md:p-2">
           <div className="ml-[1.5rem] max-md:ml-0">
-            <Header />
+            <Suspense fallback={null}>
+            	<Header />
+            </Suspense>
           </div>
         </div>
 
-        <div className="flex flex-col items-center pt-[15rem] max-md:pt-24 px-4">
-          <h2 className="text-[#C5A059] font-gv text-6xl md:text-8xl max-md:text-5xl drop-shadow-lg mb-10 max-md:mb-6 text-center">
-            Профиль
-          </h2>
+        <div className="flex flex-col items-center max-md:pt-24 px-4
+        lg:pt-[10rem]
+        2xl:pt-[12rem]">
 
-          <div className="w-full max-w-4xl bg-[#0A0A0A]/80 backdrop-blur-md border-2 border-[#C5A059]/70 rounded-3xl shadow-[0_0_30px_rgba(197,160,89,0.3)] p-8 md:p-12 max-md:p-6 flex flex-col items-center">
+          {/* Плашка со статусом активного заказа */}
+          {lastOrder && lastOrder.status !== 'picked_up' && (
+            <div className="w-full max-w-5xl mb-6">
+              <div className="border border-[#C5A059]/40 rounded-2xl p-4 flex items-center justify-between">
+                <p className="text-white font-sf lg:text-lg text-[0.8rem] flex items-center gap-2">
+                  Статус заказа{' '}
+                  <button
+                    onClick={() => setShowOrderModal(true)}
+                    className="text-[#C5A059] hover:underline font-bold"
+                  >
+                    №{lastOrder.id}
+                  </button>
+                  :{' '}
+                  <span className={`lg:px-8 px-5 lg:py-1 py-[1px] rounded-full lg:text-sm text-[0.8rem] border ${statusColors[lastOrder.status] || 'bg-gray-600/30 text-gray-300 border-gray-500'}`}>
+                    {statusLabels[lastOrder.status] || lastOrder.status}
+                  </span>
+                </p>
+                <button
+                  onClick={() => setShowOrderModal(true)}
+                  className="text-[#C5A059] hover:text-white transition"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          )}
+
+          <h1 className="text-[#C5A059] font-gv md:text-8xl max-md:text-5xl drop-shadow-lg mb-10 max-md:mb-6 text-center mt-[3rem]
+          lg:text-6xl
+          2xl:text-7xl">
+            Личный кабинет
+          </h1>
+
+          <div className="w-full 2xl:max-w-4xl lg:max-w-3xl bg-[#0A0A0A]/80 backdrop-blur-md border-2 border-[#C5A059]/70 rounded-3xl shadow-[0_0_30px_rgba(197,160,89,0.3)] p-8 md:p-12 max-md:p-6 flex flex-col items-center">
             {/* Основной блок: аватарка слева, данные справа */}
             <div className="flex flex-col md:flex-row items-center md:items-start gap-8 w-full">
               {/* Левая часть: аватарка */}
@@ -160,7 +258,7 @@ const Profile = () => {
                     onChange={handleFileChange}
                     className="hidden"
                   />
-                  <div className="relative w-36 h-36 md:w-48 md:h-48 max-md:w-32 max-md:h-32 rounded-full border-2 border-[#C5A059] overflow-hidden bg-[#1A1A1A]">
+                  <div className="relative 2xl:w-[12rem] 2xl:h-[12rem] lg:w-[10rem] lg:h-[10rem] md:w-48 md:h-48 max-md:w-32 max-md:h-32 rounded-full border-2 border-[#C5A059] overflow-hidden bg-[#1A1A1A]">
                     {avatarSrc ? (
                       <img src={avatarSrc} alt="avatar" className="w-full h-full object-cover" />
                     ) : (
@@ -187,7 +285,7 @@ const Profile = () => {
                         type="text"
                         value={editFirstName}
                         onChange={(e) => setEditFirstName(e.target.value)}
-                        className="w-full max-w-xs px-3 py-2 bg-[#1A1A1A] border border-[#C5A059]/30 rounded-xl text-gray-300 text-2xl md:text-3xl max-md:text-xl font-sf text-center"
+                        className="w-full max-w-xs px-3 py-2 bg-[#1A1A1A] border border-[#C5A059]/30 rounded-xl text-gray-300 2xl:text-2xl lg:text-lg lg:py-0 md:text-3xl max-md:text-xl font-sf text-center"
                         autoFocus
                       />
                       <button
@@ -202,7 +300,7 @@ const Profile = () => {
                     </>
                   ) : (
                     <>
-                      <h2 className="text-[#C5A059] font-sf text-4xl md:text-4xl max-md:text-3xl drop-shadow-xl shadow-[#C5A059]/100">
+                      <h2 className="text-[#C5A059] font-sf 2xl:text-4xl lg:text-3xl md:text-4xl max-md:text-3xl drop-shadow-xl shadow-[#C5A059]/100">
                         {editFirstName || 'Имя не указано'}
                       </h2>
                       <button
@@ -210,7 +308,7 @@ const Profile = () => {
                         className="text-[#C5A059]/70 hover:text-[#C5A059] transition"
                         title="Редактировать имя"
                       >
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <svg className='2xl:w-22 2xl:h-22 lg:w-[1.3rem] lg:h-[1.3rem]' viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
                         </svg>
                       </button>
@@ -226,7 +324,7 @@ const Profile = () => {
                         type="text"
                         value={editUsername}
                         onChange={(e) => setEditUsername(e.target.value.replace(/[^a-zA-Z0-9]/g, ''))}
-                        className="w-full max-w-xs px-3 py-2 bg-[#1A1A1A] border border-[#C5A059]/30 rounded-xl text-gray-400 text-lg md:text-xl max-md:text-base font-sf text-center"
+                        className="w-full max-w-xs px-3 py-2 bg-[#1A1A1A] border border-[#C5A059]/30 rounded-xl text-gray-400 2xl:text-2xl lg:text-lg lg:py-0 md:text-xl max-md:text-base font-sf text-center"
                         autoFocus
                       />
                       <button
@@ -241,13 +339,13 @@ const Profile = () => {
                     </>
                   ) : (
                     <>
-                      <p className="text-gray-400 font-sf text-lg md:text-xl max-md:text-base">@{editUsername}</p>
+                      <p className="text-gray-400 font-sf 2xl:text-2xl lg:text-lg md:text-xl max-md:text-base">@{editUsername}</p>
                       <button
                         onClick={() => setEditingUsername(true)}
                         className="text-[#C5A059]/70 hover:text-[#C5A059] transition"
                         title="Редактировать юзернейм"
                       >
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <svg className='2xl:w-22 2xl:h-22 lg:w-[1.3rem] lg:h-[1.3rem]' viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                           <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
                         </svg>
                       </button>
@@ -259,7 +357,7 @@ const Profile = () => {
                 <button
                   onClick={handleSave}
                   disabled={saving}
-                  className={`px-[15rem] py-1 max-md:px-[5rem] max-md:py-0 max-md:text-[1rem] bg-[#8B1E1E] text-[#C5A059] rounded-full font-sf font-semibold text-lg hover:bg-[#C5A059] hover:text-[#8B1E1E] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed`}
+                  className={`2xl:px-[15rem] lg:px-[12rem] py-1 max-md:px-[5rem] max-md:py-0 max-md:text-[1rem] bg-[#8B1E1E] text-[#C5A059] rounded-full font-sf font-semibold 2xl:text-lg hover:bg-[#C5A059] hover:text-[#8B1E1E] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed`}
                 >
                   {saving ? 'Сохранение...' : 'Сохранить'}
                 </button>
@@ -285,6 +383,65 @@ const Profile = () => {
           </div>
         </div>
       </section>
+
+      {/* Модальное окно с деталями заказа + анимация */}
+      <AnimatePresence>
+        {showOrderModal && lastOrder && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowOrderModal(false)}
+          >
+            <motion.div
+              className="bg-[#1A1A1A] border border-[#C5A059]/40 rounded-2xl p-6 w-full max-w-md"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-[#C5A059] font-gv lg:text-3xl text-2xl">Детали заказа №{lastOrder.id}</h2>
+                <button
+                  onClick={() => setShowOrderModal(false)}
+                  className="text-gray-400 hover:text-white text-xl"
+                >
+                  ✕
+                </button>
+              </div>
+              <p className="text-gray-400 lg:text-lg text-sm mb-1">
+                Адрес: {lastOrder.address}
+              </p>
+              <ul className="text-gray-300 lg:text-lg text-sm list-disc list-inside mb-5">
+                {lastOrder.items?.map((item, idx) => (
+                  <li key={idx}>
+                    <Link
+                      to={`/product/${item.product?.id || item.product}`}
+                      className="text-[#C5A059] hover:underline"
+                      onClick={() => setShowOrderModal(false)}
+                    >
+                      {item.product_name || item.product?.name || 'Товар'}
+                    </Link>
+                    {' '}– {item.quantity} шт. ({item.size})
+                  </li>
+                ))}
+              </ul>
+              <button
+                onClick={() => setShowOrderModal(false)}
+                className="w-full bg-[#8B1E1E] text-[#f0d29a] rounded-full lg:py-1 py-[1px] font-sf hover:bg-[#C5A059] hover:text-[#8B1E1E] transition"
+              >
+                Закрыть
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   )
 }

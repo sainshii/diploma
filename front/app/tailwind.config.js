@@ -8,6 +8,7 @@ export default {
         'gv': ['"Great Vibes"', 'cursive'],
         'kreadon': ['Kreadon', 'sans-serif'],
         'playfair': ['PlayFair'],
+        'younglove': ['Young Love', 'cursive'],
       },
     },
   },
