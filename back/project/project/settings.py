@@ -73,13 +73,13 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     '.onrender.com',
-    'project.onrender.com',
+    'https://bauta-backend.onrender.com',
 ]
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:8000',
-    'https://project.vercel.app',
+    'https://bauta.vercel.app',
 ]
 
 ROOT_URLCONF = 'project.urls'
