@@ -25,7 +25,13 @@ class ProductAdmin(admin.ModelAdmin):
             if uploaded_file:
                 url = upload_to_cloudinary(uploaded_file)
                 if url:
-                    obj.image = url   # сохраняем полный URL
+                    obj.image = url
+                else:
+                    # Если загрузка в Cloudinary не удалась – не ломаем сохранение, просто очищаем поле
+                    obj.image = None
+            else:
+                # Файл был удалён (галочка "очистить") – поле остаётся пустым
+                obj.image = None
         super().save_model(request, obj, form, change)
 
 @admin.register(Comment)
