@@ -1,6 +1,8 @@
 # utils.py
 from django.utils import timezone
 from .models import Promotion
+import cloudinary.uploader
+from django.conf import settings
 
 def get_discounted_price(product, original_price):
     now = timezone.now()
@@ -35,3 +37,19 @@ def get_discounted_price(product, original_price):
             best_price = max(discounted, 0)
 
     return best_price
+
+
+def upload_to_cloudinary(file):
+    """Загружает файл в Cloudinary, возвращает полный URL."""
+    try:
+        response = cloudinary.uploader.upload(
+            file,
+            folder="products",
+            public_id=file.name.rsplit('.', 1)[0],   # имя без расширения
+            overwrite=True,
+            resource_type="image"
+        )
+        return response['secure_url']
+    except Exception as e:
+        print(f"Ошибка загрузки в Cloudinary: {e}")
+        return None

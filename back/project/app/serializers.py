@@ -95,10 +95,7 @@ class ProductListSerializer(serializers.ModelSerializer):
 
     def get_image(self, obj):
         if obj.image:
-            cloud_name = settings.CLOUDINARY_STORAGE['CLOUD_NAME']
-            image_path = str(obj.image)
-            # Не добавляем папку products, т.к. Cloudinary отдаёт файлы в корень
-            return f"https://res.cloudinary.com/{cloud_name}/image/upload/{image_path}"
+            return str(obj.image)
         return None
 
 
@@ -122,10 +119,7 @@ class ProductDetailSerializer(serializers.ModelSerializer):
 
     def get_image(self, obj):
         if obj.image:
-            cloud_name = settings.CLOUDINARY_STORAGE['CLOUD_NAME']
-            image_path = str(obj.image)
-            # Не добавляем папку products, т.к. Cloudinary отдаёт файлы в корень
-            return f"https://res.cloudinary.com/{cloud_name}/image/upload/{image_path}"
+            return str(obj.image)
         return None
 
 

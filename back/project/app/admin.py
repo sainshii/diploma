@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Category, Product, Comment, Size, User, Order, OrderItem, ContactMessage, Promotion
+from .utils import upload_to_cloudinary
 
 admin.site.register(User)
 
@@ -17,6 +18,15 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'price', 'category', 'is_popular', 'stock')
     list_filter = ('category', 'is_popular')
     fields = ('name', 'description', 'price', 'image', 'category', 'sizes', 'stock', 'is_popular', 'rating')
+
+    def save_model(self, request, obj, form, change):
+        if 'image' in form.changed_data:
+            uploaded_file = form.cleaned_data.get('image')
+            if uploaded_file:
+                url = upload_to_cloudinary(uploaded_file)
+                if url:
+                    obj.image = url   # сохраняем полный URL
+        super().save_model(request, obj, form, change)
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
