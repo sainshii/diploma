@@ -97,10 +97,8 @@ class ProductListSerializer(serializers.ModelSerializer):
         if obj.image:
             cloud_name = settings.CLOUDINARY_STORAGE['CLOUD_NAME']
             image_path = str(obj.image)
-            # Если путь уже начинается с 'products/', не добавляем папку повторно
-            if image_path.startswith('products/'):
-                return f"https://res.cloudinary.com/{cloud_name}/image/upload/{image_path}"
-            return f"https://res.cloudinary.com/{cloud_name}/image/upload/products/{image_path}"
+            # Не добавляем папку products, т.к. Cloudinary отдаёт файлы в корень
+            return f"https://res.cloudinary.com/{cloud_name}/image/upload/{image_path}"
         return None
 
 
@@ -126,10 +124,8 @@ class ProductDetailSerializer(serializers.ModelSerializer):
         if obj.image:
             cloud_name = settings.CLOUDINARY_STORAGE['CLOUD_NAME']
             image_path = str(obj.image)
-            # Если путь уже начинается с 'products/', не добавляем папку повторно
-            if image_path.startswith('products/'):
-                return f"https://res.cloudinary.com/{cloud_name}/image/upload/{image_path}"
-            return f"https://res.cloudinary.com/{cloud_name}/image/upload/products/{image_path}"
+            # Не добавляем папку products, т.к. Cloudinary отдаёт файлы в корень
+            return f"https://res.cloudinary.com/{cloud_name}/image/upload/{image_path}"
         return None
 
 
