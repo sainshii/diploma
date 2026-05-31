@@ -10,6 +10,7 @@ from .models import *
 from django.http import HttpResponse
 from django.urls import reverse
 from django.utils import timezone
+from django.db.models import F, Q
 
 class UserListView(generics.ListCreateAPIView):
     queryset = User.objects.all()
@@ -88,16 +89,12 @@ class CategoryListView(generics.ListAPIView):
     serializer_class = CategorySerializer
     permission_classes = []
 
-# views.py (в классе ProductListView)
-from rest_framework.response import Response
-from django.db.models import F, Q
-
 class ProductListView(generics.ListAPIView):
     serializer_class = ProductListSerializer
     permission_classes = []
 
     def get_queryset(self):
-        queryset = Product.objects.all()
+        queryset = Product.objects.all().order_by('id')
         category_slug = self.request.query_params.get('category')
         popular = self.request.query_params.get('popular')
         discounted = self.request.query_params.get('discounted')
