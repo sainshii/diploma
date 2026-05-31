@@ -171,13 +171,13 @@ STATICFILES_DIRS = [
 ]
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
-    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+    'CLOUD_NAME': 'difsrxhrl',
+    'API_KEY': '636383223549436',
+    'API_SECRET': 'F8qIDLROYtg1yVVTDiRGRhO1ONg',
 }
 
 cloudinary.config(
-    cloud_name=CLOUDINARY_STORAGE['CLOUD_NAME'],
-    api_key=CLOUDINARY_STORAGE['API_KEY'],
-    api_secret=CLOUDINARY_STORAGE['API_SECRET']
+    cloud_name='difsrxhrl',
+    api_key='636383223549436',
+    api_secret='F8qIDLROYtg1yVVTDiRGRhO1ONg'
 )
