@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Category, Product, Comment, Size, User, Order, OrderItem, ContactMessage, Promotion
 from .utils import upload_to_cloudinary
+from django import forms
 
 admin.site.register(User)
 
@@ -13,25 +14,34 @@ class CategoryAdmin(admin.ModelAdmin):
 class SizeAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
+
+class ProductAdminForm(forms.ModelForm):
+    upload_image = forms.FileField(required=False, label='Загрузить картинку')
+
+    class Meta:
+        model = Product
+        fields = '__all__'
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
+    form = ProductAdminForm
     list_display = ('name', 'price', 'category', 'is_popular', 'stock')
     list_filter = ('category', 'is_popular')
-    fields = ('name', 'description', 'price', 'image', 'category', 'sizes', 'stock', 'is_popular', 'rating')
+    # Убираем стандартное поле image, добавляем кастомное
+    fields = ('name', 'description', 'price', 'upload_image', 'category', 'sizes', 'stock', 'is_popular', 'rating')
 
     def save_model(self, request, obj, form, change):
-        if 'image' in form.changed_data:
-            uploaded_file = form.cleaned_data.get('image')
-            if uploaded_file:
-                url = upload_to_cloudinary(uploaded_file)
-                if url:
-                    obj.image = url
-                else:
-                    # Если загрузка в Cloudinary не удалась – не ломаем сохранение, просто очищаем поле
-                    obj.image = None
+        # Если загрузили новый файл – отправляем в Cloudinary
+        uploaded_file = form.cleaned_data.get('upload_image')
+        if uploaded_file:
+            url = upload_to_cloudinary(uploaded_file)
+            if url:
+                obj.image = url
             else:
-                # Файл был удалён (галочка "очистить") – поле остаётся пустым
-                obj.image = None
+                # Если загрузка не удалась – оставляем прежнее значение или очищаем
+                if not change:  # при создании нового товара
+                    obj.image = None
+        # Если файл не загружали и это существующий товар – оставляем старую картинку
         super().save_model(request, obj, form, change)
 
 @admin.register(Comment)
