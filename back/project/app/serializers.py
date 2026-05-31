@@ -96,7 +96,11 @@ class ProductListSerializer(serializers.ModelSerializer):
     def get_image(self, obj):
         if obj.image:
             cloud_name = settings.CLOUDINARY_STORAGE['CLOUD_NAME']
-            return f"https://res.cloudinary.com/{cloud_name}/image/upload/products/{obj.image}"
+            image_path = str(obj.image)
+            # Если путь уже начинается с 'products/', не добавляем папку повторно
+            if image_path.startswith('products/'):
+                return f"https://res.cloudinary.com/{cloud_name}/image/upload/{image_path}"
+            return f"https://res.cloudinary.com/{cloud_name}/image/upload/products/{image_path}"
         return None
 
 
@@ -121,7 +125,11 @@ class ProductDetailSerializer(serializers.ModelSerializer):
     def get_image(self, obj):
         if obj.image:
             cloud_name = settings.CLOUDINARY_STORAGE['CLOUD_NAME']
-            return f"https://res.cloudinary.com/{cloud_name}/image/upload/products/{obj.image}"
+            image_path = str(obj.image)
+            # Если путь уже начинается с 'products/', не добавляем папку повторно
+            if image_path.startswith('products/'):
+                return f"https://res.cloudinary.com/{cloud_name}/image/upload/{image_path}"
+            return f"https://res.cloudinary.com/{cloud_name}/image/upload/products/{image_path}"
         return None
 
 
