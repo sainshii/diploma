@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import *
 import re
 from .utils import get_discounted_price
+from django.conf import settings
 
 class UserSerializer(serializers.ModelSerializer):
     avatar_url = serializers.SerializerMethodField(read_only=True)
@@ -94,18 +95,8 @@ class ProductListSerializer(serializers.ModelSerializer):
 
     def get_image(self, obj):
         if obj.image:
-            request = self.context.get('request')
-            if request:
-                return request.build_absolute_uri(obj.image.url)
-            return obj.image.url
-        return None
-
-    def get_image(self, obj):
-        if obj.image:
-            request = self.context.get('request')
-            if request:
-                return request.build_absolute_uri(obj.image.url)
-            return obj.image.url
+            cloud_name = settings.CLOUDINARY_STORAGE['CLOUD_NAME']
+            return f"https://res.cloudinary.com/{cloud_name}/image/upload/{obj.image}"
         return None
 
 
@@ -114,6 +105,7 @@ class ProductDetailSerializer(serializers.ModelSerializer):
     sizes = SizeSerializer(many=True, read_only=True)
     comments = serializers.SerializerMethodField()
     discounted_price = serializers.SerializerMethodField()
+    image = serializers.SerializerMethodField()
 
     class Meta:
         model = Product
@@ -125,6 +117,12 @@ class ProductDetailSerializer(serializers.ModelSerializer):
     def get_comments(self, obj):
         comments = obj.comments.all().order_by('-created_at')
         return CommentSerializer(comments, many=True, context=self.context).data
+
+    def get_image(self, obj):
+        if obj.image:
+            cloud_name = settings.CLOUDINARY_STORAGE['CLOUD_NAME']
+            return f"https://res.cloudinary.com/{cloud_name}/image/upload/{obj.image}"
+        return None
 
 
 class UserPublicSerializer(serializers.ModelSerializer):
