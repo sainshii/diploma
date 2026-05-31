@@ -1,7 +1,6 @@
 # Django
 back/venv/
 back/**/__pycache__/
-back/**/migrations/
 back/staticfiles/
 back/media/
 back/.env
