@@ -9,13 +9,15 @@ CLOUD_NAME = 'difsrxhrl'
 
 for product in Product.objects.all():
     if product.image:
-        # Извлекаем только имя файла, игнорируя возможную папку
-        filename = product.image.split('/')[-1]
+        # Получаем текущий путь как строку
+        image_path = str(product.image)
+        # Извлекаем имя файла (всё после последнего слеша)
+        filename = image_path.split('/')[-1]
         # Формируем правильный относительный путь с папкой
         new_image_path = f"products/{filename}"
         # Строим полный URL
         full_url = f"https://res.cloudinary.com/{CLOUD_NAME}/image/upload/{new_image_path}"
-        if product.image != full_url:
+        if image_path != full_url:
             product.image = full_url
             product.save()
             print(f"Обновлён {product.name}: {full_url}")
