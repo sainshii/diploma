@@ -282,11 +282,11 @@ const Footer = () => {
           lg:bottom-[-2rem] lg:py-[0.3rem] lg:text-[1rem]
           2xl:bottom-[-2.8rem] 2xl:py-[0.5rem] 2xl:text-[1.2rem]'
         >
-          © 2026 Баута. Все права защищены
+          © 2026 Баута. Все права защищены. Сайт является учебным.
         </div>
         {/* Копирайт: мобильный (без изменений) */}
         <div className='md:hidden bg-[#0A0A0A] text-center text-[#C5A059] font-sf text-[0.6rem] py-2 w-screen relative left-1/2 -translate-x-1/2'>
-          © 2026 Баута. Все права защищены
+          © 2026 Баута. Все права защищены. Сайт является учебным.
         </div>
       </footer>
     </div>
