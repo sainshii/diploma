@@ -76,7 +76,7 @@ const ShopPage = () => {
     fetchProducts('all')
   }, [])
 
-  const ProductCard = ({ product }) => {
+  const ProductCard = ({ product, largeImage = false }) => {
     const defaultSize = product.sizes?.[0]?.name || 'универсальный'
     const cartItem = getCartItem(product.id, defaultSize)
     const isInCart = !!cartItem
@@ -106,12 +106,13 @@ const ShopPage = () => {
           src={product.image}
           alt={product.name}
           className={`w-full object-cover transition-transform duration-500 group-hover:scale-110
-            h-48 max-md:h-40 lg:h-40 2xl:h-48`}
+          ${largeImage ? 'h-56 lg:h-56 2xl:h-64' : 'h-48 max-md:h-40 lg:h-40 2xl:h-48'}
+        `}
         />
         <div className="p-4 max-md:p-3 lg:p-3 2xl:p-4">
           <h3
             className="text-[#C5A059] font-gv text-[1.7rem] max-md:text-xl overflow-hidden whitespace-nowrap pt-[1rem]
-            lg:text-2xl
+            lg:text-3xl
             2xl:text-[1.9rem]"
             style={{ maskImage: 'linear-gradient(to right, black 80%, transparent 100%)' }}
           >
@@ -402,7 +403,9 @@ const ShopPage = () => {
           {/* Сетка товаров */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-md:gap-4 lg:grid-cols-3 lg:gap-4 2xl:grid-cols-4 2xl:gap-6">
             {filteredProducts.length > 0 ? (
-              filteredProducts.map(product => <ProductCard key={product.id} product={product} />)
+              filteredProducts.map(product => (
+                <ProductCard key={product.id} product={product} largeImage />
+              ))
             ) : (
               <p className="text-gray-500 col-span-full text-center">Товары не найдены</p>
             )}
