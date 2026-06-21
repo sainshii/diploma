@@ -1,4 +1,3 @@
-// MasksPage.jsx
 import React, { Suspense, lazy } from 'react';
 import { useIsMobile } from '../hooks/useIsMobile';
 

@@ -1,7 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { useIsMobile } from '../hooks/useIsMobile';
 
-// Ленивая загрузка компонентов (чтобы мобильный код не грузился на ПК и наоборот)
 const HomePagePC = lazy(() => import('./HomePagePC'));
 const HomePagePhone = lazy(() => import('./HomePagePhone'));
 

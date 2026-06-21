@@ -1,4 +1,3 @@
-// HistoryPagePhone.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import { useScrollOnMount } from '../hooks/useScrollOnMount';
 import { Helmet } from 'react-helmet-async';
@@ -33,13 +32,11 @@ const MaskSection = () => {
         className="bg-white/5 backdrop-blur-md border border-[#D5B77C]/30 rounded-xl flex flex-col items-center active:bg-white/10 transition cursor-pointer"
         onClick={() => setExpandedMask(isOpen ? null : index)}
       >
-        {/* Верхняя часть с маской и годом */}
         <div className="flex flex-col items-center pt-4 pb-4">
           <img src={img} alt={alt} className="w-24 h-auto opacity-60 invert" />
           <span className="text-xl font-kreadon text-[#D5B77C] mt-2">{year}</span>
         </div>
 
-        {/* Анимированный контейнер текста */}
         <div
           className={`overflow-hidden transition-all duration-500 ease-in-out ${
             isOpen ? 'opacity-100' : 'opacity-0'
@@ -158,7 +155,7 @@ const HistoryPagePhone = () => {
 	      <Header />
       </Suspense>
 
-      {/* ПЕРВЫЙ БЛОК */}
+      {/* Первый блок */}
       <section className="px-4 pt-4">
         <div className="grid grid-cols-1 grid-rows-1">
           <img
@@ -174,7 +171,7 @@ const HistoryPagePhone = () => {
         </div>
       </section>
 
-      {/* ВТОРОЙ БЛОК */}
+      {/* Второй блок */}
       <section className="mt-8 px-4">
         <div className="text-center mt-4">
           <h2 className="font-gv text-transparent bg-clip-text bg-gradient-to-r from-[#9C865B] via-[#D5B77C] to-[#9C865B] text-xl">
@@ -199,7 +196,7 @@ const HistoryPagePhone = () => {
         </div>
       </section>
 
-      {/* ТРЕТИЙ БЛОК */}
+      {/* Третий блок */}
       <section className="mt-8 px-4">
         <div className="grid grid-cols-1 grid-rows-1">
           <img
@@ -238,7 +235,7 @@ const HistoryPagePhone = () => {
         </div>
       </section>
 
-      {/* ЧЕТВЁРТЫЙ БЛОК: ПЛАВНАЯ АНИМАЦИЯ ТЕКСТА */}
+      {/* Четвертый блок */}
       <section className="mt-8 px-4 mb-8">
         <h2 className="font-gv text-transparent bg-clip-text bg-gradient-to-r from-[#9C865B] via-[#D5B77C] to-[#cfb98d] text-3xl text-center my-4">
           Возрождение спустя 200 лет

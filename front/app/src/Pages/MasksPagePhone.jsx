@@ -1,4 +1,3 @@
-// MasksPagePhone.jsx
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
@@ -66,7 +65,7 @@ const MasksPagePhone = () => {
         </div>
       </section>
 
-      {/* Второй блок: goldenmask + текст (вертикально) */}
+      {/* Второй блок */}
       <section className="px-6 ">
         <div className="flex flex-col items-center">
           <p className="mt-6 text-justify text-sm font-kreadon text-transparent bg-clip-text bg-gradient-to-r from-[#796a4f] via-[#DBBE84] to-[#796a4f]">
@@ -82,7 +81,6 @@ const MasksPagePhone = () => {
         </h2>
 
         <div className="grid grid-cols-1 gap-6 mt-4 font-kreadon">
-          {/* Три столбца становятся вертикальными карточками */}
           <div className="text-center">
             <span className="text-6xl font-gv text-white/25">1</span>
             <h3 className="text-[#C5A059] font-bold text-lg mt-[-0.2rem]">Анонимность и свобода</h3>
@@ -107,7 +105,7 @@ const MasksPagePhone = () => {
         </div>
       </section>
 
-      {/* Третий блок: карусель масок (упрощённая) */}
+      {/* Третий блок */}
       <section className="mt-10 px-4">
         <img src={rombs} alt="rombs" className="w-full mx-auto" />
         <h2 className="text-center text-4xl text-transparent bg-clip-text bg-gradient-to-r from-[#999999] via-[#c9c9c9] to-[#999999] font-gv drop-shadow-lg mt-8">
@@ -144,7 +142,6 @@ const MasksPagePhone = () => {
           </button>
         </div>
 
-        {/* Название и описание */}
         <AnimatePresence mode="wait">
           <motion.div
             key={current}

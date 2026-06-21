@@ -85,7 +85,7 @@ const HistoryPagePC = () => {
         <title>История Венецианского карнавала – от Средневековья до наших дней</title>
         <meta name="description" content="Узнайте, как зародился карнавал в Венеции, почему маски стали символом свободы и как праздник возродился спустя 200 лет. Интересные факты и традиции." />
       </Helmet>
-      {/* ======== ПЕРВЫЙ БЛОК ======== */}
+      {/* Главная */}
       <section
         className={`relative w-full mx-auto
           lg:max-w-[1400px]
@@ -128,7 +128,7 @@ const HistoryPagePC = () => {
         </div>
       </section>
 
-      {/* ======== ВТОРОЙ БЛОК ======== */}
+      {/* Второй блок */}
       <section className="relative w-full mt-[1rem] overflow-hidden">
         <img
           src={historysec2}
@@ -225,7 +225,7 @@ const HistoryPagePC = () => {
         </div>
       </section>
 
-      {/* ======== ТРЕТИЙ БЛОК ======== */}
+      {/* Третий блок */}
       <section className="relative w-full 
       lg:mt-[-2rem]
       2xl:mt-[-1rem]">
@@ -288,7 +288,7 @@ const HistoryPagePC = () => {
         </div>
       </section>
 
-      {/* ======== ЧЕТВЁРТЫЙ БЛОК (маски + текст) ======== */}
+      {/* Четвертый блок */}
       <section
         className={`relative w-full rounded-xl
           lg:-mt-[2rem] lg:h-[720px]
@@ -322,7 +322,6 @@ const HistoryPagePC = () => {
               2xl:gap-[8rem] 2xl:mt-[-1rem]
             `}
           >
-            {/* ----- МАСКА 1: 1797 ----- */}
             <div
               className={`group relative flex flex-col items-center justify-center cursor-pointer transition-all duration-500 hover:scale-105
                 lg:w-48 lg:h-60 lg:p-6
@@ -368,7 +367,6 @@ const HistoryPagePC = () => {
               </div>
             </div>
 
-            {/* ----- МАСКА 2: 1979 ----- */}
             <div
               className={`group relative flex flex-col items-center justify-center cursor-pointer transition-all duration-500 hover:scale-105
                 lg:w-48 lg:h-60 lg:p-6
@@ -414,7 +412,6 @@ const HistoryPagePC = () => {
               </div>
             </div>
 
-            {/* ----- МАСКА 3: Сегодня ----- */}
             <div
               className={`group relative flex flex-col items-center justify-center cursor-pointer transition-all duration-500 hover:scale-105
                 lg:w-48 lg:h-60 lg:p-6

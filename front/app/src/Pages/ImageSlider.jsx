@@ -46,7 +46,6 @@ const ImageSlider = () => {
 
   return (
     <div className="relative w-full max-w-[1300px] mx-auto flex items-center justify-center px-14 max-md:px-2">
-      {/* Контейнер с картинкой — добавлен group для работы group-hover */}
       <div
         className={`group relative flex items-center justify-center overflow-hidden shadow-2xl border-[#8B1E1E]
           border-[0.1rem]
@@ -67,7 +66,6 @@ const ImageSlider = () => {
             exit="exit"
             transition={{ duration: 0.5, ease: 'easeInOut' }}
           >
-            {/* Обёртка, которая плавно увеличивает картинку при наведении */}
             <div className="w-full h-full overflow-hidden transition-transform duration-500 group-hover:scale-110">
               <img
                 src={slides[currentIndex].img}
@@ -78,7 +76,7 @@ const ImageSlider = () => {
           </motion.div>
         </AnimatePresence>
 
-        {/* Градиентное затемнение снизу */}
+        {/* Градиент */}
         <motion.div
           className="absolute bottom-0 left-0 w-full h-2/3 bg-gradient-to-t from-[#8B1E1E] to-transparent pointer-events-none"
           initial={{ opacity: 0 }}
@@ -153,7 +151,7 @@ const ImageSlider = () => {
         </svg>
       </button>
 
-      {/* ТОЧКИ – плавное переключение */}
+      {/* Точки */}
       <div className="absolute bottom-[-3rem] left-1/2 -translate-x-1/2 flex gap-1 lg:gap-3 z-20 max-md:bottom-[-1rem]">
         {slides.map((_, index) => (
           <button

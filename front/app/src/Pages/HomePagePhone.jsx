@@ -109,7 +109,7 @@ const HomePagePhone = () => {
         </div>
       </section>
 
-      {/* Третий блок — магазин */}
+      {/* Третий блок */}
       <section className="mt-8 mb-8">
         <div className="relative">
           <img src={paper} alt="paper" className="w-full rounded-xl" />
@@ -142,7 +142,6 @@ const HomePagePhone = () => {
         </div>
       </section>
 
-      {/* ===== ФОРМА ОБРАТНОЙ СВЯЗИ (мобильная версия) ===== */}
       <section className="w-full bg-[#0A0A0A] pt-5 pb-8 px-4">
         <div className="max-w-md mx-auto">
           <h2 className="text-[#C5A059] font-gv text-3xl text-center mb-2">

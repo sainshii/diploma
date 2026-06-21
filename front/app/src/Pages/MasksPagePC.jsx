@@ -51,7 +51,7 @@ const MasksPagePC = () => {
         <meta name="description" content="Баута, Венецианская дама, Кот, Вольто и другие легендарные маски. Значение, история и костюмы для каждого образа. Выберите свою роль для карнавала!" />
       </Helmet>
 
-      {/* главный блок */}
+      {/* Главный блок */}
       <section className={`relative w-full mx-auto z-10
         lg:max-w-[1400px]
         2xl:max-w-[1770px]
@@ -88,7 +88,7 @@ const MasksPagePC = () => {
         </div>
       </section>
 
-      {/* второй блок: goldenmask слева + текст справа */}
+      {/* Второй блок */}
       <section className={`relative w-full bg-[#0A0A0A] mx-auto z-0
         lg:max-w-[1200px] lg:-mt-8
         2xl:max-w-[1770px] 2xl:-mt-12
@@ -127,7 +127,6 @@ const MasksPagePC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 
             lg:gap-[5rem]
             2xl:gap-6">
-              {/* три столбца */}
               <div className="relative hover:scale-110 transition duration-500">
                 <div className="relative z-10 font-kreadon text-center">
                   <span className={`absolute inset-0 text-center font-gv text-[#FFFFFF]/10 w-full
@@ -199,7 +198,7 @@ const MasksPagePC = () => {
         </div>
       </section>
 
-      {/* ТРЕТИЙ БЛОК – КАРУСЕЛЬ МАСОК */}
+      {/* Третий блок */}
       <section className={`bg-[#0A0A0A] w-full relative mx-auto
         lg:max-w-[1200px]
         2xl:max-w-[1770px]
@@ -237,9 +236,9 @@ const MasksPagePC = () => {
             </svg>
           </button>
 
-          {/* Контейнер с тремя анимированными позициями */}
+          {/* Три маски */}
           <div className="flex items-center justify-center gap-2 overflow-hidden relative">
-            {/* Левая позиция */}
+            {/* Левая */}
             <AnimatePresence mode="popLayout">
               <motion.div
                 key={`left-${masks[prevIndex].id}`}
@@ -261,7 +260,7 @@ const MasksPagePC = () => {
               </motion.div>
             </AnimatePresence>
 
-            {/* Центральная позиция */}
+            {/* Центральная */}
             <AnimatePresence mode="popLayout">
               <motion.div
                 key={`center-${masks[current].id}`}
@@ -282,7 +281,7 @@ const MasksPagePC = () => {
               </motion.div>
             </AnimatePresence>
 
-            {/* Правая позиция */}
+            {/* Правая */}
             <AnimatePresence mode="popLayout">
               <motion.div
                 key={`right-${masks[nextIndex].id}`}

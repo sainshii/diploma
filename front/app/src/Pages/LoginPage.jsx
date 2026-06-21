@@ -22,7 +22,6 @@ const LoginPage = () => {
     password: '',
   })
 
-  // Сброс пароля
   const [resetModalOpen, setResetModalOpen] = useState(false)
   const [resetEmail, setResetEmail] = useState('')
   const [resetPassword, setResetPassword] = useState('')
@@ -93,11 +92,9 @@ const LoginPage = () => {
         return
       }
       setResetSuccess('Пароль успешно изменён. Теперь вы можете войти.')
-      // Очистить поля
       setResetEmail('')
       setResetPassword('')
       setResetConfirm('')
-      // Закрыть модальное окно через 2 секунды
       setTimeout(() => {
         setResetModalOpen(false)
         setResetSuccess('')
@@ -207,7 +204,6 @@ const LoginPage = () => {
               </button>
             </motion.form>
 
-            {/* Кнопка "Забыли пароль?" */}
             <div className="mt-5 text-center">
               <button
                 onClick={() => setResetModalOpen(true)}
@@ -242,7 +238,6 @@ const LoginPage = () => {
         <Footer />
       </Suspense>
 
-      {/* Модальное окно сброса пароля */}
       <AnimatePresence>
         {resetModalOpen && (
           <motion.div

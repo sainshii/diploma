@@ -245,7 +245,7 @@ const ShopPage = () => {
         </div>
 
         <div className="pt-[12rem] max-md:pt-[5rem] px-4 lg:pt-[10rem] 2xl:pt-[12rem]">
-          {/* Раздел "Скидки" – показывается только при наличии товаров */}
+          {/* Скидки */}
           {discountedProducts.length > 0 && (
             <section className="mb-16 max-md:mb-10 lg:mb-12 2xl:mb-16">
               <h1 className="text-[#C5A059] font-gv mb-8 max-md:mb-2 text-center drop-shadow-lg text-5xl md:text-7xl max-md:text-4xl lg:text-6xl lg:mb-6 2xl:text-7xl 2xl:mb-8">
@@ -264,7 +264,7 @@ const ShopPage = () => {
             </section>
           )}
 
-          {/* Популярные товары с центрированием */}
+          {/* Популярные товары */}
           <section className="mb-16 max-md:mb-10 lg:mb-12 2xl:mb-16">
             <h1 className="text-[#C5A059] font-gv mb-8 max-md:mb-2 text-center drop-shadow-lg text-5xl md:text-7xl max-md:text-4xl lg:text-6xl lg:mb-6 2xl:text-7xl 2xl:mb-8">
               Популярные товары
@@ -285,7 +285,7 @@ const ShopPage = () => {
             </div>
           </section>
 
-          {/* Категории с плавным выдвижением подкатегорий */}
+          {/* Категории */}
           <div className="flex items-start gap-4 max-md:gap-2 mb-8 pb-2 overflow-x-auto lg:gap-3 2xl:gap-4">
             <button
               onClick={() => {
@@ -356,7 +356,7 @@ const ShopPage = () => {
             ))}
           </div>
 
-          {/* СОРТИРОВКА И ФИЛЬТР ПО РАЗМЕРАМ */}
+          {/* Сортировка */}
           <div className="flex flex-wrap items-center gap-4 mb-6">
             <div className="flex items-center gap-2">
               <span className="text-[#C5A059] font-sf text-sm">Сортировка:</span>

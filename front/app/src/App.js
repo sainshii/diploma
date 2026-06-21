@@ -3,6 +3,7 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
 import { CartProvider } from "./context/CartContext";
+import CookieConsent from './components/CookieConsent';
 
 const Home = lazy(() => import("./Pages/HomePage"));
 const HistoryPage = lazy(() => import("./Pages/HistoryPage"));
@@ -40,6 +41,7 @@ function App() {
                 <Route path='/profile' element={<Profile />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
+              <CookieConsent />
             </Suspense>
           </CartProvider>
         </HelmetProvider>

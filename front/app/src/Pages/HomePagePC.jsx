@@ -20,7 +20,6 @@ const HomePagePC = () => {
   useScrollOnMount();
   const navigate = useNavigate();
 
-  // ---- состояние формы обратной связи ----
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -55,7 +54,6 @@ const HomePagePC = () => {
     }
   };
 
-  // Общие классы для полей ввода
   const inputClasses = `w-full bg-[#1b1b1b] rounded-2xl pl-[1rem] border-b-2 border-[#C5A059]/40 text-white text-lg py-2 px-1 outline-none 
   focus:border-[#C5A059] transition-colors duration-300 placeholder-gray-500
     lg:text-base 
@@ -71,7 +69,7 @@ const HomePagePC = () => {
         <meta name="description" content="Карнавальные маски ручной работы, плащи, шляпы и аксессуары. Создайте неповторимый венецианский образ. Доставка по всей России." />
       </Helmet>
 
-      {/* главный блок */}
+      {/* Главный блок */}
       <section
         className={`
           relative w-full mx-auto
@@ -136,7 +134,7 @@ const HomePagePC = () => {
         </div>
       </section>
 
-      {/* второй блок */}
+      {/* Второй блок */}
       <section className="bg-[#0A0A0A] pb-[5rem]">
         <img
           src={rombs}
@@ -256,7 +254,7 @@ const HomePagePC = () => {
         </div>
       </section>
 
-      {/* третий блок */}
+      {/* Третий блок */}
       <section className="bg-[#0A0A0A]">
         <div className="relative w-full">
           <img src={paper} alt="bgpaper" className="w-full object-cover mx-auto rounded-xl" />
@@ -362,7 +360,6 @@ const HomePagePC = () => {
         </div>
       </section>
 
-      {/* ===== ФОРМА ОБРАТНОЙ СВЯЗИ ===== */}
       <section className="w-full bg-[#0A0A0A] pt-16 
       lg:pt-[6rem] 
       2xl:pt-[8rem]">

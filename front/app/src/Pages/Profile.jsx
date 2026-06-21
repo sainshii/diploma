@@ -35,20 +35,17 @@ const Profile = () => {
   const [user, setUser] = useState(null)
   const navigate = useNavigate()
 
-  // Поля для редактирования
   const [editFirstName, setEditFirstName] = useState('')
   const [editUsername, setEditUsername] = useState('')
   const [editingFirstName, setEditingFirstName] = useState(false)
   const [editingUsername, setEditingUsername] = useState(false)
 
-  // Аватарка
   const [selectedFile, setSelectedFile] = useState(null)
   const [previewUrl, setPreviewUrl] = useState(null)
   const [saving, setSaving] = useState(false)
   const [saveMessage, setSaveMessage] = useState('')
   const fileInputRef = useRef(null)
 
-  // Заказы (только последний активный)
   const [lastOrder, setLastOrder] = useState(null)
   const [showOrderModal, setShowOrderModal] = useState(false)
 
@@ -199,7 +196,7 @@ const Profile = () => {
         lg:pt-[10rem]
         2xl:pt-[12rem]">
 
-          {/* Плашка со статусом активного заказа */}
+          {/* Статус активного заказа */}
           {lastOrder && lastOrder.status !== 'picked_up' && (
             <div className="w-full max-w-5xl mb-6">
               <div className="border border-[#C5A059]/40 rounded-2xl p-4 flex items-center justify-between">
@@ -236,9 +233,8 @@ const Profile = () => {
           </h1>
 
           <div className="w-full 2xl:max-w-4xl lg:max-w-3xl bg-[#0A0A0A]/80 backdrop-blur-md border-2 border-[#C5A059]/70 rounded-3xl shadow-[0_0_30px_rgba(197,160,89,0.3)] p-8 md:p-12 max-md:p-6 flex flex-col items-center">
-            {/* Основной блок: аватарка слева, данные справа */}
             <div className="flex flex-col md:flex-row items-center md:items-start gap-8 w-full">
-              {/* Левая часть: аватарка */}
+              {/* Левая часть */}
               <div className="flex-shrink-0">
                 <div className="relative group cursor-pointer" onClick={() => fileInputRef.current.click()}>
                   <input
@@ -265,7 +261,7 @@ const Profile = () => {
                 </div>
               </div>
 
-              {/* Правая часть: имя, юзернейм, кнопка сохранить */}
+              {/* Правая часть */}
               <div className="flex flex-col items-center md:items-start flex-grow mt-3 max-md:-mt-6">
                 {/* Имя */}
                 <div className="flex items-center gap-1 min-h-[2rem] ml-[1rem] 2xl:gap-2">
@@ -361,7 +357,6 @@ const Profile = () => {
                   {saving ? 'Сохранение...' : 'Сохранить'}
                 </button>
 
-                {/* Сообщение о сохранении */}
                 {saveMessage && (
                   <p className={`text-sm mt-2 w-full text-center ${saveMessage.includes('сохранены') ? 'text-green-400' : 'text-red-400'}`}>
                     {saveMessage}
@@ -370,7 +365,6 @@ const Profile = () => {
               </div>
             </div>
 
-            {/* Кнопки навигации по центру */}
             <div className="flex flex-wrap justify-center gap-[2rem] mt-8 max-md:gap-4 max-md:mt-6">
               <Link to="/shop" className="px-[6rem] py-2 max-md:px-8 border-2 border-[#C5A059] text-[#C5A059] rounded-full font-sf font-semibold hover:bg-[#C5A059] hover:text-[#8B1E1E] transition-all duration-300 shadow-lg shadow-[#C5A059]/30">
                 Каталог
@@ -383,7 +377,6 @@ const Profile = () => {
         </div>
       </section>
 
-      {/* Модальное окно с деталями заказа + анимация */}
       <AnimatePresence>
         {showOrderModal && lastOrder && (
           <motion.div

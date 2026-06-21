@@ -22,10 +22,9 @@ const Footer = () => {
   return (
     <div>
       <footer className='relative w-full'>
-        {/* Фоновое изображение только для десктопа (без изменений) */}
         <img src={bg} alt='bg' className='hidden md:block w-full h-auto object-cover mx-auto rounded-xl' />
 
-        {/* ------ ДЕСКТОПНАЯ ВЕРСИЯ (адаптирована под ноутбук и ПК) ------ */}
+        {/* ПК версия */}
         <div className='hidden md:flex absolute justify-between items-start z-10
           lg:top-[7rem] lg:left-[3rem] lg:right-[3rem]
           2xl:top-[10rem] 2xl:left-[4rem] 2xl:right-[4rem]'
@@ -90,7 +89,6 @@ const Footer = () => {
                 lg:gap-1
                 2xl:gap-1'
               >
-                {/* email */}
                 <p className='flex items-center gap-2 font-sf text-[#cccccc]'>
                   <svg xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -107,7 +105,6 @@ const Footer = () => {
                   <span className='text-right'>bautavenicecarnival@mail.ru</span>
                 </p>
 
-                {/* телефон */}
                 <p className='flex items-center gap-2 font-sf text-[#cccccc]'>
                   <svg xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -123,7 +120,6 @@ const Footer = () => {
                   <span className='text-right'>+7 (221) 189-10-54</span>
                 </p>
 
-                {/* адрес */}
                 <p className='flex items-center gap-2 font-sf text-[#cccccc]'>
                   <svg xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -140,11 +136,9 @@ const Footer = () => {
                   <span className='text-right'>Владивосток, ул. Светланская 147</span>
                 </p>
 
-                {/* иконки соцсетей */}
                 <div className='flex items-center mt-2 gap-[20px]
                 lg:gap-[15px]
                 2xl:gap-[20px]'>
-                  {/* Max */}
                   <a
                     href="https://max.ru/bautavenicecarnival"
                     target="_blank"
@@ -161,7 +155,6 @@ const Footer = () => {
                     </svg>
                   </a>
 
-                  {/* VK */}
                   <a
                     href="https://vk.com/bautavenicecarnival"
                     target="_blank"
@@ -182,12 +175,10 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* ------ МОБИЛЬНАЯ ВЕРСИЯ (исправлено наконец) ------ */}
+        {/* Мобильная версия */}
         <div className='md:hidden relative w-screen left-1/2 -translate-x-1/2 mt-10'>
-          {/* Фоновая картинка абсолютно растянута на весь блок */}
           <img src={bgphone} alt="bg" className="absolute inset-0 w-full h-full object-cover" />
 
-          {/* Контент поверх фона */}
           <div className="relative z-10 flex flex-col items-center pt-16 pb-8 px-3">
 
             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[-70%] flex items-center">
@@ -197,7 +188,6 @@ const Footer = () => {
               </h2>
             </div>
 
-            {/* Навигация */}
             <div className="flex flex-wrap justify-center gap-x-3 text-sm font-sf text-gray-300 mb-6 -translate-y-[10%]">
               <button onClick={() => CustomNavigation('/')} className="hover:text-[#8B1E1E]">
                 Главная
@@ -213,7 +203,6 @@ const Footer = () => {
               </button>
             </div>
 
-            {/* Контакты */}
             <div className='w-full max-w-xs text-center'>
               <h3 className='text-[#8B1E1E] font-sf text-xl mb-2 text-center font-bold ml-3 -translate-y-[-55%]'>Контакты:</h3>
               <div className='flex flex-col text-sm text-[#0A0A0A] items-center -translate-y-[-10%]'>
@@ -239,7 +228,6 @@ const Footer = () => {
                 </div>
 
                 <div className='flex items-center mt-2 gap-[10px]'>
-                  {/* Max */}
                   <a
                     href="https://max.ru/bautavenicecarnival"
                     target="_blank"
@@ -256,7 +244,6 @@ const Footer = () => {
                     </svg>
                   </a>
 
-                  {/* VK */}
                   <a
                     href="https://vk.com/bautavenicecarnival"
                     target="_blank"
@@ -277,14 +264,14 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Копирайт: десктоп (адаптирован) */}
+        {/* Копирайт: ПК */}
         <div className='hidden md:block bg-[#0A0A0A] absolute left-0 right-0 text-center text-[#C5A059] font-sf
           lg:bottom-[-2rem] lg:py-[0.3rem] lg:text-[1rem]
           2xl:bottom-[-2.8rem] 2xl:py-[0.5rem] 2xl:text-[1.2rem]'
         >
           © 2026 Баута. Все права защищены. Сайт является учебным.
         </div>
-        {/* Копирайт: мобильный (без изменений) */}
+        {/* Копирайт: мобильный */}
         <div className='md:hidden bg-[#0A0A0A] text-center text-[#C5A059] font-sf text-[0.6rem] py-2 w-screen relative left-1/2 -translate-x-1/2'>
           © 2026 Баута. Все права защищены. Сайт является учебным.
         </div>

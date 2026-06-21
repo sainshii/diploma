@@ -24,6 +24,9 @@ const RegPage = () => {
   const [searchParams] = useSearchParams();
   const redirectTo = searchParams.get('redirect') || '/login';
 
+  // Новое состояние для согласия
+  const [agreed, setAgreed] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
@@ -31,6 +34,10 @@ const RegPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (!agreed) {
+      setErrors('Необходимо дать согласие на обработку персональных данных')
+      return
+    }
     try {
       const response = await fetch(`${API_URL}/register/`, {
         method: 'POST',
@@ -99,7 +106,6 @@ const RegPage = () => {
               )}
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-6 max-md:gap-4">
-              {/* Имя */}
               <div className="flex flex-col gap-2">
                 <label htmlFor="first_name" className="text-[#C5A059] font-sf text-sm uppercase tracking-wider ml-2 max-md:text-xs">
                   Имя
@@ -118,7 +124,6 @@ const RegPage = () => {
                 />
               </div>
 
-              {/* Юзернейм */}
               <div className="flex flex-col gap-2">
                 <label htmlFor="username" className="text-[#C5A059] font-sf text-sm uppercase tracking-wider ml-2 max-md:text-xs">
                   Юзернейм
@@ -139,7 +144,6 @@ const RegPage = () => {
                 />
               </div>
 
-              {/* Почта */}
               <div className="flex flex-col gap-2">
                 <label htmlFor="email" className="text-[#C5A059] font-sf text-sm uppercase tracking-wider ml-2 max-md:text-xs">
                   Почта
@@ -158,7 +162,6 @@ const RegPage = () => {
                 />
               </div>
 
-              {/* Пароль */}
               <div className="flex flex-col gap-2">
                 <label htmlFor="password" className="text-[#C5A059] font-sf text-sm uppercase tracking-wider ml-2 max-md:text-xs">
                   Пароль
@@ -175,6 +178,23 @@ const RegPage = () => {
                              focus:outline-none focus:border-[#C5A059] focus:ring-1 focus:ring-[#C5A059]/50 transition-all duration-300
                              max-md:text-sm max-md:py-2.5"
                 />
+              </div>
+
+              {/* Чекбокс согласия */}
+              <div className="flex items-start gap-2 mt-2">
+                <input
+                  id="agree"
+                  type="checkbox"
+                  checked={agreed}
+                  onChange={(e) => setAgreed(e.target.checked)}
+                  className="mt-1 w-4 h-4 bg-transparent rounded border-[#C5A059]/50 text-[#C5A059] focus:ring-[#C5A059] focus:ring-offset-0"
+                />
+                <label htmlFor="agree" className="text-gray-300 text-sm leading-tight cursor-pointer mt-[2px]">
+                  Я согласен(а) на{' '}
+                  <Link to="/privacy" className="text-[#C5A059] underline hover:text-white transition">
+                    обработку персональных данных
+                  </Link>
+                </label>
               </div>
 
               <button

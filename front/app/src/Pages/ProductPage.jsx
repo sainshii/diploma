@@ -26,7 +26,6 @@ const ProductPage = () => {
   const { addToCart, updateQuantity, getCartItem, items } = useCart()
   const navigate = useNavigate()
 
-  // Загрузка товара
   useEffect(() => {
     fetch(`${API_URL}/api/products/${id}/`)
       .then(res => res.json())
@@ -43,7 +42,6 @@ const ProductPage = () => {
       .catch(err => console.error('Ошибка загрузки товара:', err))
   }, [id, items, selectedSize])
 
-  // Сохраняем размер
   useEffect(() => {
     if (selectedSize) {
       localStorage.setItem(`selectedSize_${id}`, selectedSize)
@@ -105,7 +103,6 @@ const ProductPage = () => {
   const cartItem = selectedSize ? getCartItem(product.id, selectedSize) : null
   const isInCart = !!cartItem
 
-  // Расчёт скидки
   const hasDiscount = product.discounted_price && product.discounted_price < product.price
   const discountPercent = hasDiscount
     ? Math.round((1 - product.discounted_price / product.price) * 100)
@@ -125,7 +122,6 @@ const ProductPage = () => {
       lg:max-w-[1400px] 
       2xl:max-w-[1770px]
       `}>
-        {/* Кнопка "Назад" */}
         <button
           onClick={() => navigate(-1)}
           className={`absolute z-40 text-[#C5A059] hover:text-white transition-colors duration-200
@@ -163,21 +159,19 @@ const ProductPage = () => {
           </div>
         </div>
 
-        {/* Контент */}
         <div className={`pt-[16rem] max-md:pt-[6.5rem] px-4
           lg:pt-[12rem] 2xl:pt-[16rem]
         `}>
           <div className={`flex flex-col md:flex-row gap-10 max-md:gap-6
             lg:gap-8 2xl:gap-10
           `}>
-            {/* Блок изображения с бейджем скидки */}
+            {/* Блок с бейджем скидки */}
             <div className="relative">
               {hasDiscount && (
                 <div className="absolute top-4 left-4 z-10 bg-red-600 text-white text-sm md:text-base font-sf font-bold px-3 py-1.5 rounded-full shadow-lg">
                   -{discountPercent}%
                 </div>
               )}
-              {/* Обёртка с overflow-hidden и скруглением, чтобы увеличение не выходило за границы */}
               <div
                 className={`overflow-hidden rounded-3xl border-2 border-[#C5A059]/50
                   w-[35rem] h-[40rem] max-md:w-full max-md:h-64 max-md:rounded-2xl
@@ -196,7 +190,6 @@ const ProductPage = () => {
               mt-[5rem] max-md:mt-1
               lg:mt-[3rem] 2xl:mt-[5rem]
             `}>
-              {/* Название */}
               <div className="flex items-center gap-8 mb-4 max-md:gap-4 max-md:order-1 max-md:mb-2">
                 <h1 className={`text-[#C5A059] font-gv max-md:text-3xl max-md:text-center
                   text-6xl
@@ -210,7 +203,7 @@ const ProductPage = () => {
                 </div>
               </div>
 
-              {/* Мобильная строка: цена со скидкой + рейтинг */}
+              {/* Мобильная цена со скидкой */}
               <div className="md:hidden flex items-center justify-between mb-6 max-md:mb-4 max-md:order-2">
                 <div className="flex items-baseline gap-2 flex-wrap">
                   {hasDiscount ? (
@@ -242,7 +235,7 @@ const ProductPage = () => {
                 {product.description}
               </p>
 
-              {/* Десктопная цена со скидкой */}
+              {/* ПК цена со скидкой */}
               <div className="hidden md:block mb-6">
                 {hasDiscount ? (
                   <div className="flex items-baseline gap-3">
@@ -260,7 +253,6 @@ const ProductPage = () => {
                 )}
               </div>
 
-              {/* Размеры */}
               <div className="mb-6 max-md:order-3 max-md:mb-4">
                 <h3 className={`text-white font-sf mb-2
                   text-2xl max-md:text-lg
@@ -287,7 +279,6 @@ const ProductPage = () => {
                 </div>
               </div>
 
-              {/* Кнопка добавления в корзину */}
               <div className="max-md:order-5">
                 {isInCart ? (
                   <div className="flex justify-between items-center gap-4 max-md:gap-2 max-md:flex-wrap">
@@ -342,7 +333,6 @@ const ProductPage = () => {
             </div>
           </div>
 
-          {/* Комментарии */}
           <section className={`mt-16 mb-16 max-md:mt-10 max-md:mb-10
             lg:mt-12 lg:mb-12 2xl:mt-16 2xl:mb-16
           `}>
@@ -406,7 +396,6 @@ const ProductPage = () => {
               <p className="text-gray-500">Пока нет отзывов.</p>
             )}
 
-            {/* Форма отправки комментария */}
             <form
               onSubmit={handleCommentSubmit}
               className={`mt-6 bg-[#1A1A1A] border border-[#C5A059]/30 rounded-xl p-6 max-md:p-4
