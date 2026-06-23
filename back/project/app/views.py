@@ -146,8 +146,13 @@ class CommentCreateView(generics.CreateAPIView):
             context['product'] = None
         return context
 
-    def perform_create(self, serializer):
-        serializer.save()
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        instance = serializer.instance
+        output_serializer = CommentSerializer(instance, context={'request': request})
+        return Response(output_serializer.data, status=status.HTTP_201_CREATED)
 
 class CommentDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comment.objects.all()

@@ -516,13 +516,12 @@ const ProductPage = () => {
           <section className={`mt-16 mb-16 max-md:mt-10 max-md:mb-10
             lg:mt-12 lg:mb-12 2xl:mt-16 2xl:mb-16
           `}>
-            <h2 className={`text-[#C5A059] font-gv mb-3 max-md:text-4xl
+            <h2 className={`text-[#C5A059] font-gv mb-4 max-md:text-4xl
               text-5xl
               lg:text-5xl 
-              2xl:text-5xl
+              2xl:text-6xl
             `}>Отзывы</h2>
 
-            {/* Существующие отзывы */}
             {product.comments && product.comments.length > 0 ? (
               product.comments.map(comment => {
                 const isOwner = currentUsername && (
@@ -539,7 +538,7 @@ const ProductPage = () => {
                     <div className="flex items-center gap-3 mb-3 max-md:gap-2">
                       <div className={`rounded-full border border-[#C5A059] overflow-hidden bg-[#0A0A0A] flex-shrink-0
                         w-10 h-10 max-md:w-8 max-md:h-8
-                        lg:w-8 lg:h-8 2xl:w-10 2xl:h-10
+                        lg:w-8 lg:h-8 2xl:w-[3.5rem] 2xl:h-[3.5rem]
                       `}>
                         {comment.user?.avatar_url ? (
                           <img
@@ -558,16 +557,16 @@ const ProductPage = () => {
                       </div>
                       <div>
                         <span className={`text-[#C5A059] font-sf font-semibold max-md:text-sm
-                          lg:text-sm 2xl:text-base
+                          lg:text-sm 2xl:text-xl
                         `}>
                           {comment.user?.username || 'Пользователь'}
                         </span>
-                        <div className="flex items-center gap-1 text-yellow-400 text-sm max-md:text-xs">
+                        <div className="flex items-center gap-1 text-yellow-400 text-sm max-md:text-xs 2xl:text-lg">
                           {'★'.repeat(comment.rating)}{'☆'.repeat(5 - comment.rating)}
                         </div>
                       </div>
                       <span className={`ml-auto text-gray-500 text-sm max-md:text-xs
-                        lg:text-xs 2xl:text-sm
+                        lg:text-xs 2xl:text-lg
                       `}>
                         {comment.created_at
                           ? new Date(comment.created_at).toLocaleDateString('ru-RU')
@@ -575,7 +574,7 @@ const ProductPage = () => {
                       </span>
                     </div>
 
-                    {/* Режим редактирования или просмотр */}
+                    {/* Редакт */}
                     {editingCommentId === comment.id ? (
                       <div className="space-y-3">
                         <div className="flex gap-2">
@@ -592,7 +591,7 @@ const ProductPage = () => {
                           value={editText}
                           onChange={e => setEditText(e.target.value)}
                           rows="3"
-                          className="w-full bg-[#0A0A0A] border border-[#C5A059]/30 rounded-xl p-3 text-white text-sm lg:text-sm"
+                          className="w-full bg-[#0A0A0A] border border-[#C5A059]/30 rounded-xl p-3 text-white text-sm lg:text-sm 2xl:text-lg"
                         />
                         <div className="flex gap-3">
                           <button
@@ -610,7 +609,7 @@ const ProductPage = () => {
                         </div>
                       </div>
                     ) : (
-                      <p className="text-gray-300 mt-2">{comment.text}</p>
+                      <p className="text-gray-300 mt-2 2xl:text-xl">{comment.text}</p>
                     )}
 
                     {isOwner && editingCommentId !== comment.id && (
