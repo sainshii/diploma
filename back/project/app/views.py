@@ -7,6 +7,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.views import ObtainAuthToken
 from .serializers import *
 from .models import *
+from .utils import upload_to_cloudinary
 from django.http import HttpResponse
 from django.urls import reverse
 from django.utils import timezone
