@@ -26,21 +26,17 @@ const ProductPage = () => {
   const { addToCart, updateQuantity, getCartItem, items } = useCart()
   const navigate = useNavigate()
 
-  // Состояния для проверки покупки
   const [canComment, setCanComment] = useState(false)
   const [purchaseChecked, setPurchaseChecked] = useState(false)
 
-  // ----- НОВЫЕ СОСТОЯНИЯ для редактирования/удаления -----
-  const [editingCommentId, setEditingCommentId] = useState(null)  // id редактируемого комментария
-  const [editText, setEditText] = useState('')                     // текст при редактировании
-  const [editRating, setEditRating] = useState(5)                  // рейтинг при редактировании
-  // Текущий пользователь (username) для определения своих отзывов
+  const [editingCommentId, setEditingCommentId] = useState(null)
+  const [editText, setEditText] = useState('')
+  const [editRating, setEditRating] = useState(5)
+
   const [currentUsername, setCurrentUsername] = useState(null)
-  // --------------------------------------------------------
 
   const token = localStorage.getItem('token')
 
-  // Загрузка товара
   useEffect(() => {
     fetch(`${API_URL}/api/products/${id}/`)
       .then(res => res.json())
@@ -57,7 +53,6 @@ const ProductPage = () => {
       .catch(err => console.error('Ошибка загрузки товара:', err))
   }, [id, items, selectedSize])
 
-  // Получение профиля текущего пользователя (чтобы узнать username)
   useEffect(() => {
     if (token) {
       fetch(`${API_URL}/profile/`, {
@@ -156,7 +151,6 @@ const ProductPage = () => {
     }
   }
 
-  // ----- ФУНКЦИИ ДЛЯ РЕДАКТИРОВАНИЯ / УДАЛЕНИЯ -----
   const startEdit = (comment) => {
     setEditingCommentId(comment.id)
     setEditText(comment.text)
@@ -212,7 +206,6 @@ const ProductPage = () => {
       alert('Ошибка удаления')
     }
   }
-  // ------------------------------------------------
 
   if (!product) return <div className="text-white text-center mt-20">Загрузка...</div>
 
@@ -225,7 +218,6 @@ const ProductPage = () => {
     : 0
   const finalPrice = hasDiscount ? product.discounted_price : product.price
 
-  // Определяем, что показывать в блоке отзывов
   const tokenExists = !!token
   let commentBlock = null
 
@@ -356,7 +348,6 @@ const ProductPage = () => {
           <div className={`flex flex-col md:flex-row gap-10 max-md:gap-6
             lg:gap-8 2xl:gap-10
           `}>
-            {/* Изображение товара (без изменений) */}
             <div className="relative">
               {hasDiscount && (
                 <div className="absolute top-4 left-4 z-10 bg-red-600 text-white text-sm md:text-base font-sf font-bold px-3 py-1.5 rounded-full shadow-lg">
@@ -377,7 +368,6 @@ const ProductPage = () => {
               </div>
             </div>
 
-            {/* Информация о товаре (без изменений) */}
             <div className={`flex-1 flex flex-col
               mt-[5rem] max-md:mt-1
               lg:mt-[3rem] 2xl:mt-[5rem]
@@ -535,7 +525,6 @@ const ProductPage = () => {
             {/* Существующие отзывы */}
             {product.comments && product.comments.length > 0 ? (
               product.comments.map(comment => {
-                // Определяем, принадлежит ли комментарий текущему пользователю
                 const isOwner = currentUsername && (
                   comment.user?.username === currentUsername
                 )
@@ -593,7 +582,7 @@ const ProductPage = () => {
                           {[1,2,3,4,5].map(n => (
                             <button key={n} type="button"
                               onClick={() => setEditRating(n)}
-                              className={`text-2xl ${n <= editRating ? 'text-yellow-400' : 'text-gray-500'}`}
+                              className={`text-lg lg:text-xl ${n <= editRating ? 'text-yellow-400' : 'text-gray-500'}`}
                             >
                               ★
                             </button>
@@ -603,7 +592,7 @@ const ProductPage = () => {
                           value={editText}
                           onChange={e => setEditText(e.target.value)}
                           rows="3"
-                          className="w-full bg-[#0A0A0A] border border-[#C5A059]/30 rounded-xl p-3 text-white"
+                          className="w-full bg-[#0A0A0A] border border-[#C5A059]/30 rounded-xl p-3 text-white text-sm lg:text-sm"
                         />
                         <div className="flex gap-3">
                           <button
@@ -624,7 +613,6 @@ const ProductPage = () => {
                       <p className="text-gray-300 mt-2">{comment.text}</p>
                     )}
 
-                    {/* Кнопки управления только для своего отзыва */}
                     {isOwner && editingCommentId !== comment.id && (
                       <div className="flex gap-3 mt-3">
                         <button
@@ -648,7 +636,6 @@ const ProductPage = () => {
               <p className="text-gray-500">Пока нет отзывов.</p>
             )}
 
-            {/* Блок добавления отзыва (с учётом прав) */}
             {commentBlock}
           </section>
         </div>

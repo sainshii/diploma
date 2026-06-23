@@ -7,7 +7,7 @@ from django.conf import settings
 class User(AbstractUser):
     username = models.CharField(max_length=255)
     email = models.EmailField(unique=True, max_length=255)
-    avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
+    avatar = models.CharField(max_length=500, blank=True, null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']

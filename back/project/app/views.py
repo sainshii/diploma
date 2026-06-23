@@ -25,12 +25,26 @@ class UserProfileView(APIView):
         return Response(serializer.data)
 
     def patch(self, request):
-        serializer = ProfileUpdateSerializer(request.user, data=request.data, partial=True)
+        data = request.data.copy()
+        avatar_file = request.FILES.get('avatar')
+        if avatar_file:
+            url = upload_to_cloudinary(avatar_file)
+            if url:
+                data['avatar'] = url
+            else:
+                return Response(
+                    {'error': 'Ошибка загрузки аватара'},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+
+        serializer = ProfileUpdateSerializer(request.user, data=data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            return Response(UserSerializer(request.user, context={'request': request}).data)
+            return Response(
+                UserSerializer(request.user, context={'request': request}).data
+            )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+    
 class RegApiView(APIView):
     permission_classes = []
     authentication_classes = []

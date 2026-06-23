@@ -25,10 +25,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     def get_avatar_url(self, obj):
         if obj.avatar:
-            request = self.context.get('request')
-            if request:
-                return request.build_absolute_uri(obj.avatar.url)
-            return obj.avatar.url
+            return obj.avatar
         return None
 
     def create(self, validated_data):
@@ -46,13 +43,14 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ProfileUpdateSerializer(serializers.ModelSerializer):
+    avatar = serializers.CharField(required=False, allow_blank=True, allow_null=True)
+
     class Meta:
         model = User
         fields = ['first_name', 'username', 'avatar']
         extra_kwargs = {
             'first_name': {'required': False},
             'username': {'required': False},
-            'avatar': {'required': False},
         }
 
     def validate_username(self, value):
@@ -132,10 +130,7 @@ class UserPublicSerializer(serializers.ModelSerializer):
 
     def get_avatar_url(self, obj):
         if obj.avatar:
-            request = self.context.get('request')
-            if request:
-                return request.build_absolute_uri(obj.avatar.url)
-            return obj.avatar.url
+            return obj.avatar
         return None
 
 
