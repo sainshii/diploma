@@ -12,7 +12,7 @@ const Footer = lazy(() => import('./Footer'));
 const API_URL = 'https://bauta-backend.onrender.com';
 
 const ProductPage = () => {
-  
+
   useScrollOnMount();
 
   const { id } = useParams()
@@ -26,6 +26,21 @@ const ProductPage = () => {
   const { addToCart, updateQuantity, getCartItem, items } = useCart()
   const navigate = useNavigate()
 
+  // Состояния для проверки покупки
+  const [canComment, setCanComment] = useState(false)
+  const [purchaseChecked, setPurchaseChecked] = useState(false)
+
+  // ----- НОВЫЕ СОСТОЯНИЯ для редактирования/удаления -----
+  const [editingCommentId, setEditingCommentId] = useState(null)  // id редактируемого комментария
+  const [editText, setEditText] = useState('')                     // текст при редактировании
+  const [editRating, setEditRating] = useState(5)                  // рейтинг при редактировании
+  // Текущий пользователь (username) для определения своих отзывов
+  const [currentUsername, setCurrentUsername] = useState(null)
+  // --------------------------------------------------------
+
+  const token = localStorage.getItem('token')
+
+  // Загрузка товара
   useEffect(() => {
     fetch(`${API_URL}/api/products/${id}/`)
       .then(res => res.json())
@@ -42,6 +57,46 @@ const ProductPage = () => {
       .catch(err => console.error('Ошибка загрузки товара:', err))
   }, [id, items, selectedSize])
 
+  // Получение профиля текущего пользователя (чтобы узнать username)
+  useEffect(() => {
+    if (token) {
+      fetch(`${API_URL}/profile/`, {
+        headers: { Authorization: `Token ${token}` }
+      })
+        .then(res => {
+          if (res.ok) return res.json()
+          throw new Error('Не удалось загрузить профиль')
+        })
+        .then(data => setCurrentUsername(data.username))
+        .catch(() => setCurrentUsername(null))
+    }
+  }, [token])
+
+  // Проверка, купил ли пользователь этот товар
+  useEffect(() => {
+    if (token && product?.id) {
+      fetch(`${API_URL}/api/orders/`, {
+        headers: { Authorization: `Token ${token}` }
+      })
+        .then(res => res.json())
+        .then(orders => {
+          const hasPurchased = orders.some(order =>
+            order.items?.some(item => item.product === product.id || item.product?.id === product.id)
+          )
+          setCanComment(hasPurchased)
+          setPurchaseChecked(true)
+        })
+        .catch(() => {
+          setCanComment(false)
+          setPurchaseChecked(true)
+        })
+    } else {
+      setCanComment(false)
+      setPurchaseChecked(true)
+    }
+  }, [product?.id])
+
+  // Сохранение выбранного размера
   useEffect(() => {
     if (selectedSize) {
       localStorage.setItem(`selectedSize_${id}`, selectedSize)
@@ -58,10 +113,13 @@ const ProductPage = () => {
 
   const handleCommentSubmit = async (e) => {
     e.preventDefault()
-    const token = localStorage.getItem('token')
     if (!token) {
       alert('Войдите, чтобы оставить комментарий')
       navigate('/login')
+      return
+    }
+    if (!canComment) {
+      setCommentError('Оставлять отзывы могут только покупатели')
       return
     }
     setCommentError('')
@@ -98,6 +156,64 @@ const ProductPage = () => {
     }
   }
 
+  // ----- ФУНКЦИИ ДЛЯ РЕДАКТИРОВАНИЯ / УДАЛЕНИЯ -----
+  const startEdit = (comment) => {
+    setEditingCommentId(comment.id)
+    setEditText(comment.text)
+    setEditRating(comment.rating)
+  }
+
+  const cancelEdit = () => {
+    setEditingCommentId(null)
+    setEditText('')
+    setEditRating(5)
+  }
+
+  const handleSaveEditComment = async (commentId) => {
+    if (!token) return
+    try {
+      const response = await fetch(`${API_URL}/api/comments/${commentId}/`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Token ${token}`
+        },
+        body: JSON.stringify({ text: editText, rating: Number(editRating) })
+      })
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        throw new Error(errorData.detail || 'Ошибка сохранения')
+      }
+      const updatedComment = await response.json()
+      setProduct(prev => ({
+        ...prev,
+        comments: prev.comments.map(c => c.id === commentId ? updatedComment : c)
+      }))
+      cancelEdit()
+    } catch (err) {
+      alert(err.message)
+    }
+  }
+
+  const handleDeleteComment = async (commentId) => {
+    if (!token || !window.confirm('Удалить отзыв?')) return
+    try {
+      const response = await fetch(`${API_URL}/api/comments/${commentId}/`, {
+        method: 'DELETE',
+        headers: { Authorization: `Token ${token}` }
+      })
+      if (response.ok) {
+        setProduct(prev => ({
+          ...prev,
+          comments: prev.comments.filter(c => c.id !== commentId)
+        }))
+      }
+    } catch (err) {
+      alert('Ошибка удаления')
+    }
+  }
+  // ------------------------------------------------
+
   if (!product) return <div className="text-white text-center mt-20">Загрузка...</div>
 
   const cartItem = selectedSize ? getCartItem(product.id, selectedSize) : null
@@ -108,6 +224,81 @@ const ProductPage = () => {
     ? Math.round((1 - product.discounted_price / product.price) * 100)
     : 0
   const finalPrice = hasDiscount ? product.discounted_price : product.price
+
+  // Определяем, что показывать в блоке отзывов
+  const tokenExists = !!token
+  let commentBlock = null
+
+  if (!tokenExists) {
+    commentBlock = (
+      <p className="text-gray-400 mt-6">
+        <button
+          onClick={() => navigate('/login')}
+          className="text-[#C5A059] underline hover:text-white transition"
+        >
+          Войдите
+        </button>
+        , чтобы оставить отзыв.
+      </p>
+    )
+  } else if (!purchaseChecked) {
+    commentBlock = <p className="text-gray-500 mt-6">Проверка права на отзыв...</p>
+  } else if (!canComment) {
+    commentBlock = (
+      <p className="text-gray-500 mt-6">
+        Оставлять отзывы могут только покупатели, которые приобрели этот товар.
+      </p>
+    )
+  } else {
+    commentBlock = (
+      <form
+        onSubmit={handleCommentSubmit}
+        className={`mt-6 bg-[#1A1A1A] border border-[#C5A059]/30 rounded-xl p-6 max-md:p-4
+          lg:p-4 2xl:p-6
+        `}
+      >
+        <h3 className={`text-[#C5A059] font-sf mb-4
+          text-xl max-md:text-lg
+          lg:text-lg 2xl:text-xl
+        `}>
+          Оставить отзыв
+        </h3>
+        <div className="flex gap-4 mb-4 max-md:gap-2">
+          {[1, 2, 3, 4, 5].map(n => (
+            <button
+              key={n}
+              type="button"
+              onClick={() => setCommentRating(n)}
+              className={`text-2xl max-md:text-xl ${
+                n <= commentRating ? 'text-yellow-400' : 'text-gray-500'
+              }`}
+            >
+              ★
+            </button>
+          ))}
+        </div>
+        <textarea
+          value={commentText}
+          onChange={e => setCommentText(e.target.value)}
+          placeholder="Ваш отзыв..."
+          rows="4"
+          className="w-full bg-[#0A0A0A] border border-[#C5A059]/30 rounded-xl p-3 text-white mb-4 max-md:text-sm"
+        />
+        {commentError && (
+          <p className="text-red-400 text-sm mb-2">{commentError}</p>
+        )}
+        <button
+          type="submit"
+          className={`bg-[#8B1E1E] text-[#f0d29a] rounded-full font-sf hover:bg-[#C5A059] hover:text-[#8B1E1E] transition
+            px-8 py-2 max-md:px-6 max-md:py-1.5
+            lg:px-6 lg:py-1.5 2xl:px-8 2xl:py-2
+          `}
+        >
+          Отправить
+        </button>
+      </form>
+    )
+  }
 
   return (
     <div className="w-full min-h-screen bg-[#0A0A0A] flex flex-col items-center 
@@ -165,7 +356,7 @@ const ProductPage = () => {
           <div className={`flex flex-col md:flex-row gap-10 max-md:gap-6
             lg:gap-8 2xl:gap-10
           `}>
-            {/* Блок с бейджем скидки */}
+            {/* Изображение товара (без изменений) */}
             <div className="relative">
               {hasDiscount && (
                 <div className="absolute top-4 left-4 z-10 bg-red-600 text-white text-sm md:text-base font-sf font-bold px-3 py-1.5 rounded-full shadow-lg">
@@ -186,6 +377,7 @@ const ProductPage = () => {
               </div>
             </div>
 
+            {/* Информация о товаре (без изменений) */}
             <div className={`flex-1 flex flex-col
               mt-[5rem] max-md:mt-1
               lg:mt-[3rem] 2xl:mt-[5rem]
@@ -203,7 +395,6 @@ const ProductPage = () => {
                 </div>
               </div>
 
-              {/* Мобильная цена со скидкой */}
               <div className="md:hidden flex items-center justify-between mb-6 max-md:mb-4 max-md:order-2">
                 <div className="flex items-baseline gap-2 flex-wrap">
                   {hasDiscount ? (
@@ -227,7 +418,6 @@ const ProductPage = () => {
                 </div>
               </div>
 
-              {/* Описание */}
               <p className={`text-gray-300 font-sf mb-4 text-justify max-md:order-4
                 text-2xl max-md:text-sm
                 lg:text-lg 2xl:text-2xl
@@ -235,7 +425,6 @@ const ProductPage = () => {
                 {product.description}
               </p>
 
-              {/* ПК цена со скидкой */}
               <div className="hidden md:block mb-6">
                 {hasDiscount ? (
                   <div className="flex items-baseline gap-3">
@@ -333,6 +522,7 @@ const ProductPage = () => {
             </div>
           </div>
 
+          {/* Отзывы */}
           <section className={`mt-16 mb-16 max-md:mt-10 max-md:mb-10
             lg:mt-12 lg:mb-12 2xl:mt-16 2xl:mb-16
           `}>
@@ -341,107 +531,125 @@ const ProductPage = () => {
               lg:text-5xl 
               2xl:text-5xl
             `}>Отзывы</h2>
+
+            {/* Существующие отзывы */}
             {product.comments && product.comments.length > 0 ? (
-              product.comments.map(comment => (
-                <div
-                  key={comment.id}
-                  className={`border border-[#C5A059]/30 rounded-xl p-4 max-md:p-3 mb-4 bg-[#1A1A1A]
-                    lg:p-3 2xl:p-4
-                  `}
-                >
-                  <div className="flex items-center gap-3 mb-3 max-md:gap-2">
-                    <div className={`rounded-full border border-[#C5A059] overflow-hidden bg-[#0A0A0A] flex-shrink-0
-                      w-10 h-10 max-md:w-8 max-md:h-8
-                      lg:w-8 lg:h-8 2xl:w-10 2xl:h-10
-                    `}>
-                      {comment.user?.avatar_url ? (
-                        <img
-                          src={comment.user.avatar_url}
-                          alt={comment.user.username}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center text-[#C5A059] font-gv
-                          text-sm max-md:text-xs
-                          lg:text-xs 2xl:text-sm
-                        ">
-                          {comment.user?.username?.charAt(0).toUpperCase() || '?'}
-                        </div>
-                      )}
-                    </div>
-                    <div>
-                      <span className={`text-[#C5A059] font-sf font-semibold max-md:text-sm
-                        lg:text-sm 2xl:text-base
+              product.comments.map(comment => {
+                // Определяем, принадлежит ли комментарий текущему пользователю
+                const isOwner = currentUsername && (
+                  comment.user?.username === currentUsername
+                )
+
+                return (
+                  <div
+                    key={comment.id}
+                    className={`border border-[#C5A059]/30 rounded-xl p-4 max-md:p-3 mb-4 bg-[#1A1A1A]
+                      lg:p-3 2xl:p-4
+                    `}
+                  >
+                    <div className="flex items-center gap-3 mb-3 max-md:gap-2">
+                      <div className={`rounded-full border border-[#C5A059] overflow-hidden bg-[#0A0A0A] flex-shrink-0
+                        w-10 h-10 max-md:w-8 max-md:h-8
+                        lg:w-8 lg:h-8 2xl:w-10 2xl:h-10
                       `}>
-                        {comment.user?.username || 'Пользователь'}
-                      </span>
-                      <div className="flex items-center gap-1 text-yellow-400 text-sm max-md:text-xs">
-                        {'★'.repeat(comment.rating)}{'☆'.repeat(5 - comment.rating)}
+                        {comment.user?.avatar_url ? (
+                          <img
+                            src={comment.user.avatar_url}
+                            alt={comment.user.username}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-[#C5A059] font-gv
+                            text-sm max-md:text-xs
+                            lg:text-xs 2xl:text-sm
+                          ">
+                            {comment.user?.username?.charAt(0).toUpperCase() || '?'}
+                          </div>
+                        )}
                       </div>
+                      <div>
+                        <span className={`text-[#C5A059] font-sf font-semibold max-md:text-sm
+                          lg:text-sm 2xl:text-base
+                        `}>
+                          {comment.user?.username || 'Пользователь'}
+                        </span>
+                        <div className="flex items-center gap-1 text-yellow-400 text-sm max-md:text-xs">
+                          {'★'.repeat(comment.rating)}{'☆'.repeat(5 - comment.rating)}
+                        </div>
+                      </div>
+                      <span className={`ml-auto text-gray-500 text-sm max-md:text-xs
+                        lg:text-xs 2xl:text-sm
+                      `}>
+                        {comment.created_at
+                          ? new Date(comment.created_at).toLocaleDateString('ru-RU')
+                          : ''}
+                      </span>
                     </div>
-                    <span className={`ml-auto text-gray-500 text-sm max-md:text-xs
-                      lg:text-xs 2xl:text-sm
-                    `}>
-                      {comment.created_at
-                        ? new Date(comment.created_at).toLocaleDateString('ru-RU')
-                        : ''}
-                    </span>
+
+                    {/* Режим редактирования или просмотр */}
+                    {editingCommentId === comment.id ? (
+                      <div className="space-y-3">
+                        <div className="flex gap-2">
+                          {[1,2,3,4,5].map(n => (
+                            <button key={n} type="button"
+                              onClick={() => setEditRating(n)}
+                              className={`text-2xl ${n <= editRating ? 'text-yellow-400' : 'text-gray-500'}`}
+                            >
+                              ★
+                            </button>
+                          ))}
+                        </div>
+                        <textarea
+                          value={editText}
+                          onChange={e => setEditText(e.target.value)}
+                          rows="3"
+                          className="w-full bg-[#0A0A0A] border border-[#C5A059]/30 rounded-xl p-3 text-white"
+                        />
+                        <div className="flex gap-3">
+                          <button
+                            onClick={() => handleSaveEditComment(comment.id)}
+                            className="bg-[#8B1E1E] text-[#f0d29a] rounded-full px-4 py-1 text-sm hover:bg-[#C5A059] hover:text-[#8B1E1E] transition"
+                          >
+                            Сохранить
+                          </button>
+                          <button
+                            onClick={cancelEdit}
+                            className="border border-gray-500 text-gray-300 rounded-full px-4 py-1 text-sm hover:bg-gray-700 transition"
+                          >
+                            Отмена
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <p className="text-gray-300 mt-2">{comment.text}</p>
+                    )}
+
+                    {/* Кнопки управления только для своего отзыва */}
+                    {isOwner && editingCommentId !== comment.id && (
+                      <div className="flex gap-3 mt-3">
+                        <button
+                          onClick={() => startEdit(comment)}
+                          className="text-[#C5A059] text-sm hover:underline"
+                        >
+                          Редактировать
+                        </button>
+                        <button
+                          onClick={() => handleDeleteComment(comment.id)}
+                          className="text-red-400 text-sm hover:underline"
+                        >
+                          Удалить
+                        </button>
+                      </div>
+                    )}
                   </div>
-                  <p className={`text-gray-300 mt-2 max-md:text-sm
-                    lg:text-sm 2xl:text-base
-                  `}>{comment.text}</p>
-                </div>
-              ))
+                )
+              })
             ) : (
               <p className="text-gray-500">Пока нет отзывов.</p>
             )}
 
-            <form
-              onSubmit={handleCommentSubmit}
-              className={`mt-6 bg-[#1A1A1A] border border-[#C5A059]/30 rounded-xl p-6 max-md:p-4
-                lg:p-4 2xl:p-6
-              `}
-            >
-              <h3 className={`text-[#C5A059] font-sf mb-4
-                text-xl max-md:text-lg
-                lg:text-lg 2xl:text-xl
-              `}>
-                Оставить отзыв
-              </h3>
-              <div className="flex gap-4 mb-4 max-md:gap-2">
-                {[1, 2, 3, 4, 5].map(n => (
-                  <button
-                    key={n}
-                    type="button"
-                    onClick={() => setCommentRating(n)}
-                    className={`text-2xl max-md:text-xl ${
-                      n <= commentRating ? 'text-yellow-400' : 'text-gray-500'
-                    }`}
-                  >
-                    ★
-                  </button>
-                ))}
-              </div>
-              <textarea
-                value={commentText}
-                onChange={e => setCommentText(e.target.value)}
-                placeholder="Ваш отзыв..."
-                rows="4"
-                className="w-full bg-[#0A0A0A] border border-[#C5A059]/30 rounded-xl p-3 text-white mb-4 max-md:text-sm"
-              />
-              {commentError && (
-                <p className="text-red-400 text-sm mb-2">{commentError}</p>
-              )}
-              <button
-                type="submit"
-                className={`bg-[#8B1E1E] text-[#f0d29a] rounded-full font-sf hover:bg-[#C5A059] hover:text-[#8B1E1E] transition
-                  px-8 py-2 max-md:px-6 max-md:py-1.5
-                  lg:px-6 lg:py-1.5 2xl:px-8 2xl:py-2
-                `}
-              >
-                Отправить
-              </button>
-            </form>
+            {/* Блок добавления отзыва (с учётом прав) */}
+            {commentBlock}
           </section>
         </div>
       </section>

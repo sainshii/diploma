@@ -21,4 +21,5 @@ urlpatterns = [
     path('sitemap.xml', sitemap_view, name='sitemap'),
     path('api/contact/', ContactCreateView.as_view(), name='contact-create'),
     path('api/active-promotion/', ActivePromotionView.as_view()),
+    path('api/comments/<int:pk>/', CommentDetailView.as_view(), name='comment-detail'),
 ]

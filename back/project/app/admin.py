@@ -27,21 +27,17 @@ class ProductAdmin(admin.ModelAdmin):
     form = ProductAdminForm
     list_display = ('name', 'price', 'category', 'is_popular', 'stock')
     list_filter = ('category', 'is_popular')
-    # Убираем стандартное поле image, добавляем кастомное
     fields = ('name', 'description', 'price', 'upload_image', 'category', 'sizes', 'stock', 'is_popular', 'rating')
 
     def save_model(self, request, obj, form, change):
-        # Если загрузили новый файл – отправляем в Cloudinary
         uploaded_file = form.cleaned_data.get('upload_image')
         if uploaded_file:
             url = upload_to_cloudinary(uploaded_file)
             if url:
                 obj.image = url
             else:
-                # Если загрузка не удалась – оставляем прежнее значение или очищаем
-                if not change:  # при создании нового товара
+                if not change:
                     obj.image = None
-        # Если файл не загружали и это существующий товар – оставляем старую картинку
         super().save_model(request, obj, form, change)
 
 @admin.register(Comment)

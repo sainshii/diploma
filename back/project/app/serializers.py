@@ -157,13 +157,19 @@ class CommentCreateSerializer(serializers.ModelSerializer):
         fields = ['text', 'rating', 'user']
 
     def create(self, validated_data):
-        # Достаём product из контекста, который передали во view
         product = self.context.get('product')
         if not product:
             raise serializers.ValidationError('Товар не указан')
-        # Добавляем product в данные и создаём комментарий
         validated_data['product'] = product
         return super().create(validated_data)
+    
+class CommentUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ['text', 'rating']
+        extra_kwargs = {
+            'rating': {'min_value': 1, 'max_value': 5}
+        }
 
 
 class CartItemSerializer(serializers.ModelSerializer):
@@ -242,7 +248,7 @@ class OrderCreateSerializer(serializers.ModelSerializer):
                 product=product,
                 size=size,
                 quantity=quantity,
-                price=discounted_price   # сохраняем цену со скидкой на момент заказа
+                price=discounted_price
             )
         return order
     

@@ -1,4 +1,3 @@
-# utils.py
 from django.utils import timezone
 from .models import Promotion
 import cloudinary.uploader
@@ -30,7 +29,7 @@ def get_discounted_price(product, original_price):
         discount_value = float(promo.discount_value)
         if promo.discount_type == 'percent':
             discounted = best_price * (1 - discount_value / 100)
-        else:  # fixed
+        else:
             discounted = best_price - discount_value
 
         if discounted < best_price:
@@ -45,7 +44,7 @@ def upload_to_cloudinary(file):
         response = cloudinary.uploader.upload(
             file,
             folder="products",
-            public_id=file.name.rsplit('.', 1)[0],   # имя без расширения
+            public_id=file.name.rsplit('.', 1)[0],
             overwrite=True,
             resource_type="image"
         )

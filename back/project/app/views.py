@@ -134,7 +134,16 @@ class CommentCreateView(generics.CreateAPIView):
     def perform_create(self, serializer):
         serializer.save()
 
-# ---------- Корзина ----------
+class CommentDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Comment.objects.all()
+    serializer_class = CommentUpdateSerializer
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user)
+
+# Корзина
 class CartView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -202,7 +211,7 @@ class CartRemoveView(APIView):
         item.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-# ---------- Очистка корзины ----------
+# Очистка корзины
 class CartClearView(APIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]
@@ -213,7 +222,7 @@ class CartClearView(APIView):
             cart.items.all().delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-# ---------- Заказы ----------
+# Заказы
 class OrderList(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]
@@ -247,10 +256,9 @@ class ResetPasswordView(APIView):
         return Response({'success': True})
 
 def sitemap_view(request):
-    # Базовый URL сайта – замени на свой домен или бери из request
-    base_url = 'https://bauta.vercel.app'  # или request.build_absolute_uri('/')[:-1]
 
-    # Собираем статические страницы
+    base_url = 'https://bauta.vercel.app'
+
     static_urls = [
         {'loc': f'{base_url}/', 'priority': '1.0'},
         {'loc': f'{base_url}/history', 'priority': '0.8'},
@@ -258,7 +266,6 @@ def sitemap_view(request):
         {'loc': f'{base_url}/shop', 'priority': '0.9'},
     ]
 
-    # Собираем все товары
     products = Product.objects.all()
     product_urls = []
     for product in products:
@@ -269,7 +276,6 @@ def sitemap_view(request):
 
     all_urls = static_urls + product_urls
 
-    # Формируем XML
     xml = ['<?xml version="1.0" encoding="UTF-8"?>']
     xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
     for url in all_urls:
@@ -288,7 +294,7 @@ class ContactCreateView(generics.CreateAPIView):
 
 
 class ActivePromotionView(APIView):
-    permission_classes = []  # доступно всем
+    permission_classes = []
     authentication_classes = []
 
     def get(self, request):
@@ -300,4 +306,4 @@ class ActivePromotionView(APIView):
         ).first()
         if promo:
             return Response({'name': promo.name})
-        return Response({})   # пустой ответ – фронт покажет "Скидки"
+        return Response({})
