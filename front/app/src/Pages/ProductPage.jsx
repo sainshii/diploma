@@ -94,7 +94,7 @@ const ProductPage = () => {
       setCanComment(false)
       setPurchaseChecked(true)
     }
-  }, [product?.id])
+  }, [product?.id, token])
 
   // Сохранение выбранного размера
   useEffect(() => {
