@@ -37,6 +37,12 @@ const ProductPage = () => {
 
   const token = localStorage.getItem('token')
 
+  const recalcRating = (comments) => {
+    if (!comments || comments.length === 0) return 0;
+    const sum = comments.reduce((acc, c) => acc + c.rating, 0);
+    return Math.round((sum / comments.length) * 10) / 10;
+  };
+
   useEffect(() => {
     fetch(`${API_URL}/api/products/${id}/`)
       .then(res => res.json())
@@ -139,10 +145,14 @@ const ProductPage = () => {
         throw new Error(errorMsg)
       }
       const newComment = await response.json()
-      setProduct(prev => ({
-        ...prev,
-        comments: [newComment, ...(prev.comments || [])]
-      }))
+      setProduct(prev => {
+        const updatedComments = [newComment, ...(prev.comments || [])];
+        return {
+          ...prev,
+          comments: updatedComments,
+          rating: recalcRating(updatedComments)
+        };
+      })
       setCommentText('')
       setCommentRating(5)
     } catch (err) {
@@ -179,10 +189,14 @@ const ProductPage = () => {
         throw new Error(errorData.detail || 'Ошибка сохранения')
       }
       const updatedComment = await response.json()
-      setProduct(prev => ({
-        ...prev,
-        comments: prev.comments.map(c => c.id === commentId ? updatedComment : c)
-      }))
+      setProduct(prev => {
+        const updatedComments = prev.comments.map(c => c.id === commentId ? updatedComment : c);
+        return {
+          ...prev,
+          comments: updatedComments,
+          rating: recalcRating(updatedComments)
+        };
+      })
       cancelEdit()
     } catch (err) {
       alert(err.message)
@@ -197,10 +211,14 @@ const ProductPage = () => {
         headers: { Authorization: `Token ${token}` }
       })
       if (response.ok) {
-        setProduct(prev => ({
-          ...prev,
-          comments: prev.comments.filter(c => c.id !== commentId)
-        }))
+        setProduct(prev => {
+          const updatedComments = prev.comments.filter(c => c.id !== commentId);
+          return {
+            ...prev,
+            comments: updatedComments,
+            rating: recalcRating(updatedComments)
+          };
+        })
       }
     } catch (err) {
       alert('Ошибка удаления')
