@@ -49,7 +49,12 @@ class Product(models.Model):
     sizes = models.ManyToManyField(Size, blank=True)
     stock = models.PositiveIntegerField(default=0)
     is_popular = models.BooleanField(default=False)
-    rating = models.FloatField(default=0.0)
+    rating = models.FloatField(default=0.0, editable=False)
+
+    def update_rating(self):
+        avg = self.comments.aggregate(avg_rating=Avg('rating'))['avg_rating']
+        self.rating = avg if avg is not None else 0.0
+        self.save(update_fields=['rating'])
 
     def __str__(self):
         return self.name
@@ -61,6 +66,15 @@ class Comment(models.Model):
     text = models.TextField()
     rating = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        self.product.update_rating()
+
+    def delete(self, *args, **kwargs):
+        product = self.product
+        super().delete(*args, **kwargs)
+        product.update_rating()
 
     def __str__(self):
         return f'Comment by {self.user.username} on {self.product.name}'

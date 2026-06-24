@@ -28,7 +28,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'price', 'category', 'is_popular', 'stock')
     list_filter = ('category', 'is_popular')
     fields = ('name', 'description', 'price', 'upload_image', 'category', 'sizes', 'stock', 'is_popular', 'rating')
-
+    readonly_fields = ('rating',)
     def save_model(self, request, obj, form, change):
         uploaded_file = form.cleaned_data.get('upload_image')
         if uploaded_file:
